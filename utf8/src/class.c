@@ -100,23 +100,21 @@ static struct Library *utf8lib(void)
     return Utf8Base;
 }
 
-/* the file as Latin-1, CR LF made LF, in a passing buffer of the file's
- * size: it always fits (see convert()). Lines of plain ASCII, most of a
- * README, are copied as they are; utf8.library gets only the lines with
- * more (a whole line, so accents written as marks join their letters):
- * on a 68000 that is several times faster than handing it everything. */
-static char *latin1(const char *text, long len, long *outlen)
+/* the file as Latin-1 into b (NULL: only measure), whose size is at least
+ * len + 1: what it needs, or -1 when it does not fit. Lines of plain
+ * ASCII, most of a README, are copied as they are; utf8.library gets only
+ * the lines with more (a whole line, so accents written as marks join
+ * their letters): on a 68000 several times faster than handing it all. */
+static long tolatin1(const UBYTE *t, long len, char *b, long size)
 {
-    const UBYTE *t = (const UBYTE *)text, *p = t, *e = t + len, *q;
-    char *b, *d, *s, *end;
-    if (!(b = AllocVec(len + 1, MEMF_ANY))) return NULL;
-    d = b;
+    const UBYTE *p = t, *e = t + len, *q;
+    long d = 0;
     while (p < e) {
         /* the plain lines up to the next line with a byte from 128 up */
         for (q = p; q < e && *q < 0x80; q++)
             ;
         while (q > p && q[-1] != '\n') q--;
-        CopyMem((APTR)p, d, q - p);
+        if (b) CopyMem((APTR)p, b + d, q - p);
         d += q - p;
         if ((p = q) == e) break;
         /* that line, through its LF */
@@ -124,27 +122,47 @@ static char *latin1(const char *text, long len, long *outlen)
             ;
         if (q < e) q++;
         {
-            LONG n = Utf8ToCharset((CONST_STRPTR)p, q - p, (STRPTR)d, b + len + 1 - d, U8CS_LATIN1, 0);
-            if (n < 0 || n > q - p) {
-                FreeVec(b);
-                return NULL;
-            }
+            LONG n = Utf8ToCharset((CONST_STRPTR)p, q - p, b ? (STRPTR)b + d : NULL,
+                                   b ? size - d : 0, U8CS_LATIN1, 0);
+            if (n < 0 || (b && n >= size - d)) return -1;
             d += n;
         }
         p = q;
     }
+    return d;
+}
+
+/* the file as Latin-1, CR LF made LF, in a new buffer (AllocVec); nearly
+ * always the file's size is enough, so it is measured only when not
+ * (Cyrillic shch and Korean are spelt longer than their UTF-8) */
+static char *latin1(const char *text, long len, long *outlen)
+{
+    const UBYTE *t = (const UBYTE *)text;
+    long n, size = len + 1;
+    char *b, *s, *d, *end;
+    if (!(b = AllocVec(size, MEMF_ANY))) return NULL;
+    if ((n = tolatin1(t, len, b, size)) < 0) {
+        FreeVec(b);
+        if ((n = tolatin1(t, len, NULL, 0)) < 0 || !(b = AllocVec(size = n + 1, MEMF_ANY)))
+            return NULL;
+        if ((n = tolatin1(t, len, b, size)) < 0) {
+            FreeVec(b);
+            return NULL;
+        }
+    }
     /* a CR would show as a box at the end of every line */
-    for (s = b, end = d, d = b; s < end; s++)
+    for (s = b, end = b + n, d = b; s < end; s++)
         if (*s != '\r' || s + 1 == end || s[1] != '\n') *d++ = *s;
     *outlen = d - b;
     return b;
 }
 
-/* text.datatype (40 and 47) does not free its buffer when given another
- * (it leaked the file's size at each open), so the Latin-1 text goes back
- * into the same buffer and only the length changes. It always fits: no
- * character's stand-in is longer than its UTF-8 (all of Unicode checked
- * against utf8.library on the PC), joining marks and CR LF only shorten it. */
+/* text.datatype (40 and 47, and AROS's, which 3.1.4 and 3.2 are) does not
+ * free its buffer when given another (it leaked the file's size at each
+ * open). So the Latin-1 text goes back into the same buffer when it fits,
+ * nearly always, and only the length changes; when it grew, the new buffer
+ * replaces the old and the old is freed here. The byte after the text
+ * (text.datatype's own end mark) is kept. */
 static void convert(Class *cl, Object *o)
 {
     struct TagItem t[3];
@@ -158,16 +176,22 @@ static void convert(Class *cl, Object *o)
     GetDTAttrsA(o, t);
     D(("u8: buffer %lx len %ld\n", text, len));
     if (!text || !len || !utf8lib() || !(b = latin1(text, len, &n))) return;
-    CopyMem(b, text, n);
-    if (n < len) text[n] = 0;
-    FreeVec(b);
-    t[0].ti_Tag = TDTA_BufferLen; t[0].ti_Data = n;
-    t[1].ti_Tag = TAG_DONE;
+    if (n <= len) {
+        CopyMem(b, text, n);
+        if (n < len) text[n] = text[len];
+        FreeVec(b);
+        t[0].ti_Tag = TAG_IGNORE;
+    } else {
+        b[n] = text[len];
+        t[0].ti_Data = (ULONG)b;
+    }
+    t[1].ti_Data = n;
     set.MethodID = OM_SET;
     set.ops_AttrList = t;
     set.ops_GInfo = NULL;
     dosuper(cl, o, (Msg)&set);
-    D(("u8: now len %ld\n", n));
+    if (n > len) FreeVec(text);
+    D(("u8: now len %ld%s\n", n, n > len ? " (new buffer)" : ""));
 }
 
 /* ---- methods ----------------------------------------------------------- */

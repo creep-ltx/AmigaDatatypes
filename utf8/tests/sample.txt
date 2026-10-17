@@ -15,6 +15,7 @@ Boxes:    ┌──┬──┐ │a │b │ └──┴──┘ ═ ║ █
 Greek:    αβγ ΑΒΓ Ωμέγα
 Russian:  Привет, мир
 Japanese: こんにちは, カタカナ, 日本語
+Korean:   안녕하세요, 서울
 Emoji:    ✓ ✗ ★ 😀 👍🏽
 Tabs:	one	two	three
 End.

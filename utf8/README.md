@@ -10,8 +10,11 @@ one may not open at all, taken for a binary file.
   system's own text datatype, exactly as before.
 - **Latin-1 letters exactly:** å ä ö é ü ß ñ ç and the rest, as the Amiga's fonts have them.
 - **The nearest stand-in for the rest:** letters lose only what Latin-1 lacks (Ł L, Š S, ř r), curly quotes
-  become straight, – — dashes become -, … becomes ..., € EUR, ™ TM, ≤ <=, box lines - | +. What has nothing
-  near (Greek, Cyrillic, Chinese, Japanese, emoji) shows as ?.
+  become straight, – — dashes become -, … becomes ..., € EUR, ™ TM, ≤ <=, box lines - | +.
+- **Other scripts spelt in Latin letters:** Russian and the other Cyrillic languages ("Привет, мир" shows as
+  "Privet, mir"), Greek ("Ωμέγα" Omega), Japanese kana ("こんにちは" konnichiha) and Korean ("서울" seoul).
+  Chinese characters, the kanji in Japanese and emoji show as ?: they have no spelling without a
+  dictionary.
 - **Windows files:** the CR of each CR LF goes, so no box at the end of every line. The byte order mark goes.
 - **Everything else as for any text:** scrolling, tabs, search, marking, copying (you copy the letters
   as shown), printing, saving. It is the system's ascii.datatype doing the work, given the converted text.
@@ -19,8 +22,9 @@ one may not open at all, taken for a binary file.
   `.guide` and any file starting `@database` (AmigaGuide).
 
 **Needs** Kickstart/Workbench 3.0 or later, any processor from the 68000 up, and
-[utf8.library](https://github.com/creep-ltx/AmigaLibs/tree/main/utf8) in `LIBS:`, which does the converting.
-Without the library, files are recognised but shown as they are. The class is 2 KB.
+[utf8.library](https://github.com/creep-ltx/AmigaLibs/tree/main/utf8) in `LIBS:`, which does the converting:
+0.1b2 or later spells out the other scripts (0.1b1 shows them as ?). Without the library, files are
+recognised but shown as they are. The class is 2 KB.
 
 ## Install
 
@@ -45,22 +49,24 @@ surrogates, no 0 bytes) with something beyond ASCII. The first byte that is not 
 Latin-1 and binary files are turned away at once.
 
 The class is a subclass of `ascii.datatype`. When text.datatype has loaded the file, the class turns it into
-Latin-1 in the same buffer: plain ASCII lines are copied as they are, lines with more go through
-utf8.library's `Utf8ToCharset`. The Latin-1 text is never longer than the UTF-8 (checked for every Unicode
-character), so it always fits.
+Latin-1: plain ASCII lines are copied as they are, lines with more go through utf8.library's
+`Utf8ToCharset`. The result goes back into text.datatype's own buffer when it fits, which is nearly always;
+Korean and a few Russian letters are spelt longer than their UTF-8, and then a new buffer replaces the old one
+(which the class frees: text.datatype does not).
 
 ## Tested
 
 In FS-UAE: Workbench 3.1 on a 68020, Workbench 3.2.1 on a 68020, and an A600 (68000, 2 MB chip, Kickstart
 and Workbench 3.1). Recognition of UTF-8, UTF-8 with CR LF, a byte order mark, UTF-8 that looks binary,
 ASCII, Latin-1, UTF-8 Markdown and AmigaGuide (`tests/`); the shown text copied out of MultiView matches
-utf8.library's conversion of the whole file byte for byte (100 KB, with and without CR LF); opened and
-closed with `tests/leak.sh`: nothing lost.
+utf8.library's conversion of the whole file byte for byte (100 KB, with and without CR LF, and a file whose
+Latin-1 is longer, `tests/grows.txt`); opened and closed with `tests/leak.sh`: nothing lost.
 
 Speed on the 68000 (A600 in FS-UAE, 7 MHz, so an emulator's figures), from starting MultiView to its
-window, against the same text in Latin-1 through ascii.datatype: a 100 KB file of English with a byte order
-mark 18.5 s (16.5 s); English and Western European letters mixed 19.3 s (15.5 s); every line full of
-accents, Greek, Cyrillic, Japanese and emoji 40 s (14.5 s). Recognising a file takes about 0.3 s there.
+window, against the same text in Latin-1 through ascii.datatype, with utf8.library 0.1b2: a 100 KB file of
+English and Western European letters 18.9 s (15.5 s); every line full of accents, Greek, Cyrillic, Japanese,
+Korean and emoji 24 s (14.5 s; it was 40 s with utf8.library 0.1b1). Recognising a file takes about 0.3 s
+there.
 
 ## Building
 
