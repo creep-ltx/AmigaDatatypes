@@ -29,7 +29,7 @@ the Workbench's font and pens on grey, and anything drawn with cursor moves land
   `.ans` and `.asc` files and Amiga `.nfo`/`.diz` art even without codes. PC art goes to its sister,
   [pcansi.datatype](../pcansi/), and no file is taken by both: all 412 files of an Amiga BBS's styles went
   here, none to pcansi. AmigaGuide files and plain text without codes are left alone.
-- **Small:** the class is 17 KB, the recognition code under 3 KB, each font 9 KB.
+- **Small:** the class is 18 KB, the recognition code under 3 KB, each font 9 KB.
 
 **Needs** Kickstart/Workbench 3.0 or later and any processor from the 68000 up.
 
