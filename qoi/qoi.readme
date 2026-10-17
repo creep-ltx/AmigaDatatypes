@@ -1,0 +1,83 @@
+================================================================
+  QOI - QOI pictures for every Amiga: a datatype and a converter
+================================================================
+
+
+WHAT IT IS
+
+  QOI ("Quite OK Image", qoiformat.org) is a lossless picture
+  format with full colour and transparency that decodes many
+  times faster than PNG. This package teaches the Amiga to use it:
+
+  qoi.datatype  shows QOI pictures in every program that opens
+                pictures through datatypes: MultiView, a double-
+                click on Workbench, file managers, paint programs
+
+  ToQOI         turns pictures into QOI files: anything the Amiga
+                has a picture datatype for (PNG, JPEG, GIF, BMP,
+                WebP, ILBM...)
+
+  Both are one build for every Amiga, from a 68000 up, with
+  OS 3.0 or later.
+
+
+FEATURES
+
+  - Full colour with transparency on OS 3.5, 3.9 and 3.2; on 3.2
+    the pixels go straight into picture.datatype's own buffer
+  - 256 colours on OS 3.0 and 3.1, whose picture.datatype takes no
+    full colour: a picture with 256 colours or fewer keeps exactly
+    its own, a bigger one gets the best 256 with dithering
+
+  - Fast: a decoder written for the 68k, with a hand-written loop
+    for the 68020 and later chosen at run time. On the real A1200
+    (Emu68) photos open 2.4-3.6x faster than with the older QOI
+    datatype on Aminet, and 3.5-9x faster than the same pictures as
+    PNG with OS 3.2's own png.datatype
+
+  - ToQOI keeps PNG transparency and the transparent colour of GIF
+    and ILBM pictures; on OS 3.0/3.1 it reads HAM and Extra-
+    Halfbrite pictures itself. Patterns, a target drawer, and a
+    Workbench start: select pictures, then shift-double-click ToQOI
+    (give it a tool icon first)
+
+  - Little memory: neither the datatype nor ToQOI ever holds the
+    whole file, and ToQOI never holds the whole picture
+
+  - Safe with broken files: every pixel the same as the reference
+    decoder's (qoi.h), also for damaged and cut-short files,
+    checked on 450 test pictures and fuzzed. Every byte ToQOI
+    writes is the same as the reference encoder's
+
+  - Recognised by its first bytes ("qoif"), whatever the file is
+    called
+
+
+COMPARED WITH THE OLDER QOI DATATYPE (qoi-datatype 0.6, 2022)
+
+  - It needs picture.datatype 43 and does not open QOI pictures on
+    OS 3.0 or 3.1; this one shows them there in 256 colours
+  - It drops transparency (transparent parts turn black); this one
+    keeps it
+  - This one opens pictures 2.4-3.6x faster (real A1200)
+  - It has no converter; this package has ToQOI
+
+
+INSTALLATION
+
+  Classes/DataTypes/qoi.datatype  to SYS:Classes/DataTypes/
+  Devs/DataTypes/QOI              to DEVS:DataTypes/
+  C/ToQOI                         to C:
+
+  Then AddDataTypes REFRESH, or restart the Amiga if another
+  qoi.datatype was installed before. The full manual is qoi.doc.
+
+
+SOURCE
+
+  https://github.com/creep-ltx/AmigaDatatypes  (folder qoi, MIT)
+
+
+HISTORY
+
+  0.1b1 (17.10.2026) - the first version: qoi.datatype and ToQOI

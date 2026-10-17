@@ -1,0 +1,257 @@
+                    QOI 0.1b1 - documentation
+                    =========================
+
+  QOI pictures for every Amiga: qoi.datatype shows them in every
+  program that opens pictures through datatypes, and ToQOI turns
+  other pictures into QOI files.
+
+  QOI ("Quite OK Image", https://qoiformat.org) is a lossless
+  picture format by Dominic Szablewski: full colour, transparency,
+  and a design simple enough to decode many times faster than PNG,
+  which suits a 68k well.
+
+  Source, issues and newest version:
+  https://github.com/creep-ltx/AmigaDatatypes  (folder qoi)
+
+
+  1. REQUIREMENTS
+  ---------------
+
+  - AmigaOS 3.0 or newer (datatypes came with 3.0). Developed and
+    tested on 3.2; also tested on 3.1 and 3.2.1.
+  - Any CPU: both files are plain 68000 code. The datatype also
+    has a loop for the 68020 and later, chosen when it runs.
+  - Full colour needs picture.datatype 43 or later (OS 3.5, 3.9,
+    3.2). On OS 3.0 and 3.1 pictures are shown in 256 colours.
+  - ToQOI reads other pictures through their own datatypes: it
+    converts what the Amiga can already open.
+
+
+  2. INSTALLATION
+  ---------------
+
+  1. Copy Classes/DataTypes/qoi.datatype to SYS:Classes/DataTypes/
+  2. Copy Devs/DataTypes/QOI to DEVS:DataTypes/
+  3. Copy C/ToQOI to C:
+  4. In a Shell:
+
+         AddDataTypes REFRESH
+
+  If another qoi.datatype was installed before, restart the Amiga
+  instead: AddDataTypes REFRESH does not reload a descriptor the
+  system already knows.
+
+  To check: Version SYS:Classes/DataTypes/qoi.datatype and
+  Version C:ToQOI both say 0.1b1.
+
+
+  3. QOI.DATATYPE
+  ---------------
+
+  Once installed, a QOI picture opens like any other: double-click
+  it on Workbench, load it in MultiView, preview it in a file
+  manager, or load it in a paint program that reads pictures
+  through datatypes. It is recognised by its first four bytes
+  ("qoif"), so the name does not matter.
+
+  What you get depends on the picture.datatype in your system:
+
+    OS 3.2 (picture.datatype 47)
+      Full colour with transparency. The pixels are decoded
+      straight into picture.datatype's own buffer, with no copy.
+      Semi-transparent pixels are drawn over the window
+      background.
+
+    OS 3.5 and 3.9 (picture.datatype 43 to 46)
+      Full colour with transparency, handed over 32 KB of rows at
+      a time.
+
+    OS 3.0 and 3.1 (picture.datatype 39 to 42)
+      256 colours. A picture with 256 colours or fewer keeps
+      exactly its own colours. A bigger one gets the best 256
+      (median cut) with Floyd-Steinberg dithering. Transparent
+      parts are shown over Workbench's grey. The picture is
+      decoded twice instead of being kept in full colour, to save
+      memory.
+
+  A picture that says it has transparency but has none (every
+  pixel solid) is shown as a plain one.
+
+  Speed. Opening a picture (the datatype's own part) on the real
+  A1200 (PiStorm with Emu68, OS 3.2):
+
+    Picture                     QOI      older QOI dt   PNG
+    800x600 with transparency   26 ms    63 ms          231 ms
+    768x512 photo               38 ms    109 ms         133 ms
+    1152x858 photo              68 ms    243 ms         300 ms
+
+  ("older QOI dt" is qoi-datatype 0.6 from Aminet; "PNG" is the
+  same picture as PNG through OS 3.2's png.datatype.) The older QOI
+  datatype does not work on OS 3.1 at all; it needs
+  picture.datatype 43.
+
+  Memory. The file is read 16 KB at a time and never held whole.
+
+  Broken files. Every pixel of every picture is the same as the
+  reference decoder's (qoi.h), also for damaged and cut-short
+  files. Checked on 450 test pictures (whole, damaged, cut short)
+  on the PC and on the Amiga, and fuzzed on the PC with about a
+  million runs. A damaged file is refused or shown with garbage,
+  never a crash.
+
+
+  4. COMPARED WITH THE OLDER QOI DATATYPE
+  ---------------------------------------
+
+  Aminet has had a QOI datatype since 2022: qoi-datatype 0.6 by
+  Damian Gaweda. This one is written fresh, not from its source.
+  Tested side by side on the same pictures:
+
+                         qoi-datatype 0.6     this qoi.datatype
+    OS 3.0 / 3.1         does not open        256 colours,
+                         (needs picture.      dithered
+                         datatype 43)
+    OS 3.2               full colour          full colour
+    Transparency         dropped (black)      kept
+    Speed (real A1200)   63 / 109 / 243 ms    26 / 38 / 68 ms
+    Broken files         no crash             no crash, every
+                                              pixel as the
+                                              reference decoder
+    Converter            -                    ToQOI
+    Size                 9.5 KB               13.8 KB
+
+  (Speed: the three pictures of the table in section 3.) Both show
+  the colours of a QOI picture exactly. The older datatype's
+  readme asks for picture.datatype 43, so on a stock OS 3.0 or 3.1
+  it was not meant to work.
+
+
+  5. TOQOI
+  --------
+
+  ToQOI turns pictures into QOI files. It reads them through
+  datatypes, so it takes every format the Amiga has a picture
+  datatype for: PNG, JPEG, GIF, BMP, WebP, ILBM and the rest.
+
+  Template:
+
+      ToQOI FROM/A/M,TO/K,FORCE/S,QUIET/S
+
+  FROM    One or more pictures. Patterns work (#?.png). Drawers
+          and .info files that a pattern finds are passed over.
+  TO      Where to write. A drawer: each QOI goes there under its
+          picture's name. A file name: only for a single picture.
+          Without TO, each QOI goes beside its picture.
+  FORCE   Replace a QOI that is already there. Without it, ToQOI
+          leaves an existing file alone and says so.
+  QUIET   Print only what went wrong.
+
+  The QOI gets the picture's name with its ending replaced by
+  .qoi: photo.png becomes photo.qoi.
+
+  Examples:
+
+      ToQOI photo.png
+      ToQOI Work:Pics/#?.(png|jpg|gif) TO Work:QOI
+      ToQOI logo.gif TO RAM:logo.qoi FORCE
+
+  For each picture it prints a line:
+
+      photo.png -> photo.qoi: 800x600 with transparency,
+        244 KB -> 507 KB
+
+  From Workbench: ToQOI needs a tool icon first (with Show All
+  Files in its drawer, select it and pick Icons > Snapshot, or
+  give it any tool icon you like). Then select one or more
+  pictures, hold Shift and double-click ToQOI. Each QOI goes
+  beside its picture, and a requester says how many were made and
+  what went wrong, if anything.
+
+  Colours and transparency:
+
+  - On OS 3.5 and later ToQOI reads every picture in full colour.
+    PNG transparency is kept exactly.
+  - The transparent colour of GIF and ILBM pictures is kept
+    exactly (those pixels become fully transparent).
+  - A picture that only says it has transparency (every pixel
+    solid) is saved as a plain one.
+  - On OS 3.0 and 3.1 there are no full-colour datatypes. ToQOI
+    reads the picture's own bitmap and palette instead, HAM6, HAM8
+    and Extra-Halfbrite included. A picture whose datatype gives
+    only full colour (no bitmap) is not readable there; ToQOI says
+    "this kind of picture needs OS 3.5 or later".
+
+  What comes out is what the Amiga decodes. Tested by comparing
+  every pixel of the QOI with the original on a PC: PNG, BMP, GIF
+  and ILBM (plain, transparent colour, Extra-Halfbrite) are exact.
+  A HAM picture comes out as OS 3.2's own picture.datatype shows
+  it; ToQOI's own HAM reading on 3.0/3.1 gives the same bytes.
+  A JPEG comes out as the Amiga's JPEG datatype decodes it, which
+  differs a little from other JPEG decoders.
+
+  Every byte ToQOI writes is the same as the reference encoder's
+  (qoi.h), checked on 1,500 test pictures.
+
+  Memory. The picture is read a few rows at a time and the file is
+  written 16 KB at a time, so neither is ever held whole. The
+  memory the picture's own datatype needs to load it comes on top.
+
+  Safety. If anything goes wrong while writing (disk full, a read
+  error), the half-written file is deleted. Ctrl-C stops ToQOI
+  between pictures and in the middle of one; the unfinished file
+  is deleted too.
+
+  Speed. On the real A1200 (PiStorm with Emu68, OS 3.2), reading
+  the picture included: an 800x600 PNG with transparency about
+  0.27 s, a 768x512 PNG about 0.22 s, a 768x512 JPEG about 0.08 s.
+
+  Return codes: 0 every picture was made; 5 something was passed
+  over (not a picture, a QOI already, an existing file without
+  FORCE) or Ctrl-C stopped it; 10 a picture could not be read or
+  written; 20 the command line was wrong.
+
+
+  6. TESTED
+  ---------
+
+  - qoi.datatype: the official QOI test pictures read back through
+    datatypes and compared with the originals, every pixel and the
+    transparency: the same, on OS 3.2.1 in FS-UAE and on the real
+    A1200. Shown in MultiView on 3.2.1, 3.1 and a 68000 A600 with
+    3.1 (FS-UAE). Opening and closing loses no memory.
+  - ToQOI: PNG, JPEG, BMP, GIF and ILBM (plain, HAM6, HAM8,
+    Extra-Halfbrite, transparent colour) converted on OS 3.2.1, 3.1
+    and a 68000 A600 with 3.1 (FS-UAE) and on the real A1200, and
+    compared with the originals as described in section 5. Started
+    from Workbench, stopped with Ctrl-C, run many times in a row:
+    no memory lost.
+
+
+  7. BUILDING
+  -----------
+
+  With bebbo's m68k-amigaos-gcc: make in the qoi folder gives
+  build/qoi.datatype, build/QOI and build/ToQOI. make check tests
+  the decoder and the encoder against the reference ones on the PC
+  (tests/ref/qoi.h, MIT, Dominic Szablewski).
+
+
+  8. HISTORY
+  ----------
+
+  0.1b1 (17.10.2026)
+    The first version. qoi.datatype: a picture.datatype subclass,
+    full colour with transparency on picture.datatype 43 and later
+    (straight into its buffer on 47), 256 colours with median cut
+    and dithering on 3.0/3.1, a 68020 loop in assembly chosen at
+    run time. ToQOI: pictures to QOI through datatypes, full colour
+    on 3.5+, bitmap and palette on 3.0/3.1 (HAM and Extra-Halfbrite
+    included), patterns, a target drawer, FORCE, QUIET, and a
+    Workbench start.
+
+
+  9. LICENSE AND AUTHOR
+  ---------------------
+
+  MIT licence, see LICENSE in the source.
+  Written by Tobias Karlsson.

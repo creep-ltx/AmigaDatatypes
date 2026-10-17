@@ -28,8 +28,7 @@ through datatypes.
 | `QOI` | `DEVS:DataTypes/` |
 | `ToQOI` | `C:` (or anywhere): the converter, see below |
 
-Then `AddDataTypes REFRESH`. **If an older QOI datatype was installed** (the one on Aminet has the same file
-names), restart the Amiga instead: `AddDataTypes REFRESH` does not reload a descriptor the system already knows.
+Then `AddDataTypes REFRESH`. **If another qoi.datatype was installed before**, restart the Amiga instead: `AddDataTypes REFRESH` does not reload a descriptor the system already knows.
 
 ## ToQOI: pictures to QOI
 
