@@ -45,7 +45,8 @@ def art():
     o += b'\r\n'
     # cursor moves: a saved spot, forward, up
     o += sgr(0, 1, 32) + b'  left' + ESC + b's' + ESC + b'20C' + b'right' + ESC + b'u' + b'!' + sgr(0) + b'\r\n'
-    o += sgr(0, 35) + b'  ' + b'\xc4' * 30 + ESC + b'1A' + ESC + b'5D' + sgr(1, 31) + b'up' + sgr(0) + b'\r\n\r\n'
+    # under the line, then one row up and four on: "up" lands after "right"
+    o += sgr(0, 35) + b'  ' + b'\xc4' * 30 + ESC + b'1A' + ESC + b'4C' + sgr(1, 31) + b'up' + sgr(0) + b'\r\n\r\n'
     return bytes(o)
 
 def sauce(n, flags):
