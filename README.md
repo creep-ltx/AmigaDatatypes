@@ -8,7 +8,7 @@ a new kind of file. One folder per datatype, each with its own README, version a
 |---|---|---|
 | [markdown/](markdown/) | **Markdown** (`README.md`) formatted in MultiView and every datatypes program: headings, lists, quotes, emphasis, code with colours, tables | 0.1b2 |
 | [utf8/](utf8/) | **UTF-8 text** with the right letters (Latin-1 and the nearest stand-in for the rest) instead of two or three wrong ones per letter; Russian, Greek, Japanese kana and Korean spelt in Latin letters; found by what is in the file, not its name. Needs utf8.library | 0.1b3 |
-| [ansi/](ansi/) | **PC ANSI art** (`.ans`, BBS screens, PC `.nfo`) with its block characters, the IBM VGA font and the sixteen PC colours, as text, not a picture; SAUCE titles and widths; found by SAUCE record or by its bytes | 0.1b1 |
+| [pcansi/](pcansi/) | **PC ANSI art** (`.ans`, BBS screens, PC `.nfo`) with its block characters, the IBM VGA font and the sixteen PC colours, as text, not a picture; SAUCE titles and widths; found by SAUCE record or by its bytes | 0.1b1 |
 
 All for a plain 68000 and Kickstart 3.0 or later.
 

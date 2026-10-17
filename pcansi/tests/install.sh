@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# install.sh - put ansi.datatype, its descriptors, the ibmvga font and the
+# install.sh - put pcansi.datatype, its descriptors, the ibmvga font and the
 # test files on the Amiga Wasabi points at (WASABI_HOST/WASABI_PORT), then
 # AddDataTypes REFRESH. Test files go to RAM:; more art files can be given
 # as arguments (they go to RAM: too). A changed descriptor needs a restart
@@ -7,9 +7,9 @@
 set -e
 here=$(cd "$(dirname "$0")" && pwd)
 b=$here/../build
-wasabi put --force "$b/ansi.datatype" SYS:Classes/DataTypes/ansi.datatype
-wasabi put --force "$b/ANSI" DEVS:DataTypes/ANSI
-wasabi put --force "$b/ANSIbin" DEVS:DataTypes/ANSIbin
+wasabi put --force "$b/pcansi.datatype" SYS:Classes/DataTypes/pcansi.datatype
+wasabi put --force "$b/PC-ANSI" DEVS:DataTypes/PC-ANSI
+wasabi put --force "$b/PC-ANSIbin" DEVS:DataTypes/PC-ANSIbin
 wasabi run "MakeDir FONTS:ibmvga" >/dev/null 2>&1 || true
 wasabi put --force "$b/fonts/ibmvga.font" FONTS:ibmvga.font
 wasabi put --force "$b/fonts/ibmvga/8" FONTS:ibmvga/8

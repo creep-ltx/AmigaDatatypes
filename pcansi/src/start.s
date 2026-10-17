@@ -1,4 +1,4 @@
-| ansi.datatype's first code: started as a program, it ends at once.
+| pcansi.datatype's first code: started as a program, it ends at once.
 	.text
 	.globl	_start
 _start:

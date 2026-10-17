@@ -15,7 +15,7 @@ def art():
     o += ESC + b'2J' + ESC + b'H'
     # a double box with the title
     o += sgr(0, 1, 36) + b'\xc9' + b'\xcd' * 78 + b'\xbb'      # a full row: no line end (wraps)
-    t = b' ansi.datatype test page - PC ANSI on the Amiga '
+    t = b' pcansi.datatype test page - PC ANSI on the Amiga '
     o += b'\xba' + sgr(0, 1, 33) + t.center(78) + sgr(0, 1, 36) + b'\xba'
     o += b'\xc8' + b'\xcd' * 78 + b'\xbc'
     o += sgr(0) + b'\r\n'
@@ -51,7 +51,7 @@ def art():
 def sauce(n, flags):
     r = bytearray(128)
     r[0:7] = b'SAUCE00'
-    r[7:42] = b'ansi.datatype test'.ljust(35)
+    r[7:42] = b'pcansi.datatype test'.ljust(35)
     r[42:62] = b'AmigaDatatypes'.ljust(20)
     r[62:82] = b''.ljust(20)
     r[82:90] = b'20261017'

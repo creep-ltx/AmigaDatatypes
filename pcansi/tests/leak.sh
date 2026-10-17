@@ -2,7 +2,7 @@
 # leak.sh FILE [N] - open RAM:FILE in MultiView and close it N times (default 3)
 # on the Amiga Wasabi points at (WASABI_HOST/WASABI_PORT), flushing memory
 # between, and print what each cycle lost. 0 every time = no leak. Avail
-# FLUSH also unloads ansi.datatype, so it is loaded fresh every cycle.
+# FLUSH also unloads pcansi.datatype, so it is loaded fresh every cycle.
 # Close every MultiView first: all of them are stopped at each cycle.
 # (The window's title is the art's SAUCE title, so this waits for any
 # MultiView window that is not "Loading...".)

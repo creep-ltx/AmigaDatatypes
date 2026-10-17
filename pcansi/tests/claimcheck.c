@@ -1,4 +1,4 @@
-/* claimcheck: would ansi.datatype's recognition code take these files?
+/* claimcheck: would pcansi.datatype's recognition code take these files?
  * Prints "1 path" or "0 path" for each path given on stdin, as hook.c
  * decides it (the record from the last 128 bytes, the first 8 KB).
  *   cc -O2 -o claimcheck claimcheck.c ../src/guess.c */

@@ -1,4 +1,4 @@
-/* ansi.datatype's version. A beta is 0.xbN until proven on the A1200
+/* pcansi.datatype's version. A beta is 0.xbN until proven on the A1200
  * (and on a 68000). */
 #define AN_VERSION  0
 #define AN_REVISION 1

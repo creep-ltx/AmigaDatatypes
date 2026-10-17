@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """mkfont - the IBM VGA font (CP437, all 256 characters) as an Amiga bitmap
-font, for ansi.datatype: PC ANSI art is drawn with it.
+font, for pcansi.datatype: PC ANSI art is drawn with it.
 
     python3 tools/mkfont.py OUTDIR
 

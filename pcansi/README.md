@@ -1,4 +1,4 @@
-# ansi.datatype
+# pcansi.datatype
 
 PC ANSI art shown as the artists drew it, in every program that shows text through datatypes: MultiView,
 a double-click on Workbench, file managers and viewers. The block and line characters of the PC (░ ▒ ▓ █ ▀
@@ -38,12 +38,12 @@ out as accented letters.
 
 | File | Goes to |
 |---|---|
-| `ansi.datatype` | `SYS:Classes/DataTypes/` |
-| `ANSI` | `DEVS:DataTypes/` |
-| `ANSIbin` | `DEVS:DataTypes/` |
+| `pcansi.datatype` | `SYS:Classes/DataTypes/` |
+| `PC-ANSI` | `DEVS:DataTypes/` |
+| `PC-ANSIbin` | `DEVS:DataTypes/` |
 | `fonts/ibmvga.font` and the drawer `fonts/ibmvga` | `FONTS:` |
 
-Then restart (or `AddDataTypes REFRESH` the first time). `ANSIbin` is for the files the system takes for
+Then restart (or `AddDataTypes REFRESH` the first time). `PC-ANSIbin` is for the files the system takes for
 binary, which is most PC art: datatypes.library sorts a file into text or binary by its first bytes, and
 escape codes and block characters look binary to it. The two descriptors are the same otherwise.
 
@@ -75,7 +75,7 @@ piece in 7 s on the A600's 7 MHz 68000; a 257 KB, 2,312-row piece in 12 s on a 1
 
 ## Building
 
-`make` (bebbo's m68k-amigaos-gcc) gives `build/ansi.datatype`, `build/ANSI`, `build/ANSIbin` and
+`make` (bebbo's m68k-amigaos-gcc) gives `build/pcansi.datatype`, `build/PC-ANSI`, `build/PC-ANSIbin` and
 `build/fonts/`. One build for every Amiga: plain 68000 code. `make DEBUG=1` traces through RawPutChar
 (`wasabi debug`). On the PC: `make pagedump` (the reader, printing the page) and `tests/claimcheck.c`
 (the recognition). `tests/mksample.py` writes the test pages, `tests/install.sh` puts everything on an Amiga

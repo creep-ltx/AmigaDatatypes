@@ -1,4 +1,4 @@
-/* ansi.datatype's recognition code, the DTCD chunk of its descriptors.
+/* pcansi.datatype's recognition code, the DTCD chunk of its descriptors.
  * TRUE = PC ANSI art (or CP437 text art):
  *
  * - a file with a SAUCE record: when it says character art (ASCII, ANSI,

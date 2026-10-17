@@ -1,4 +1,4 @@
-/* ansi.datatype: PC ANSI art (.ans, BBS screens, .nfo) shown as the
+/* pcansi.datatype: PC ANSI art (.ans, BBS screens, .nfo) shown as the
  * artists drew it - CP437 block and line characters in the IBM VGA font,
  * the sixteen PC colours - in MultiView and every other program that
  * shows text through datatypes. The art stays text: no picture is made.
@@ -78,9 +78,9 @@ struct AnBase {
     BPTR seglist;
 };
 
-static const char libname[] = "ansi.datatype";
-static const char libid[] = "ansi.datatype " AN_VERSTR " (" AN_DATE ")\r\n";
-const char verstag[] = "$VER: ansi.datatype " AN_VERSTR " (" AN_DATE ")";
+static const char libname[] = "pcansi.datatype";
+static const char libid[] = "pcansi.datatype " AN_VERSTR " (" AN_DATE ")\r\n";
+const char verstag[] = "$VER: pcansi.datatype " AN_VERSTR " (" AN_DATE ")";
 static const char fontname[] = "ibmvga.font";
 
 /* ---- an object's own data ---------------------------------------------- */
