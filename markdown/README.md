@@ -49,8 +49,14 @@ borders and code frames are drawn in the text's colour (fewer pieces to keep).
 
 ## Building
 
-`make` with bebbo's m68k-amigaos-gcc. This repository, TextTools and AmigaLibs must sit side by side
-(`TEXTTOOLS ?= ../../TextTools`, `TUI ?= ../../AmigaLibs/tui`).
+`make` with bebbo's m68k-amigaos-gcc. This repository, TextTools and AmigaLibs must sit side by side:
+
+    git clone https://github.com/creep-ltx/AmigaDatatypes
+    git clone https://github.com/creep-ltx/texttools TextTools
+    git clone https://github.com/creep-ltx/AmigaLibs
+    cd AmigaDatatypes/markdown && make
+
+(Elsewhere: `make TEXTTOOLS=... TUI=.../AmigaLibs/tui`.)
 
 ## Versions
 
