@@ -12,9 +12,11 @@ a double-click on Workbench, file managers and viewers. The block and line chara
   PC's 640x400.
 - **Read as a PC showed it:** colours, bold and bright colours, iCE colours (bright backgrounds), 256 and
   24-bit colours as the nearest of the sixteen, cursor movement, saved positions, clearing, inserted and
-  deleted lines and characters, wrapping at the 80th column the way ANSI.SYS did, all 256 CP437 characters.
-  The reader is the one in Charcoal, checked on 1,712 PC art files from 16colo.rs: the same page, cell for
-  cell.
+  deleted lines and characters, italic and underline, wrapping at the 80th column the way ANSI.SYS did, all
+  256 CP437 characters. The reader is the one in Charcoal, checked on 1,712 PC art files from 16colo.rs:
+  the same page, cell for cell.
+- **Animations at their fullest:** an ANSI animation that ends on an empty screen is shown at its fullest
+  picture, as Charcoal shows it (the same picture on 865 of 866 animations).
 - **SAUCE:** the record at the end of an art file gives the width (art wider than 80 columns), iCE colours
   and the window's title ("Spawn Scroller by FreshRich/Legacy Krew"); its comment block is left out.
 - **Colours on any screen:** the colours a piece uses most get exact colours first; on a screen with too
@@ -24,15 +26,13 @@ a double-click on Workbench, file managers and viewers. The block and line chara
 - **Found by what is in the file:** any file with a SAUCE record that says character art and does not name
   an Amiga font; without a record, `.ans` and `.ice` files unless they look like Amiga art, and `.nfo`,
   `.diz`, `.asc` (and other names with ANSI codes) when their characters are the PC's. The Amiga's own BBS
-  screens and ASCII art are left to the system's text datatypes: on 412 Amiga BBS files and 600 Amiga ASCII
-  pieces it took none and one.
-- **Small:** the class is under 14 KB, the recognition code under 2 KB, the font 9 KB.
+  screens and ASCII art are left to its sister, [amiansi.datatype](../amiansi/): no file is taken by both.
+- **Small:** the class is 15 KB, the recognition code under 3 KB, the font 9 KB.
 
 **Needs** Kickstart/Workbench 3.0 or later and any processor from the 68000 up.
 
-**Not yet:** ANSI animations show as they end, not at their fullest; Amiga ANSI (Topaz art) is left to
-the text datatypes; copying text out of MultiView gives the PC's character codes, so block characters come
-out as accented letters.
+**Not yet:** copying text out of MultiView gives the PC's character codes, so block characters come out as
+accented letters.
 
 ## Install
 

@@ -42,7 +42,7 @@ build/%.o: src/%.s
 
 build/%.o: src/%.c src/ansi.h src/guess.h src/version.h
 	@mkdir -p build
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) -include src/version.h -c $< -o $@
 
 build/pcansi.datatype: build/start.o build/class.o build/ansi.o
 	$(CC) $(LFLAGS) -Wl,-Map,build/pcansi.map -o $@ $^ $(NIX13) -lgcc
@@ -60,7 +60,7 @@ build/PC-ANSIbin: Makefile tools/mkdesc.py src/version.h build/hook
 	python3 tools/mkdesc.py $@ PC-ANSIbin pcansi '$(PATTERN)' text ansi 0x0000 0 'PC-ANSIbin $(VERSTR) ($(VERDATE))' build/hook
 
 build/fonts/ibmvga.font: tools/mkfont.py fonts/IBM_VGA_8x16.raw fonts/IBM_VGA_8x8.raw
-	python3 tools/mkfont.py build/fonts
+	python3 tools/mkfont.py build/fonts ibmvga:8:fonts/IBM_VGA_8x8.raw:1 ibmvga:16:fonts/IBM_VGA_8x16.raw:1
 
 pagedump: build/pagedump
 build/pagedump: tests/pagedump.c src/ansi.c src/guess.c src/ansi.h src/guess.h

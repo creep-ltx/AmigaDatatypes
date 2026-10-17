@@ -1,14 +1,15 @@
 #!/usr/bin/env python3
-"""mkfont - the IBM VGA font (CP437, all 256 characters) as an Amiga bitmap
-font, for pcansi.datatype: PC ANSI art is drawn with it.
+"""mkfont - bitmap fonts of all 256 characters, 8 pixels wide, as Amiga fonts,
+for pcansi.datatype (the IBM VGA font) and amiansi.datatype (the Amiga's
+art fonts).
 
-    python3 tools/mkfont.py OUTDIR
+    python3 tools/mkfont.py OUTDIR NAME:SIZE:RAWFILE:STEP ...
 
-writes OUTDIR/ibmvga.font and OUTDIR/ibmvga/8 and /16: copy both into FONTS:.
-The glyphs are the VGA ROM's, from VileR's Ultimate Oldschool PC Font Pack
-(int10h.org, CC BY-SA 4.0; see fonts/README.md): fonts/IBM_VGA_8x16.raw
-(256 x 16 rows) and fonts/IBM_VGA_8x8.raw (256 x 8 rows, the VGA's 8x8 ROM
-font: 80x50 mode), one byte a row, bit 7 the left pixel.
+writes OUTDIR/NAME.font and OUTDIR/NAME/SIZE for each size: copy both into
+FONTS:. RAWFILE holds 256 glyphs, one byte a row, bit 7 the left pixel,
+SIZE * STEP rows each: STEP 2 takes every other row (TrueSchool's raw Amiga
+fonts are their 8-row originals with every row doubled). The baseline is
+the bottom row of the letter A.
 
 The file layout is CTerm's tools/ttf2font.py (MicroKnight/8's): a hunk file,
 "moveq #-1,d0; rts", a DiskFontHeader, its TextFont, the bits, the CharLoc
@@ -22,11 +23,6 @@ NT_FONT = 12
 FPF_DISKFONT, FPF_DESIGNED = 0x02, 0x40
 DFH_ID, FCH_ID = 0x0F80, 0x0F00
 HUNK_HEADER, HUNK_CODE, HUNK_RELOC32, HUNK_END = 0x3F3, 0x3E9, 0x3EC, 0x3F2
-NAME = 'ibmvga'
-HERE = os.path.dirname(os.path.abspath(__file__))
-SOURCES = {8: ('IBM_VGA_8x8.raw', 6), 16: ('IBM_VGA_8x16.raw', 11)}   # file, baseline
-
-
 def size_file(name, size, baseline, raw):
     width = 8
     n = HI - LO + 2                             # the characters and the default (empty)
@@ -71,18 +67,27 @@ def contents_file(name, sizes):
 
 
 def main():
-    if len(sys.argv) != 2:
+    if len(sys.argv) < 3:
         raise SystemExit(__doc__)
     outdir = sys.argv[1]
-    os.makedirs(os.path.join(outdir, NAME), exist_ok=True)
-    for size, (src, baseline) in SOURCES.items():
-        raw = open(os.path.join(HERE, '..', 'fonts', src), 'rb').read()
-        if len(raw) != 256 * size:
-            raise SystemExit(f'mkfont: {src} is not 256 x {size} rows')
-        with open(os.path.join(outdir, NAME, str(size)), 'wb') as f:
-            f.write(size_file(NAME, size, baseline, raw))
-    with open(os.path.join(outdir, NAME + '.font'), 'wb') as f:
-        f.write(contents_file(NAME, sorted(SOURCES)))
+    fonts = {}
+    for spec in sys.argv[2:]:
+        name, size, raw, step = spec.split(':')
+        size, step = int(size), int(step)
+        data = open(raw, 'rb').read()
+        rows = size * step
+        if len(data) != 256 * rows:
+            raise SystemExit(f'mkfont: {raw} is not 256 x {rows} rows')
+        glyphs = bytes(data[c * rows + y * step] for c in range(256) for y in range(size))
+        a = glyphs[0x41 * size:0x42 * size]
+        baseline = max(y for y in range(size) if a[y])
+        os.makedirs(os.path.join(outdir, name), exist_ok=True)
+        with open(os.path.join(outdir, name, str(size)), 'wb') as f:
+            f.write(size_file(name, size, baseline, glyphs))
+        fonts.setdefault(name, []).append(size)
+    for name, sizes in fonts.items():
+        with open(os.path.join(outdir, name + '.font'), 'wb') as f:
+            f.write(contents_file(name, sorted(sizes)))
 
 
 if __name__ == '__main__':

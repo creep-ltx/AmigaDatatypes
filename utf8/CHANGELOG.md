@@ -1,5 +1,11 @@
 # utf8.datatype changes
 
+## 0.1b5 (17.10.2026)
+
+- **Leaves ANSI art alone whatever its name:** a file with an ESC (ANSI colour codes) is left to
+  pcansi.datatype and amiansi.datatype, so a long Amiga BBS screen called `.txt` is not taken here.
+- The new recognition code takes effect after a restart.
+
 ## 0.1b4 (17.10.2026)
 
 - **Leaves PC ANSI art alone:** `.ans` and `.ice` files are left to pcansi.datatype. Before, a long PC ANSI

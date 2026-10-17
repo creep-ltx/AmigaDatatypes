@@ -24,6 +24,13 @@
 
 #define SCAN 8192
 
+/* amiansi.datatype is built from the same file with -DAMIANSI */
+#ifdef AMIANSI
+#define CLAIM ansi_claim_amiga
+#else
+#define CLAIM ansi_claim
+#endif
+
 LONG ansihook(struct DTHookContext *d)
 {
     struct ExecBase *SysBase = (struct ExecBase *)d->dthc_SysBase;
@@ -44,7 +51,7 @@ LONG ansihook(struct DTHookContext *d)
             }
     if (!fh) {
         if (nul || !d->dthc_Buffer) return FALSE;
-        return ansi_claim(name, NULL, d->dthc_Buffer, d->dthc_BufferLength);
+        return CLAIM(name, NULL, d->dthc_Buffer, d->dthc_BufferLength);
     }
     if (!(buf = AllocMem(SCAN + 128, MEMF_ANY))) return FALSE;
     old = Seek(fh, 0, OFFSET_CURRENT);
@@ -52,7 +59,7 @@ LONG ansihook(struct DTHookContext *d)
         tail = buf + SCAN;
     if (nul && !(tail && tail[0] == 'S' && tail[1] == 'A')) goto done;
     if (Seek(fh, 0, OFFSET_BEGINNING) >= 0 && (n = Read(fh, buf, SCAN)) > 0)
-        r = ansi_claim(name, tail, buf, n);
+        r = CLAIM(name, tail, buf, n);
 done:
     if (old >= 0) Seek(fh, old, OFFSET_BEGINNING);
     FreeMem(buf, SCAN + 128);

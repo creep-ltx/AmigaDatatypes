@@ -1,5 +1,13 @@
 # pcansi.datatype changes
 
+## 0.1b2 (17.10.2026)
+
+- **Animations at their fullest:** an ANSI animation that ends on an empty screen shows its fullest picture.
+- Italic and underline (SGR 3 and 4) are shown.
+- Long files: up to 12,000 rows (was 4,000).
+- The reader and the recognition code are shared with the new amiansi.datatype (Amiga ANSI); the two
+  never take the same file.
+
 ## 0.1b1 (17.10.2026)
 
 - First version: PC ANSI art (`.ans`, `.ice`, BBS screens, PC `.nfo`/`.diz`/`.asc`) in MultiView and every

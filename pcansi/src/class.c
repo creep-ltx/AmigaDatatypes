@@ -3,6 +3,12 @@
  * the sixteen PC colours - in MultiView and every other program that
  * shows text through datatypes. The art stays text: no picture is made.
  *
+ * Built with -DAMIANSI it is amiansi.datatype (AmigaDatatypes/amiansi):
+ * Amiga ANSI art read with the Amiga's rules, in the font its SAUCE
+ * record names (Topaz 1/1+/2/2+, MicroKnight, P0T-NOoDLE, mO'sOul; Topaz
+ * 1+ without one), with italic and underline, on black. The Makefile
+ * gives the datatype's version.h with -include.
+ *
  * A subclass of text.datatype, as ascii.datatype is: text.datatype loads
  * the file into TDTA_Buffer and draws a list of struct Line pieces. This
  * class reads the file as an ANSI terminal would (ansi.c) into a page of
@@ -42,7 +48,6 @@
 #include <proto/datatypes.h>
 #include <proto/diskfont.h>
 #include "ansi.h"
-#include "version.h"
 
 #define REG(r, a) a __asm(#r)
 
@@ -78,10 +83,32 @@ struct AnBase {
     BPTR seglist;
 };
 
-static const char libname[] = "pcansi.datatype";
-static const char libid[] = "pcansi.datatype " AN_VERSTR " (" AN_DATE ")\r\n";
-const char verstag[] = "$VER: pcansi.datatype " AN_VERSTR " (" AN_DATE ")";
+static const char libname[] = AN_NAME;
+static const char libid[] = AN_NAME " " AN_VERSTR " (" AN_DATE ")\r\n";
+const char verstag[] = "$VER: " AN_NAME " " AN_VERSTR " (" AN_DATE ")";
+
+#ifdef AMIANSI
+#define MODE ANSI_AMIGA
+#define PALETTE ansi_amiga_rgb
+/* the fonts by the names SAUCE gives them; the first is the default */
+static const char *const fontnames[][2] = {
+    { "Amiga Topaz 1+", "ansi_topaz1p.font" },
+    { "Amiga Topaz 1", "ansi_topaz1.font" },
+    { "Amiga Topaz 2+", "ansi_topaz2p.font" },
+    { "Amiga Topaz 2", "ansi_topaz2.font" },
+    { "Amiga MicroKnight+", "ansi_mkp.font" },
+    { "Amiga MicroKnight", "ansi_mk.font" },
+    { "Amiga P0T-NOoDLE", "ansi_noodle.font" },
+    { "Amiga mOsOul", "ansi_mosoul.font" },
+    { "Amiga mO'sOul", "ansi_mosoul.font" },
+    { NULL, NULL }
+};
+#define fontname (fontnames[0][1])
+#else
+#define MODE ANSI_PC
+#define PALETTE ansi_rgb
 static const char fontname[] = "ibmvga.font";
+#endif
 
 /* ---- an object's own data ---------------------------------------------- */
 
@@ -94,7 +121,7 @@ struct AnData {
     int ownrender;              /* text.datatype draws in its own font (V40): we draw */
     long msgrow;                /* the row that says memory ran out, or -1 */
     long total, widest;
-    struct TextFont *font;      /* ibmvga, or NULL: then the text font */
+    struct TextFont *font;      /* ours (ibmvga, an Amiga font), or NULL: then the text font */
     struct ColorMap *cm;        /* where the pens are from */
     LONG pens[16];              /* obtained (-1: none) */
     LONG drawpens[16];          /* drawn with */
@@ -177,15 +204,15 @@ static UWORD fontsize(void)
     return size;
 }
 
-static struct TextFont *openfont(void)
+static struct TextFont *openfont(const char *name, UWORD size)
 {
     struct TextAttr ta;
     struct TextFont *f = NULL;
     ObtainSemaphore(&anlock);
     if (!DiskfontBase) DiskfontBase = OpenLibrary("diskfont.library", 36);
     ReleaseSemaphore(&anlock);
-    ta.ta_Name = (STRPTR)fontname;
-    ta.ta_YSize = fontsize();
+    ta.ta_Name = (STRPTR)name;
+    ta.ta_YSize = size ? size : fontsize();
     ta.ta_Style = 0;
     ta.ta_Flags = FPF_DISKFONT | FPF_DESIGNED;
     if (DiskfontBase) f = OpenDiskFont(&ta);
@@ -199,9 +226,15 @@ static struct TextFont *openfont(void)
 
 /* ---- the colours ------------------------------------------------------ */
 
-/* a character whose foreground is not seen, or whose background */
-#define NOFG(c) ((c) == ' ' || (c) == 0 || (c) == 0xFF)
+/* a character whose foreground is not seen (a blank, not underlined), or
+ * whose background is not (the PC's full block) */
+#ifdef AMIANSI
+#define NOFG(c, st) (((c) == ' ' || (c) == 0xA0) && !((st) & ANSI_UNDERLINE))
+#define NOBG(c) 0
+#else
+#define NOFG(c, st) (((c) == ' ' || (c) == 0 || (c) == 0xFF) && !((st) & ANSI_UNDERLINE))
 #define NOBG(c) ((c) == 0xDB)
+#endif
 
 static ULONG c32(ULONG c)
 {
@@ -239,7 +272,7 @@ static void getpens(struct AnData *an, struct Screen *scr)
     }
     for (i = 0, n = (long)p->cols * p->rows; i < n; i++) {
         UBYTE ch = p->ch[i], a = p->at[i];
-        if (!NOFG(ch)) count[a & 15]++;
+        if (!NOFG(ch, p->st ? p->st[i] : 0)) count[a & 15]++;
         if (!NOBG(ch)) count[an->ice ? a >> 4 : a >> 4 & 7]++;
     }
     count[0]++;                                 /* the window around the art */
@@ -254,7 +287,7 @@ static void getpens(struct AnData *an, struct Screen *scr)
     t[1].ti_Tag = OBP_FailIfBad; t[1].ti_Data = TRUE;
     t[2].ti_Tag = TAG_DONE;
     for (i = 0; i < 16 && count[order[i]]; i++) {
-        ULONG v = ansi_rgb[order[i]];
+        ULONG v = PALETTE[order[i]];
         an->pens[order[i]] = an->drawpens[order[i]] =
             ObtainBestPenA(an->cm, c32(v >> 16 & 255), c32(v >> 8 & 255), c32(v & 255), t);
     }
@@ -269,7 +302,7 @@ static void getpens(struct AnData *an, struct Screen *scr)
             best = 0;
             bd = -1;
             for (k = 0; k < n; k++) {
-                d = apart(ansi_rgb[c], (rgb[k * 3] >> 24) << 16 | (rgb[k * 3 + 1] >> 24) << 8 | rgb[k * 3 + 2] >> 24);
+                d = apart(PALETTE[c], (rgb[k * 3] >> 24) << 16 | (rgb[k * 3 + 1] >> 24) << 8 | rgb[k * 3 + 2] >> 24);
                 if (bd < 0 || d < bd) {
                     bd = d;
                     best = k;
@@ -306,9 +339,37 @@ static LONG pen(struct AnData *an, int fg, int bg)
 
 /* ---- the page into pieces --------------------------------------------- */
 
+/* where the run of cells from i (of n) that look the same in one pair of
+ * pens and one style ends; its colours and style in *fg, *bg, *style (a
+ * space takes any foreground, a full block any background) */
+static long runend(struct AnData *an, const UBYTE *ch, const UBYTE *at, const UBYTE *st, long i, long n,
+                   int *fg, int *bg, ULONG *style)
+{
+    int f = -1, b = -1, cf, cb, s0 = st ? st[i] : 0;
+    long j;
+    for (j = i; j < n; j++) {
+        if (st && st[j] != s0) break;
+        cf = at[j] & 15;
+        cb = at[j] >> 4;
+        if (!an->ice) cb &= 7;                  /* blink: shown steady */
+        if (!NOFG(ch[j], s0)) {
+            if (f < 0) f = cf;
+            else if (f != cf) break;
+        }
+        if (!NOBG(ch[j])) {
+            if (b < 0) b = cb;
+            else if (b != cb) break;
+        }
+    }
+    *fg = f < 0 ? 7 : f;
+    *bg = b < 0 ? 0 : b;
+    *style = ((s0 & ANSI_ITALIC) ? FSF_ITALIC : 0) | ((s0 & ANSI_UNDERLINE) ? FSF_UNDERLINED : 0);
+    return j;
+}
 
-static struct Line *piece(APTR pool, UBYTE *s, long n, LONG fg, LONG bg, struct TextFont *f, long x,
-                          long y, int lf)
+
+static struct Line *piece(APTR pool, UBYTE *s, long n, LONG fg, LONG bg, ULONG style, struct TextFont *f,
+                          long x, long y, int lf)
 {
     struct Line *ln = AllocPooled(pool, sizeof(struct Line));
     if (!ln) return NULL;
@@ -321,37 +382,25 @@ static struct Line *piece(APTR pool, UBYTE *s, long n, LONG fg, LONG bg, struct 
     ln->ln_Flags = lf ? LNF_LF : 0;
     ln->ln_FgPen = fg;
     ln->ln_BgPen = bg;
-    ln->ln_Style = 0;
+    ln->ln_Style = style;
     ln->ln_Data = NULL;
     return ln;
 }
 
-/* one row of pieces: runs whose characters look the same in one pair of
- * pens (a space takes any foreground, a full block any background) */
+/* one row of pieces: one for each run of cells that look the same */
 static int row(struct AnData *an, struct List *lines, struct TextFont *f, long r)
 {
     AnsiPage *p = &an->page;
-    UBYTE *ch = p->ch + r * p->cols, *at = p->at + r * p->cols;
+    long o = r * p->cols;
+    UBYTE *ch = p->ch + o, *at = p->at + o, *st = p->st ? p->st + o : NULL;
     long y = r * f->tf_YSize + f->tf_Baseline, x = 0, i = 0, j, n = p->cols;
     struct Line *ln;
+    int fg, bg;
+    ULONG style;
     while (i < n) {
-        int fg = -1, bg = -1, cf, cb;
-        for (j = i; j < n; j++) {
-            cf = at[j] & 15;
-            cb = at[j] >> 4;
-            if (!an->ice) cb &= 7;              /* blink: shown steady */
-            if (!NOFG(ch[j])) {
-                if (fg < 0) fg = cf;
-                else if (fg != cf) break;
-            }
-            if (!NOBG(ch[j])) {
-                if (bg < 0) bg = cb;
-                else if (bg != cb) break;
-            }
-        }
-        if (fg < 0) fg = 7;
-        if (bg < 0) bg = 0;
-        if (!(ln = piece(an->pool, ch + i, j - i, pen(an, fg, bg), an->drawpens[bg], f, x, y, j == n))) return 0;
+        j = runend(an, ch, at, st, i, n, &fg, &bg, &style);
+        if (!(ln = piece(an->pool, ch + i, j - i, pen(an, fg, bg), an->drawpens[bg], style, f, x, y, j == n)))
+            return 0;
         AddTail(lines, (struct Node *)ln);
         x += ln->ln_Width;
         i = j;
@@ -365,12 +414,11 @@ static const char nomem[] = "[ Not enough memory to show the rest of this file ]
 static void toofull(struct AnData *an, struct List *lines, struct TextFont *f, long r)
 {
     an->msgrow = r;
-    struct Line *ln = piece(an->pool, (UBYTE *)nomem, sizeof(nomem) - 1, an->drawpens[15], an->drawpens[0], f, 0,
+    struct Line *ln = piece(an->pool, (UBYTE *)nomem, sizeof(nomem) - 1, an->drawpens[15], an->drawpens[0], 0, f, 0,
                             r * f->tf_YSize + f->tf_Baseline, 1);
     if (ln) AddTail(lines, (struct Node *)ln);
 }
 
-/* the pieces for the whole page; returns the rows made */
 /* the pieces for the whole page, for text.datatype to draw (and mark and
  * copy); returns the rows made, or -1 when they would not leave RESERVE
  * free: then the class draws the art itself and needs no pieces. A piece
@@ -409,23 +457,58 @@ static int readpage(Object *o, struct AnData *an, struct TextFont *f)
     maxrows = AvailMem(MEMF_ANY | MEMF_LARGEST) / 2 / (2 * (an->sauce.present && an->sauce.datatype == 1 &&
                                                              an->sauce.tinfo1 >= 80 && an->sauce.tinfo1 <= ANSI_MAXCOLS
                                                              ? an->sauce.tinfo1 : 80));
-    if (maxrows > 65000L / f->tf_YSize) maxrows = 65000L / f->tf_YSize;
 #ifdef DEBUG
     {
         struct DateStamp a, b;
         int ok;
         DateStamp(&a);
-        ok = ansi_read(text, end, &an->sauce, maxrows, pagealloc, pagefree, &an->page);
+        ok = ansi_read(text, end, &an->sauce, MODE, maxrows, pagealloc, pagefree, &an->page);
         DateStamp(&b);
         D(("ansi: ansi_read %ld ticks\n", (b.ds_Minute - a.ds_Minute) * 3000 + b.ds_Tick - a.ds_Tick));
         if (!ok) return 0;
     }
 #else
-    if (!ansi_read(text, end, &an->sauce, maxrows, pagealloc, pagefree, &an->page)) return 0;
+    if (!ansi_read(text, end, &an->sauce, MODE, maxrows, pagealloc, pagefree, &an->page)) return 0;
 #endif
     D(("ansi: %ld x %ld, sauce %ld ice %ld cut %ld\n", (long)an->page.cols, (long)an->page.rows,
        (long)an->sauce.present, (long)an->ice, (long)an->page.cut));
     return 1;
+}
+
+/* Amiga ANSI: the font the record names, when it is not the default
+ * text.datatype was given; 1 if this class must draw (it has the font) */
+static int otherfont(struct AnData *an)
+{
+#ifdef AMIANSI
+    int i, k;
+    struct TextFont *f;
+    for (i = 1; fontnames[i][0]; i++) {
+        const char *a = fontnames[i][0], *b = an->sauce.font;
+        for (k = 0; a[k] && a[k] == b[k]; k++) ;
+        if (!a[k] && !b[k]) break;
+    }
+    if (!an->sauce.present || !fontnames[i][0] || !an->font) return 0;
+    if (!(f = openfont(fontnames[i][1], an->font->tf_YSize))) return 0;
+    CloseFont(an->font);
+    an->font = f;
+    D(("ansi: SAUCE font %s\n", fontnames[i][1]));
+    return 1;
+#else
+    (void)an;
+    return 0;
+#endif
+}
+
+/* text.datatype 45 and later (3.1.4, 3.2) loses the underline of a piece
+ * that starts 256 pixels or more from the left: then this class draws */
+static int badunderline(struct AnData *an)
+{
+    AnsiPage *p = &an->page;
+    long i, n = (long)p->cols * p->rows;
+    if (!p->st || TextDTBase->lib_Version < 45) return 0;
+    for (i = 0; i < n; i++)
+        if (p->st[i] & ANSI_UNDERLINE) return 1;
+    return 0;
 }
 
 /* "Title by Author/Group" from the record */
@@ -480,8 +563,11 @@ static ULONG layout(Class *cl, Object *o, struct gpLayout *gpl)
         struct DateStamp t0, t1, t2;
         DateStamp(&t0);
 #endif
-        if (an->pool && (an->page.ch || readpage(o, an, font)))
+        if (an->pool && (an->page.ch || readpage(o, an, font))) {
+            if (otherfont(an) || badunderline(an)) an->ownrender = 1;
+            if (an->font) font = an->font;
             getpens(an, gpl->gpl_GInfo ? gpl->gpl_GInfo->gi_Screen : NULL);
+        }
 #ifdef DEBUG
         DateStamp(&t1);
 #endif
@@ -546,7 +632,7 @@ static ULONG m_new(Class *cl, Object *o, struct opSet *msg)
     struct DateStamp n0, n1;
     DateStamp(&n0);
 #endif
-    struct TextFont *f = openfont();
+    struct TextFont *f = openfont(fontname, 0);
     struct TextAttr ta;
     struct TagItem t[3];
     struct opSet m;
@@ -627,7 +713,7 @@ static void drawrow(struct AnData *an, struct RastPort *rp, long row, long c0, l
 {
     AnsiPage *p = &an->page;
     struct TextFont *f = an->font;
-    UBYTE *ch, *at;
+    UBYTE *ch, *at, *st;
     long i, j;
     if (row == an->msgrow) {
         long k = sizeof(nomem) - 1 - c0;
@@ -645,28 +731,18 @@ static void drawrow(struct AnData *an, struct RastPort *rp, long row, long c0, l
     }
     ch = p->ch + row * p->cols + c0;
     at = p->at + row * p->cols + c0;
+    st = p->st ? p->st + row * p->cols + c0 : NULL;
     for (i = 0; i < n; i = j) {
-        int fg = -1, bg = -1, cf, cb;
-        for (j = i; j < n; j++) {
-            cf = at[j] & 15;
-            cb = at[j] >> 4;
-            if (!an->ice) cb &= 7;
-            if (!NOFG(ch[j])) {
-                if (fg < 0) fg = cf;
-                else if (fg != cf) break;
-            }
-            if (!NOBG(ch[j])) {
-                if (bg < 0) bg = cb;
-                else if (bg != cb) break;
-            }
-        }
-        if (fg < 0) fg = 7;
-        if (bg < 0) bg = 0;
+        int fg, bg;
+        ULONG style;
+        j = runend(an, ch, at, st, i, n, &fg, &bg, &style);
         SetAPen(rp, pen(an, fg, bg));
         SetBPen(rp, an->drawpens[bg]);
+        if (st) SetSoftStyle(rp, style, FSF_ITALIC | FSF_UNDERLINED);
         Move(rp, x + i * f->tf_XSize, y + f->tf_Baseline);
         Text(rp, ch + i, j - i);
     }
+    if (st) SetSoftStyle(rp, 0, FSF_ITALIC | FSF_UNDERLINED);
 }
 
 /* The art drawn by this class (on OS 3.1, where text.datatype will not use

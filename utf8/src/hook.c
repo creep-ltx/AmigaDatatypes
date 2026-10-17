@@ -10,6 +10,9 @@
  * may hold UTF-8 (a changelog crediting Zoë). The class looks through all
  * of it and shows plain ASCII and Latin-1 as they are.
  *
+ * A file with an ESC (ANSI colour codes) is left to pcansi.datatype and
+ * amiansi.datatype, whatever its name.
+ *
  * An AmigaGuide file (starting "@database") is left to amigaguide.datatype,
  * whatever its name: datatypes.library asks the descriptors in the order
  * of DEVS:DataTypes, so this one may be asked first.
@@ -47,7 +50,7 @@ static int scan(struct Scan *s, const UBYTE *p, long n)
             continue;
         }
         if (c < 0x80) {
-            if (!c) return -1;
+            if (!c || c == 0x1B) return -1;     /* ANSI codes: pcansi/amiansi.datatype's */
             continue;
         }
         s->high = 1;

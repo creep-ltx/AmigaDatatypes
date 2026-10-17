@@ -129,3 +129,51 @@ int ansi_claim(const char *name, const unsigned char *tail, const unsigned char 
     if (ext(name, "nfo\0diz\0asc\0")) return high && pc;
     return high && pc && esc;
 }
+
+/* Amiga ANSI (amiansi.datatype): 1 Amiga art with an Amiga font named, 0
+ * other character art or not art, 2 character art with no font named (the
+ * bytes decide), -1 no record */
+static int amisauce(const unsigned char *r)
+{
+    static const char id[] = "SAUCE00", amifont[] = "Amiga";
+    int i;
+    for (i = 0; i < 7; i++)
+        if (r[i] != (unsigned char)id[i]) return -1;
+    if (r[94] != 1 || r[95] > 2) return 0;
+    if (r[106] == 0 || r[106] == ' ') return 2;
+    for (i = 0; i < 5; i++)
+        if (r[106 + i] != (unsigned char)amifont[i]) return 0;
+    return 1;
+}
+
+int ansi_claim_amiga(const char *name, const unsigned char *tail, const unsigned char *b, long n)
+{
+    int rec = tail ? amisauce(tail) : -1, esc = 0, high = 0;
+    long i, g;
+    if (rec == 0 || rec == 1) return rec;
+    if (n >= 9) {                               /* AmigaGuide is amigaguide.datatype's */
+        static const char db[] = "@DATABASE";
+        for (i = 0; i < 9 && (b[i] & 0xDF) == (unsigned char)(db[i] & 0xDF); i++) ;
+        if (i == 9) return 0;
+    }
+    for (i = 0; i < n; i++) {
+        if (b[i] == 0x1A) break;
+        if (!b[i] && rec < 0) return 0;
+        if (b[i] == 0x1B && i + 1 < n && b[i + 1] == '[') esc = 1;
+        /* the Amiga's CSI with a number: on an Atari 0x9B ends a line */
+        if (b[i] == 0x9B && i + 1 < n && b[i + 1] >= '0' && b[i + 1] <= '9' && amigacsi(b, n, i)) esc = 1;
+        if (b[i] >= 0x80) high = 1;
+    }
+    if (!i) return 0;
+    n = i;
+    g = ansi_guess(b, n);
+    /* a record without a font, .ans and .ice: the bytes lean Amiga (an
+     * Amiga BBS screen: LF line ends); 0 or less is pcansi.datatype's */
+    if (rec == 2 || ext(name, "ans\0ice\0")) return g > 0;
+    /* Amiga ASCII art (a BBS screen without codes: LF line ends) */
+    if (ext(name, "asc\0")) return g > 0;
+    if (ext(name, "nfo\0diz\0")) return high && g > 0;
+    /* anything else with ANSI codes that is not PC art (pcansi takes PC
+     * bytes with codes): BBS screens, coloured text */
+    return esc && g >= 0;
+}

@@ -6,8 +6,9 @@
 #include <string.h>
 #include "../src/guess.h"
 
-int main(void)
+int main(int argc, char **argv)
 {
+    int ami = argc > 1 && argv[1][0] == '-' && argv[1][1] == 'a';
     static unsigned char buf[8192], tail[128];
     char path[4096];
     while (fgets(path, sizeof(path), stdin)) {
@@ -27,7 +28,7 @@ int main(void)
         n = (long)fread(buf, 1, sizeof(buf), f);
         fclose(f);
         name = strrchr(path, '/') ? strrchr(path, '/') + 1 : path;
-        printf("%d %s\n", n > 0 && ansi_claim(name, hastail ? tail : NULL, buf, n), path);
+        printf("%d %s\n", n > 0 && (ami ? ansi_claim_amiga : ansi_claim)(name, hastail ? tail : NULL, buf, n), path);
     }
     return 0;
 }

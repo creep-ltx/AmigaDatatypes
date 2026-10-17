@@ -6,4 +6,7 @@ long ansi_guess(const unsigned char *b, long n);
 /* is it PC text art? name: the file's name; tail: its last 128 bytes (NULL
  * if shorter or unknown); b, n: its first bytes */
 int ansi_claim(const char *name, const unsigned char *tail, const unsigned char *b, long n);
+/* is it Amiga ANSI or Amiga text art? (amiansi.datatype) */
+int ansi_claim_amiga(const char *name, const unsigned char *tail, const unsigned char *b, long n);
+
 #endif
