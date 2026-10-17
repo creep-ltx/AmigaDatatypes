@@ -26,9 +26,45 @@ through datatypes.
 |---|---|
 | `qoi.datatype` | `SYS:Classes/DataTypes/` |
 | `QOI` | `DEVS:DataTypes/` |
+| `ToQOI` | `C:` (or anywhere): the converter, see below |
 
 Then `AddDataTypes REFRESH`. **If an older QOI datatype was installed** (the one on Aminet has the same file
 names), restart the Amiga instead: `AddDataTypes REFRESH` does not reload a descriptor the system already knows.
+
+## ToQOI: pictures to QOI
+
+`ToQOI` turns pictures into QOI files. It reads them through datatypes, so **every format the Amiga has a
+picture datatype for** works: PNG, JPEG, GIF, BMP, WebP, ILBM and the rest.
+
+```
+ToQOI FROM/A/M,TO/K,FORCE/S,QUIET/S
+
+ToQOI photo.png                 photo.qoi beside it
+ToQOI Pics/#?.(png|jpg) TO Work:QOI    many at once, into a drawer
+ToQOI logo.gif TO RAM:logo.qoi   one picture, any name
+```
+
+- **Full colour with transparency:** PNG transparency is kept exactly, and so is a GIF's or an ILBM's
+  transparent colour. A picture that only *says* it has transparency is saved as a plain one
+- **On OS 3.0 and 3.1** (no full-colour datatypes) it reads the picture's own bitmap and palette, HAM6, HAM8
+  and Extra-Halfbrite included
+- **From Workbench:** select pictures, hold Shift and double-click ToQOI (give it a tool icon first). Each QOI
+  goes beside its picture, and a requester says how it went
+- **Safe:** a QOI that is already there is left alone unless you say `FORCE`; a half-written file is deleted
+  if something goes wrong; Ctrl-C stops it between pictures and in the middle of one
+- **Little memory:** the picture is read a few rows at a time and the file is written 16 KB at a time, so
+  neither one is ever held whole
+- **Small:** about 10 KB, one build for every Amiga from the 68000 up, OS 3.0 or later
+- Every byte it writes is the same as the reference encoder's (`qoi.h`), checked on 1,500 test pictures
+
+On the real A1200 (Emu68, OS 3.2) an 800x600 PNG with transparency or a 768x512 photo turns into a QOI in
+about a quarter of a second, reading the PNG included.
+
+**Tested** on OS 3.2.1 and 3.1 (68020) and a 68000 A600 with 3.1 in FS-UAE, and on the real A1200: every pixel
+of the QOI it made compared with the original. PNG, BMP, GIF, ILBM (plain, transparent colour,
+Extra-Halfbrite) are exact; HAM comes out as OS 3.2's own picture.datatype shows it (ToQOI's own HAM
+reading on 3.1 gives the same bytes); JPEG as the Amiga's JPEG datatype decodes it. Running it many times
+loses no memory.
 
 ## How it works
 
@@ -67,7 +103,9 @@ The older datatype does not work on OS 3.1 at all; it needs picture.datatype 43.
 
 `make` with bebbo's m68k-amigaos-gcc. `make check` compares the decoder with the reference one on the PC
 (`tests/ref/qoi.h`, MIT, Dominic Szablewski); `make amigacheck` builds the same check for the Amiga;
-`make bench` builds `qoibench`, which times the decoder alone.
+`make bench` builds `qoibench`, which times the decoder alone. `make check` also holds ToQOI's encoder
+(`src/qoienc.c`) to the reference encoder, byte for byte (`tests/enccheck.c`). `make` with `-DDEBUG` added to
+CFLAGS makes a ToQOI that logs each step to `SYS:tq.log`.
 
 ## Versions
 

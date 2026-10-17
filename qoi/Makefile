@@ -1,8 +1,9 @@
-# qoi.datatype - QOI pictures in every datatypes program.
+# qoi.datatype - QOI pictures in every datatypes program, and ToQOI.
 # Cross-built with Bebbo's m68k-amigaos-gcc, -fbbb=- as the whole family
 # (Knowledge/amiga/toolchain-and-testing.md).
 #
 #   make        build/qoi.datatype -> SYS:Classes/DataTypes/
+#               build/ToQOI        -> C: (pictures -> QOI files)
 #               build/QOI          -> DEVS:DataTypes/
 #   make check  the decoder against the reference one, on the PC
 #
@@ -23,7 +24,7 @@ FAST    = -O2 $(COMMON)
 VERSTR  = $(shell sed -n 's/.*QD_VERSTR *"\(.*\)"/\1/p' src/version.h)
 VERDATE = $(shell sed -n 's/.*QD_DATE *"\(.*\)"/\1/p' src/version.h)
 
-all: build/qoi.datatype build/QOI
+all: build/qoi.datatype build/QOI build/ToQOI
 
 build/start.o: src/start.s
 	@mkdir -p build
@@ -56,6 +57,19 @@ build/qoi.datatype: build/start.o build/class.o build/qoidec.o build/fast020.o b
 	@! grep -E 'libnix|libstubs|libamiga' build/qoi.map | grep -v -E '^LOAD |libnix13.a\(__u?(mul|div|mod)si[34].o\)' \
 	    || (echo "C library code got into $@"; false)
 
+# ToQOI: any picture datatypes can read -> a QOI file. A plain command on
+# libnix; a 32 KB stack for the datatypes (__stack in toqoi.c)
+build/qoienc.o: src/qoienc.c src/qoienc.h src/qoidec.h
+	@mkdir -p build
+	$(CC) $(FAST) -c $< -o $@
+
+build/toqoi.o: src/toqoi.c src/qoienc.h src/qoidec.h
+	@mkdir -p build
+	$(CC) $(CFLAGS) -fno-freestanding -c $< -o $@
+
+build/ToQOI: build/toqoi.o build/qoienc.o
+	$(CC) -m$(CPU) -noixemul -s -Wl,-u,___stkinit -o $@ $^
+
 # recognised by its first four bytes, "qoif", whatever the name
 build/QOI: tools/mkdesc.py src/version.h
 	@mkdir -p build
@@ -70,6 +84,8 @@ check:
 	build/mkcorpus build/corpus 150
 	build/check build/corpus/*.qoi | grep -v -E '^(ok|both refuse) ' || true
 	@build/check build/corpus/*.qoi >/dev/null && echo "check: all the same as the reference decoder"
+	cc -O2 -Wall -Isrc tests/enccheck.c src/qoienc.c -o build/enccheck
+	build/enccheck build/corpus/*.qoi
 
 # on the Amiga: the same pictures through the 68020 loop and the C loop,
 # against the reference's pixels. Copy build/corpus and build/amigacheck to
