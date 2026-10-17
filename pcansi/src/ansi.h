@@ -24,6 +24,9 @@ typedef struct {
                                  * made at the first italic or underline */
     int cut;                    /* rows past ANSI_MAXROWS or memory were left out */
     int fullest;                /* an animation: its fullest picture, not its empty end */
+    long drawn;                 /* characters drawn */
+    long over;                  /* of them, drawn over a cell that held something */
+    int wipes;                  /* clear screens after something was drawn */
 } AnsiPage;
 
 /* memory for the page: the class gives exec's, the test malloc */
@@ -46,6 +49,23 @@ long ansi_sauce(const unsigned char *b, long n, AnsiSauce *s);
 int ansi_read(const unsigned char *art, long n, const AnsiSauce *s, int mode, long maxrows,
               AnsiAlloc alloc, AnsiFree release, AnsiPage *p);
 void ansi_free(AnsiPage *p, AnsiFree release);
+
+/* the player: the art fed a few bytes at a time into a page of its own,
+ * as a caller saw it arrive. ansi_play_step() takes up to bytes more and
+ * returns how many are left (0: the end); ansi_play_dirty() gives the rows
+ * changed since it was last asked (to < from: none). */
+typedef struct AnsiPlayer AnsiPlayer;
+AnsiPlayer *ansi_play_new(const unsigned char *art, long n, const AnsiSauce *s, int mode, long maxrows,
+                          AnsiAlloc alloc, AnsiFree release);
+long ansi_play_step(AnsiPlayer *pl, long bytes);
+AnsiPage *ansi_play_page(AnsiPlayer *pl);
+void ansi_play_dirty(AnsiPlayer *pl, long *from, long *to);
+void ansi_play_free(AnsiPlayer *pl, AnsiFree release);
+
+/* is the page an animation (to be played rather than shown at once)? it
+ * cleared the screen after drawing, or drew over at least 16 cells that
+ * held something (and at least 1% of what it drew) */
+#define ANSI_ANIMATED(p) ((p)->wipes > 0 || ((p)->over >= 16 && (p)->over * 100 >= (p)->drawn))
 
 /* the 16 colours as 0xRRGGBB: the PC's (VGA), and the Amiga ANSI
  * terminals' (yellow, not brown) */

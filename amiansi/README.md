@@ -16,7 +16,8 @@ the Workbench's font and pens on grey, and anything drawn with cursor moves land
   underline, reverse, cursor movement, saved positions, clearing, inserted and deleted lines. The reader is
   the one in Charcoal, checked on 1,168 Amiga art files: the same page, cell for cell (two giant collections
   are cut at 12,000 rows).
-- **Animations at their fullest:** one that ends on a clear screen shows its fullest picture.
+- **Animations play** once at modem speed (14,400 baud, `ENV:ANSIBaud` to change, 0 to never play), then
+  hold their last picture, or their fullest one if they end on a clear screen. Still art shows at once.
 - **SAUCE:** the record gives the font, the width and the window's title.
 - **Colours on any screen:** the colours a piece uses most get exact colours first; on a screen with too
   few, the rest get the nearest the screen has by brightness, and a character that would vanish into its
@@ -27,11 +28,15 @@ the Workbench's font and pens on grey, and anything drawn with cursor moves land
   `.ans` and `.asc` files and Amiga `.nfo`/`.diz` art even without codes. PC art goes to its sister,
   [pcansi.datatype](../pcansi/), and no file is taken by both: all 412 files of an Amiga BBS's styles went
   here, none to pcansi. AmigaGuide files and plain text without codes are left alone.
-- **Small:** the class is 16 KB, the recognition code under 3 KB, each font 9 KB.
+- **Small:** the class is 18 KB, the recognition code under 3 KB, each font 9 KB.
 
 **Needs** Kickstart/Workbench 3.0 or later and any processor from the 68000 up.
 
 **Not yet:** SyncTERM's font switching inside a file (CSI ... SP D) is not followed.
+
+## Settings
+
+`ENV:ANSIBaud`: the speed animations play at, as for pcansi.datatype (14400 if not set, 0: never play).
 
 ## Install
 

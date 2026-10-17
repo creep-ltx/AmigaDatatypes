@@ -27,6 +27,8 @@
 #include <exec/execbase.h>
 #include <exec/memory.h>
 #include <dos/dos.h>
+#include <dos/dostags.h>
+#include <dos/var.h>
 #include <intuition/classes.h>
 #include <intuition/classusr.h>
 #include <intuition/gadgetclass.h>
@@ -126,7 +128,23 @@ struct AnData {
     LONG pens[16];              /* obtained (-1: none) */
     LONG drawpens[16];          /* drawn with */
     char title[96];
+    /* playing an animation (play.c's process feeds the player) */
+    const UBYTE *art;           /* the art in text.datatype's buffer */
+    long artlen;
+    long baud;                  /* ENV:ANSIBaud, 14400 if not set; 0: never play */
+    AnsiPlayer *pl;             /* while it plays */
+    struct SignalSemaphore lock;    /* the player and its rows to draw */
+    struct Process *proc;       /* the player's process, NULL when it ended */
+    volatile int stop;          /* the process is asked to end */
+    long d0, d1;                /* rows the player changed, not yet drawn */
+    Object *self;
+    struct Window *win;         /* where the object is, for the process's redraws */
+    struct Requester *req;
+    int playnow;                /* start playing when the layout is done */
 };
+
+/* GM_RENDER's gpr_Redraw from the player's process: draw what changed */
+#define GREDRAW_PLAY 0x41
 
 /* ---- calling methods without amiga.lib --------------------------------- */
 
@@ -453,6 +471,8 @@ static int readpage(Object *o, struct AnData *an, struct TextFont *f)
     if (!text || len < 0) return 0;
     end = ansi_sauce(text, len, &an->sauce);
     an->ice = an->sauce.present && (an->sauce.flags & 1);
+    an->art = text;
+    an->artlen = end;
     /* the page may take half the largest free block */
     maxrows = AvailMem(MEMF_ANY | MEMF_LARGEST) / 2 / (2 * (an->sauce.present && an->sauce.datatype == 1 &&
                                                              an->sauce.tinfo1 >= 80 && an->sauce.tinfo1 <= ANSI_MAXCOLS
@@ -473,6 +493,104 @@ static int readpage(Object *o, struct AnData *an, struct TextFont *f)
     D(("ansi: %ld x %ld, sauce %ld ice %ld cut %ld\n", (long)an->page.cols, (long)an->page.rows,
        (long)an->sauce.present, (long)an->ice, (long)an->page.cut));
     return 1;
+}
+
+/* ---- playing an animation ------------------------------------------------ */
+
+/* ENV:ANSIBaud: the speed animations play at, as a caller's modem saw them
+ * (10 bits a character); 0 shows them still. 14400 if not set. */
+static long getbaud(void)
+{
+    char b[16];
+    long v = 0, i;
+    if (GetVar("ANSIBaud", b, sizeof(b), GVF_GLOBAL_ONLY) <= 0) return 14400;
+    for (i = 0; b[i] >= '0' && b[i] <= '9'; i++) v = v * 10 + b[i] - '0';
+    return i ? v : 14400;
+}
+
+/* ask for a redraw from the player's process: through Intuition, which
+ * gives the GadgetInfo (a method's own may not be kept) */
+static void playdraw(struct AnData *an, ULONG how)
+{
+    struct gpRender g;
+    g.MethodID = GM_RENDER;
+    g.gpr_GInfo = NULL;
+    g.gpr_RPort = NULL;
+    g.gpr_Redraw = how;
+    DoGadgetMethodA((struct Gadget *)an->self, an->win, an->req, (Msg)&g);
+}
+
+/* the player's process: as many bytes as the modem would have brought by
+ * now (by the clock: a slow Amiga draws fewer steps, not slower), the rows
+ * they changed drawn, until the end or until asked to stop; then the still
+ * picture */
+static long ticks(const struct DateStamp *a)
+{
+    struct DateStamp b;
+    DateStamp(&b);
+    return ((b.ds_Days - a->ds_Days) * 1440 + b.ds_Minute - a->ds_Minute) * 3000 + b.ds_Tick - a->ds_Tick;
+}
+
+static void playproc(void)
+{
+    struct AnData *an = FindTask(NULL)->tc_UserData;
+    struct DateStamp t0;
+    long cps = an->baud / 10, done = 0, want, left = 1, a, b;
+    DateStamp(&t0);
+    while (left && !an->stop) {
+        want = ticks(&t0) * cps / 50;
+        if (want - done > 4096) want = done + 4096;     /* (a step at a time on a very slow one) */
+        if (want > done) {
+            ObtainSemaphore(&an->lock);
+            left = ansi_play_step(an->pl, want - done);
+            ansi_play_dirty(an->pl, &a, &b);
+            if (a < an->d0) an->d0 = a;
+            if (b > an->d1) an->d1 = b;
+            ReleaseSemaphore(&an->lock);
+            done = want;
+            if (an->d1 >= an->d0 && !an->stop) playdraw(an, GREDRAW_PLAY);
+        }
+        if (left) Delay(1);
+    }
+    ObtainSemaphore(&an->lock);
+    ansi_play_free(an->pl, pagefree);
+    an->pl = NULL;
+    ReleaseSemaphore(&an->lock);
+    if (!an->stop) playdraw(an, GREDRAW_REDRAW);    /* hold: the still picture */
+    Forbid();                                   /* gone before anyone runs again */
+    an->proc = NULL;
+}
+
+static void playstart(struct AnData *an)
+{
+    struct TagItem t[5];
+    if (!(an->pl = ansi_play_new(an->art, an->artlen, &an->sauce, MODE, an->page.rows + 2 * 25, pagealloc,
+                                 pagefree)))
+        return;
+    an->d0 = 0x7FFFFFFF;
+    an->d1 = -1;
+    an->stop = 0;
+    t[0].ti_Tag = NP_Entry;     t[0].ti_Data = (ULONG)playproc;
+    t[1].ti_Tag = NP_Name;      t[1].ti_Data = (ULONG)AN_NAME " player";
+    t[2].ti_Tag = NP_StackSize; t[2].ti_Data = 8192;
+    t[3].ti_Tag = NP_Priority;  t[3].ti_Data = 0;
+    t[4].ti_Tag = TAG_DONE;
+    Forbid();                                   /* it starts once it knows its object */
+    if ((an->proc = CreateNewProc(t))) an->proc->pr_Task.tc_UserData = an;
+    Permit();
+    if (!an->proc) {
+        ansi_play_free(an->pl, pagefree);
+        an->pl = NULL;
+    }
+    D(("ansi: playing at %ld baud: %lx\n", an->baud, an->proc));
+}
+
+/* stop the player and wait until its process has ended */
+static void playstop(struct AnData *an)
+{
+    if (!an->proc) return;
+    an->stop = 1;
+    while (an->proc) Delay(1);
 }
 
 /* Amiga ANSI: the font the record names, when it is not the default
@@ -565,6 +683,17 @@ static ULONG layout(Class *cl, Object *o, struct gpLayout *gpl)
 #endif
         if (an->pool && (an->page.ch || readpage(o, an, font))) {
             if (otherfont(an) || badunderline(an)) an->ownrender = 1;
+            /* an animation plays: this class draws */
+            an->baud = getbaud();
+            D(("ansi: animated %ld (wipes %ld over %ld drawn %ld) ginfo %lx win %lx\n", (long)ANSI_ANIMATED(&an->page),
+               (long)an->page.wipes, an->page.over, an->page.drawn, gpl->gpl_GInfo,
+               gpl->gpl_GInfo ? gpl->gpl_GInfo->gi_Window : NULL));
+            if (an->baud > 0 && ANSI_ANIMATED(&an->page) && gpl->gpl_GInfo && gpl->gpl_GInfo->gi_Window) {
+                an->ownrender = 1;
+                an->win = gpl->gpl_GInfo->gi_Window;
+                an->req = gpl->gpl_GInfo->gi_Requester;
+                an->playnow = 1;
+            }
             if (an->font) font = an->font;
             getpens(an, gpl->gpl_GInfo ? gpl->gpl_GInfo->gi_Screen : NULL);
         }
@@ -619,6 +748,10 @@ static ULONG layout(Class *cl, Object *o, struct gpLayout *gpl)
     n[12].ti_Tag = DTA_Sync;         n[12].ti_Data = TRUE;
     n[13].ti_Tag = TAG_DONE;
     notify(o, gpl->gpl_GInfo, n);
+    if (an->playnow && an->built) {
+        an->playnow = 0;
+        playstart(an);
+    }
     return total;
 }
 
@@ -658,6 +791,8 @@ static ULONG m_new(Class *cl, Object *o, struct opSet *msg)
     }
     an = INST_DATA(cl, obj);
     an->font = f;
+    an->self = obj;
+    InitSemaphore(&an->lock);
 #ifdef DEBUG
     DateStamp(&n1);
     D(("ansi: new took %ld ticks\n", (n1.ds_Minute - n0.ds_Minute) * 3000 + n1.ds_Tick - n0.ds_Tick));
@@ -675,6 +810,7 @@ static ULONG m_dispose(Class *cl, Object *o, Msg msg)
     t[0].ti_Tag = TDTA_LineList; t[0].ti_Data = (ULONG)&lines;
     t[1].ti_Tag = TAG_DONE;
     D(("ansi: dispose %lx\n", o));
+    playstop(an);
     /* the pieces are ours: text.datatype must not free them */
     if (getattrs(o, t) && lines) newlist(lines);
     if (an->pool) DeletePool(an->pool);
@@ -709,13 +845,17 @@ static ULONG m_set(Class *cl, Object *o, struct opSet *msg)
 }
 
 /* one row of the art from column c0, n columns, at x, y (the top) */
-static void drawrow(struct AnData *an, struct RastPort *rp, long row, long c0, long n, long x, long y)
+static void drawrow(struct AnData *an, AnsiPage *p, struct RastPort *rp, long row, long c0, long n, long x, long y)
 {
-    AnsiPage *p = &an->page;
     struct TextFont *f = an->font;
     UBYTE *ch, *at, *st;
     long i, j;
-    if (row == an->msgrow) {
+    if (row >= p->rows) {                       /* (the player's page may be shorter) */
+        SetAPen(rp, an->drawpens[0]);
+        RectFill(rp, x, y, x + n * f->tf_XSize - 1, y + f->tf_YSize - 1);
+        return;
+    }
+    if (row == an->msgrow && p == &an->page) {
         long k = sizeof(nomem) - 1 - c0;
         if (k > n) k = n;
         SetAPen(rp, an->drawpens[15]);
@@ -757,12 +897,36 @@ static ULONG m_render(Class *cl, Object *o, struct gpRender *m)
     struct TagItem t[2];
     struct RastPort *rp = m->gpr_RPort;
     struct TextFont *old;
-    long w, h, x, y, rows, cols, r, top, left, n;
+    long w, h, x, y, rows, cols, r, top, left, n, d0 = 0, d1 = 0x7FFFFFFF;
     ULONG ret = 0;
+    int ownrp = 0, play = m->gpr_Redraw == GREDRAW_PLAY;
+    AnsiPage *pg = &an->page;
+    if (play && !an->ownrender) return 0;
     if (!an->ownrender || !an->built) ret = dosuper(cl, o, (Msg)m);
+    /* from the player's process (DoGadgetMethod): no RastPort given */
+    if (!rp && m->gpr_GInfo && (rp = ObtainGIRPort(m->gpr_GInfo))) ownrp = 1;
     t[0].ti_Tag = DTA_Domain; t[0].ti_Data = (ULONG)&d;
     t[1].ti_Tag = TAG_DONE;
-    if (!an->built || !an->font || !rp || !getattrs(o, t) || !d || d->Width <= 0 || d->Height <= 0) return ret;
+    if (!an->built || !an->font || !rp || !getattrs(o, t) || !d || d->Width <= 0 || d->Height <= 0) {
+        if (ownrp) ReleaseGIRPort(rp);
+        return ret;
+    }
+    /* while an animation plays, its player's page; GREDRAW_PLAY draws only
+     * the rows it changed */
+    ObtainSemaphore(&an->lock);
+    if (an->pl) {
+        pg = ansi_play_page(an->pl);
+        if (play) {
+            d0 = an->d0;
+            d1 = an->d1;
+            an->d0 = 0x7FFFFFFF;
+            an->d1 = -1;
+        }
+    } else if (play) {
+        ReleaseSemaphore(&an->lock);
+        if (ownrp) ReleaseGIRPort(rp);
+        return 0;
+    }
     ObtainSemaphoreShared(&si->si_Lock);
     top = si->si_TopVert;
     left = si->si_TopHoriz;
@@ -776,7 +940,8 @@ static ULONG m_render(Class *cl, Object *o, struct gpRender *m)
         n = an->page.cols - left;
         if (n > cols) n = cols;
         for (r = 0; r < rows && top + r < si->si_TotVert; r++)
-            if (n > 0) drawrow(an, rp, top + r, left, n, d->Left, d->Top + r * an->font->tf_YSize);
+            if (n > 0 && top + r >= d0 && top + r <= d1)
+                drawrow(an, pg, rp, top + r, left, n, d->Left, d->Top + r * an->font->tf_YSize);
         SetFont(rp, old);
         h = (r < rows ? r : rows) * an->font->tf_YSize;
         w = (n > 0 ? n : 0) * an->font->tf_XSize;
@@ -785,6 +950,11 @@ static ULONG m_render(Class *cl, Object *o, struct gpRender *m)
         w = (an->page.cols - left) * an->font->tf_XSize;
     }
     ReleaseSemaphore(&si->si_Lock);
+    ReleaseSemaphore(&an->lock);
+    if (play) {                                 /* the rest was drawn before */
+        if (ownrp) ReleaseGIRPort(rp);
+        return 0;
+    }
     if (h < 0) h = 0;
     if (w < 0) w = 0;
     SetAPen(rp, an->drawpens[0]);
@@ -797,6 +967,7 @@ static ULONG m_render(Class *cl, Object *o, struct gpRender *m)
         x = d->Left + w;
         RectFill(rp, x, d->Top, d->Left + d->Width - 1, d->Top + (h < d->Height ? h : d->Height) - 1);
     }
+    if (ownrp) ReleaseGIRPort(rp);
     return ret;
 }
 
@@ -813,6 +984,9 @@ static ULONG dispatch(REG(a0, Class *cl), REG(a2, Object *o), REG(a1, Msg msg))
         return m_set(cl, o, (struct opSet *)msg);
     case GM_RENDER:
         return m_render(cl, o, (struct gpRender *)msg);
+    case DTM_REMOVEDTOBJECT:                    /* out of its window: stop playing there */
+        playstop((struct AnData *)INST_DATA(cl, o));
+        return dosuper(cl, o, msg);
     case GM_LAYOUT:
         busy(o, ((struct gpLayout *)msg)->gpl_GInfo);
         r = dosuper(cl, o, msg);

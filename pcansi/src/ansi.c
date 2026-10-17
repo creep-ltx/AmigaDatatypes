@@ -126,7 +126,11 @@ typedef struct {
     unsigned char *rc, *ra, *rs;
     AnsiPage best;              /* the fullest page before a clear (rows 0: none) */
     long bestink;
+    long d0, d1;                /* the rows changed since the player last asked */
 } Term;
+
+#define DIRTY(t, y) do { if ((y) < (t)->d0) (t)->d0 = (y); if ((y) > (t)->d1) (t)->d1 = (y); } while (0)
+#define ALLDIRTY(t) do { (t)->d0 = 0; (t)->d1 = ANSI_MAXROWS; } while (0)
 
 /* y * cols on a 68000 without a 32-bit multiply call: both fit 16 bits */
 #define ROWOFF(y, cols) ((unsigned long)(unsigned short)(y) * (unsigned short)(cols))
@@ -231,6 +235,8 @@ static void set(Term *t, int x, int y, unsigned char c, unsigned char a, unsigne
         t->ra = p->at + o;
         t->rs = p->st ? p->st + o : 0;
     }
+    if (t->rc[x] != ' ' && t->rc[x] != 0) p->over++;
+    DIRTY(t, y);
     t->rc[x] = c;
     t->ra[x] = a;
     if (t->rs) t->rs[x] = st;
@@ -280,6 +286,7 @@ static void put(Term *t, unsigned char c)
         t->x = 0;
         t->y++;
     }
+    t->p->drawn++;
     set(t, t->x, t->y, c, t->a, t->s);
     if (++t->x >= cols) {                       /* wrap at once */
         t->x = 0;
@@ -325,6 +332,8 @@ static void clearall(Term *t, unsigned char a)
 {
     AnsiPage *p = t->p;
     look(t);
+    ALLDIRTY(t);
+    if (p->drawn) p->wipes++;
     t->screens++;
     t->cy = -1;                                 /* the rows below are gone */
     if (p->rows > SCREEN) p->rows = SCREEN;
@@ -339,6 +348,7 @@ static void fill(Term *t, long from, long to)
     if (to > all) to = all;
     if (from < 0) from = 0;
     if (from < to) blanks(p, from, to - from, ' ', blankattr(t));
+    ALLDIRTY(t);
 }
 
 /* characters inserted (n > 0) or deleted (n < 0) at the cursor */
@@ -349,6 +359,7 @@ static void shiftrow(Term *t, int n)
     if (t->y >= p->rows && !ensure(t, t->y + 1)) return;
     row = ROWOFF(t->y, cols);
     if (t->x >= cols) return;
+    DIRTY(t, t->y);
     if (n > 0) {
         k = n < cols - t->x ? n : cols - t->x;
         movecells(p, row + t->x + k, row + t->x, cols - t->x - k);
@@ -368,6 +379,7 @@ static void shiftrows(Term *t, int n)
     if (n > SCREEN) n = SCREEN;
     if (n < -SCREEN) n = -SCREEN;
     if (!n) return;
+    ALLDIRTY(t);
     if (top >= p->rows && !ensure(t, top + 1)) return;
     end = p->rows < top + SCREEN ? p->rows : top + SCREEN;
     if (n > 0) {
@@ -671,81 +683,110 @@ static long usedrows(AnsiPage *p)
     return 0;
 }
 
-int ansi_read(const unsigned char *art, long n, const AnsiSauce *s, int mode, long maxrows,
-              AnsiAlloc alloc, AnsiFree release, AnsiPage *p)
+/* a terminal and its page, before the first byte */
+static int start(Term *t, const unsigned char *art, long n, const AnsiSauce *s, int mode, long maxrows,
+                 AnsiAlloc alloc, AnsiFree release, AnsiPage *p)
 {
-    Term t;
-    long i, lines = 0, want, rows, step, next;
+    long i, lines = 0, want;
     int cols = 80;
     if (s->present && s->datatype == 1 && s->tinfo1 >= 1 && s->tinfo1 <= ANSI_MAXCOLS) cols = s->tinfo1;
     p->cols = cols;
     p->rows = 0;
     p->ch = p->at = p->st = 0;
     p->cut = 0;
-    t.p = p;
-    t.cap = 0;
-    t.maxrows = maxrows < ANSI_MAXROWS ? maxrows : ANSI_MAXROWS;
-    if (t.maxrows < 1) t.maxrows = 1;
-    t.alloc = alloc;
-    t.release = release;
-    t.failed = 0;
-    t.x = t.y = t.sx = t.sy = 0;
-    resetattrs(&t);
-    t.amimode = mode == ANSI_AMIGA;
-    t.glyphctl = s->present && s->datatype == 1 && s->filetype <= 1 && !t.amimode;
-    t.state = 0;
-    t.screens = 0;
-    t.np = 0;
-    t.cy = -1;
-    t.best.ch = t.best.at = t.best.st = 0;
-    t.best.rows = 0;
-    t.bestink = 0;
+    t->p = p;
+    t->cap = 0;
+    t->maxrows = maxrows < ANSI_MAXROWS ? maxrows : ANSI_MAXROWS;
+    if (t->maxrows < 1) t->maxrows = 1;
+    t->alloc = alloc;
+    t->release = release;
+    t->failed = 0;
+    t->x = t->y = t->sx = t->sy = 0;
+    resetattrs(t);
+    t->amimode = mode == ANSI_AMIGA;
+    t->glyphctl = s->present && s->datatype == 1 && s->filetype <= 1 && !t->amimode;
+    t->state = 0;
+    t->screens = 0;
+    t->np = 0;
+    t->cy = -1;
+    t->best.ch = t->best.at = t->best.st = 0;
+    t->best.rows = 0;
+    t->bestink = 0;
+    ALLDIRTY(t);
     p->fullest = 0;
+    p->drawn = p->over = 0;
+    p->wipes = 0;
     /* room for the rows the file seems to have, so the page seldom grows */
     for (i = 0; i < n; i++)
         if (art[i] == '\n') lines++;
     want = lines + n / cols / 4 + SCREEN;
-    if (want > t.maxrows) want = t.maxrows;
-    if (!ensure(&t, want)) return 0;
+    if (want > t->maxrows) want = t->maxrows;
+    if (!ensure(t, want)) return 0;
     p->rows = want < SCREEN ? want : SCREEN;    /* a screen; the rest reserved */
+    return 1;
+}
+
+/* bytes from..to of the art (n in all) through the terminal; returns where
+ * it stopped (a code read in one go may end past to) */
+static long feed(Term *t, const unsigned char *art, long from, long to, long n)
+{
+    AnsiPage *p = t->p;
+    int cols = p->cols;
+    long i;
+    for (i = from; i < to && !t->failed; i++) {
+        unsigned char c = art[i];
+        /* the common case at once: a character to draw in the current row */
+        if (!t->state && c >= 0x20 && c != 0x1B && t->x < cols && t->y == t->cy &&
+            (!t->amimode || c < 0x7F || c >= 0xA0)) {
+            if (t->rc[t->x] != ' ' && t->rc[t->x] != 0) p->over++;
+            p->drawn++;
+            DIRTY(t, t->y);
+            t->rc[t->x] = c;
+            t->ra[t->x] = t->a;
+            if (t->rs) t->rs[t->x] = t->s;
+            if (++t->x >= cols) {
+                t->x = 0;
+                t->y++;
+            }
+        } else if (!t->state && c == 0x1B && i + 2 < n && art[i + 1] == '[' && fastcsi(t, art, n, &i, 2))
+            ;
+        else if (!t->state && c == 0x9B && t->amimode && i + 1 < n && fastcsi(t, art, n, &i, 1))
+            ;
+        else
+            byte(t, c);
+    }
+    return i;
+}
+
+int ansi_read(const unsigned char *art, long n, const AnsiSauce *s, int mode, long maxrows,
+              AnsiAlloc alloc, AnsiFree release, AnsiPage *p)
+{
+    Term t;
+    long i, rows, step;
+    if (!start(&t, art, n, s, mode, maxrows, alloc, release, p)) return 0;
     /* an animation draws and clears a screen again and again: look at the
      * page some 64 times on the way, as Charcoal does (only while it is a
      * screen or two: counting a long page that often would be slow) */
     step = n / 64 > 256 ? n / 64 : 256;
-    next = n > 2 * step ? step : n + 1;
-    for (i = 0; i < n && !t.failed; i++) {
-        unsigned char c = art[i];
-        if (i >= next) {                        /* (a code read in one go may pass it) */
+    if (n > 2 * step) {
+        long k;
+        /* at every step bytes exactly (a code read in one go may pass one) */
+        for (i = 0, k = step; i < n && !t.failed; k += step) {
+            if (i < k) i = feed(&t, art, i, k < n ? k : n, n);
             if (p->rows <= 2 * SCREEN) look(&t);
-            while (next <= i) next += step;
+            if (k >= n) break;
         }
-        /* the common case at once: a character to draw in the current row */
-        if (!t.state && c >= 0x20 && c != 0x1B && t.x < cols && t.y == t.cy &&
-            (!t.amimode || c < 0x7F || c >= 0xA0)) {
-            t.rc[t.x] = c;
-            t.ra[t.x] = t.a;
-            if (t.rs) t.rs[t.x] = t.s;
-            if (++t.x >= cols) {
-                t.x = 0;
-                t.y++;
-            }
-        } else if (!t.state && c == 0x1B && i + 2 < n && art[i + 1] == '[' && fastcsi(&t, art, n, &i, 2))
-            ;
-        else if (!t.state && c == 0x9B && t.amimode && i + 1 < n && fastcsi(&t, art, n, &i, 1))
-            ;
-        else
-            byte(&t, c);
-    }
-    if (n > 2 * step && p->rows <= 2 * SCREEN) look(&t);
+    } else
+        feed(&t, art, 0, n, n);
     /* an animation that ended (nearly) empty: its fullest picture instead,
      * as tall as its art */
     if (t.best.ch && ink(p) * 2 < t.bestink) {
         unsigned char *m = t.best.ch;
-        long n = ROWOFF(t.best.rows, t.best.cols);
+        long k = ROWOFF(t.best.rows, t.best.cols);
         if (p->ch) t.release(p->ch);
         if (p->st) t.release(p->st);
         p->st = 0;
-        if (t.best.st && (p->st = t.alloc(n))) copybytes(p->st, t.best.st, n);
+        if (t.best.st && (p->st = t.alloc(k))) copybytes(p->st, t.best.st, k);
         /* the kept block is the page's now (its styles, inside it, were
          * copied out: the page's styles are a block of their own) */
         p->ch = m;
@@ -769,6 +810,61 @@ int ansi_read(const unsigned char *art, long n, const AnsiSauce *s, int mode, lo
         ensure(&t, s->tinfo2);                  /* the record's height (Moebius) */
     if (!p->rows) ensure(&t, 1);
     return p->ch != 0;
+}
+
+/* ---- the player: the art a few bytes at a time ---------------------------- */
+
+struct AnsiPlayer {
+    Term t;
+    AnsiPage page;
+    const unsigned char *art;
+    long n, at;
+};
+
+AnsiPlayer *ansi_play_new(const unsigned char *art, long n, const AnsiSauce *s, int mode, long maxrows,
+                          AnsiAlloc alloc, AnsiFree release)
+{
+    AnsiPlayer *pl = alloc(sizeof(AnsiPlayer));
+    if (!pl) return 0;
+    if (!start(&pl->t, art, n, s, mode, maxrows, alloc, release, &pl->page)) {
+        ansi_free(&pl->page, release);
+        release(pl);
+        return 0;
+    }
+    pl->t.p = &pl->page;                        /* (start() keeps the page it was given) */
+    pl->art = art;
+    pl->n = n;
+    pl->at = 0;
+    return pl;
+}
+
+long ansi_play_step(AnsiPlayer *pl, long bytes)
+{
+    long to = pl->at + bytes;
+    if (to > pl->n) to = pl->n;
+    if (pl->at < pl->n && !pl->t.failed) pl->at = feed(&pl->t, pl->art, pl->at, to, pl->n);
+    if (pl->t.failed) pl->at = pl->n;
+    return pl->n - pl->at;
+}
+
+AnsiPage *ansi_play_page(AnsiPlayer *pl)
+{
+    return &pl->page;
+}
+
+void ansi_play_dirty(AnsiPlayer *pl, long *from, long *to)
+{
+    *from = pl->t.d0;
+    *to = pl->t.d1;
+    pl->t.d0 = ANSI_MAXROWS + 1;
+    pl->t.d1 = -1;
+}
+
+void ansi_play_free(AnsiPlayer *pl, AnsiFree release)
+{
+    if (pl->t.best.ch) release(pl->t.best.ch);
+    ansi_free(&pl->page, release);
+    release(pl);
 }
 
 void ansi_free(AnsiPage *p, AnsiFree release)

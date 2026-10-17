@@ -2,7 +2,8 @@
 
 ## 0.1b2 (17.10.2026)
 
-- **Animations at their fullest:** an ANSI animation that ends on an empty screen shows its fullest picture.
+- **Animations play** once at modem speed (14,400 baud, `ENV:ANSIBaud` to change, 0 to never play), then
+  hold their last picture, or their fullest if they end on an empty screen. Still art shows at once.
 - Italic and underline (SGR 3 and 4) are shown.
 - Long files: up to 12,000 rows (was 4,000).
 - The reader and the recognition code are shared with the new amiansi.datatype (Amiga ANSI); the two
