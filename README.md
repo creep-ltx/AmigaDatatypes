@@ -6,7 +6,7 @@ a new kind of file. One folder per datatype, each with its own README, version a
 
 | Datatype | What | Version |
 |---|---|---|
-| [markdown/](markdown/) | **Markdown** (`README.md`) formatted in MultiView and every datatypes program: headings, lists, quotes, emphasis, code with colours, tables | 0.1b1 |
+| [markdown/](markdown/) | **Markdown** (`README.md`) formatted in MultiView and every datatypes program: headings, lists, quotes, emphasis, code with colours, tables | 0.1b2 |
 | *(planned)* ansi | **ANSI art** (`.ans`, BBS screens) in colour, as text | - |
 
 All for a plain 68000 and Kickstart 3.0 or later.
