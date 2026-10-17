@@ -1,9 +1,14 @@
 /* utf8.datatype's recognition code, the DTCD chunk of its descriptors.
  * datatypes.library calls it for a file no other text datatype claimed:
  * TRUE = the file is UTF-8 text with at least one character beyond ASCII
- * (or a byte order mark). Plain ASCII is left to ascii.datatype, and any
- * byte that is not good UTF-8 (RFC 3629), or a 0 byte, means it is not
- * ours: Latin-1 text and binary files fail at their first such byte.
+ * (or a byte order mark) in its first SCAN bytes. A file of plain ASCII
+ * that ends within them is left to ascii.datatype; any byte that is not
+ * good UTF-8 (RFC 3629), or a 0 byte, means it is not ours: Latin-1 text
+ * and binary files fail at their first such byte.
+ *
+ * A longer file that is plain ASCII as far as SCAN is taken too: its end
+ * may hold UTF-8 (a changelog crediting Zoë). The class looks through all
+ * of it and shows plain ASCII and Latin-1 as they are.
  *
  * An AmigaGuide file (starting "@database") is left to amigaguide.datatype,
  * whatever its name: datatypes.library asks the descriptors in the order
@@ -70,7 +75,7 @@ LONG utf8hook(struct DTHookContext *d)
     BPTR fh = d->dthc_FileHandle;
     UBYTE *buf;
     LONG old, got, total = 0;
-    int bad = 0;
+    int bad = 0, more = 0;
 
     if (d->dthc_Buffer && d->dthc_BufferLength >= 9) {
         static const char db[] = "@DATABASE";
@@ -95,9 +100,11 @@ LONG utf8hook(struct DTHookContext *d)
             }
             total += got;
         }
+        /* plain ASCII so far, and more to come: cannot know yet */
+        if (!bad && !s.high && total >= SCAN) more = Read(fh, buf, 1) > 0;
         Seek(fh, old, OFFSET_BEGINNING);
     }
     FreeMem(buf, CHUNK);
     /* a character cut at SCAN or at the end of a cut-short file is fine */
-    return !bad && s.high;
+    return !bad && (s.high || more);
 }

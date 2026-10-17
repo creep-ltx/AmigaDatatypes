@@ -1,5 +1,14 @@
 # utf8.datatype changes
 
+## 0.1b3 (17.10.2026)
+
+- **UTF-8 late in a long file:** a file of plain ASCII for its first 16 KB is now taken and looked through to
+  the end (four bytes at a time), so a changelog with "Zoë" on its last line shows her right. Plain ASCII and
+  Latin-1 files taken this way are shown as they are. Cost on a 7 MHz 68000: about 0.6 s for 100 KB.
+- **Less memory while opening:** the text is converted where it lies, line by line, instead of into a
+  second buffer the size of the file. If memory runs out part way, the rest is shown as it was.
+- The new recognition code takes effect after a restart (AddDataTypes REFRESH keeps the old one).
+
 ## 0.1b2 (17.10.2026)
 
 - **Other scripts spelt in Latin letters** with utf8.library 0.1b2: Cyrillic, Greek, Japanese kana and

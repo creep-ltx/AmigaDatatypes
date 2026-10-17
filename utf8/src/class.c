@@ -100,98 +100,158 @@ static struct Library *utf8lib(void)
     return Utf8Base;
 }
 
-/* the file as Latin-1 into b (NULL: only measure), whose size is at least
- * len + 1: what it needs, or -1 when it does not fit. Lines of plain
- * ASCII, most of a README, are copied as they are; utf8.library gets only
- * the lines with more (a whole line, so accents written as marks join
- * their letters): on a 68000 several times faster than handing it all. */
-static long tolatin1(const UBYTE *t, long len, char *b, long size)
+/* the first byte from 128 up, or -1: four bytes at a time once the
+ * address is even (a 68000 reads a long only from an even address) */
+static long firsthigh(const UBYTE *t, long len)
 {
-    const UBYTE *p = t, *e = t + len, *q;
-    long d = 0;
+    const UBYTE *p = t, *e = t + len;
+    if (((ULONG)p & 1) && p < e && !(*p & 0x80)) p++;
+    if (!((ULONG)p & 1)) {
+        const ULONG *l = (const ULONG *)p, *le = (const ULONG *)(p + ((e - p) & ~3L));
+        while (l < le && !(*l & 0x80808080UL)) l++;
+        p = (const UBYTE *)l;
+    }
+    while (p < e && !(*p & 0x80)) p++;
+    return p < e ? p - t : -1;
+}
+
+/* the text's lines from p to e as Latin-1 at d, CR LF made LF. Plain
+ * ASCII lines are copied as they are, lines with more go through
+ * utf8.library (a whole line, so accents written as marks join their
+ * letters). With inplace, d is in the same buffer behind p, and a line is
+ * written only if it ends no further on than its own UTF-8 did: else it
+ * stops there. *pp and *dp say how far it got. 0: all done; 1: stopped
+ * (in place only); -1: out of memory. tmp/tmpsize: a passing buffer for
+ * one line, grown as needed. */
+static int lines(const UBYTE **pp, const UBYTE *e, char **dp, int inplace, char **tmp, long *tmpsize)
+{
+    const UBYTE *p = *pp, *q, *r;
+    char *d = *dp;
+    int st = 0;
     while (p < e) {
-        /* the plain lines up to the next line with a byte from 128 up */
-        for (q = p; q < e && *q < 0x80; q++)
-            ;
-        while (q > p && q[-1] != '\n') q--;
-        if (b) CopyMem((APTR)p, b + d, q - p);
-        d += q - p;
-        if ((p = q) == e) break;
-        /* that line, through its LF */
+        int high = 0;
+        long n;
         for (q = p; q < e && *q != '\n'; q++)
-            ;
-        if (q < e) q++;
-        {
-            LONG n = Utf8ToCharset((CONST_STRPTR)p, q - p, b ? (STRPTR)b + d : NULL,
-                                   b ? size - d : 0, U8CS_LATIN1, 0);
-            if (n < 0 || (b && n >= size - d)) return -1;
-            d += n;
+            high |= *q & 0x80;
+        if (q < e) q++;                     /* through the LF */
+        if (!high) {
+            /* (the CR is looked for before the line moves over itself) */
+            int crlf = q - p >= 2 && q[-1] == '\n' && q[-2] == '\r';
+            if ((char *)p != d)
+                for (r = p; r < q; r++) *d++ = *r;
+            else
+                d += q - p;
+            if (crlf) d[-2] = '\n', d--;
+            p = q;
+            continue;
         }
+        for (;;) {
+            n = Utf8ToCharset((CONST_STRPTR)p, q - p, *tmp, *tmpsize, U8CS_LATIN1, 0);
+            if (n >= 0 && n < *tmpsize) break;
+            FreeVec(*tmp);
+            if (n < 0 || !(*tmp = AllocVec(*tmpsize = n + 64, MEMF_ANY))) {
+                *tmp = NULL;
+                *tmpsize = 0;
+                st = -1;
+                goto out;
+            }
+        }
+        if (n >= 2 && (*tmp)[n - 1] == '\n' && (*tmp)[n - 2] == '\r') (*tmp)[n - 2] = '\n', n--;
+        if (inplace && d + n > (char *)q) {         /* would pass what is still to read */
+            st = 1;
+            break;
+        }
+        CopyMem(*tmp, d, n);
+        d += n;
         p = q;
     }
-    return d;
+out:
+    *pp = p;
+    *dp = d;
+    return st;
 }
 
-/* the file as Latin-1, CR LF made LF, in a new buffer (AllocVec); nearly
- * always the file's size is enough, so it is measured only when not
- * (Cyrillic shch and Korean are spelt longer than their UTF-8) */
-static char *latin1(const char *text, long len, long *outlen)
+/* the Latin-1 lines from p on would need: an upper bound */
+static long measure(const UBYTE *p, const UBYTE *e)
 {
-    const UBYTE *t = (const UBYTE *)text;
-    long n, size = len + 1;
-    char *b, *s, *d, *end;
-    if (!(b = AllocVec(size, MEMF_ANY))) return NULL;
-    if ((n = tolatin1(t, len, b, size)) < 0) {
-        FreeVec(b);
-        if ((n = tolatin1(t, len, NULL, 0)) < 0 || !(b = AllocVec(size = n + 1, MEMF_ANY)))
-            return NULL;
-        if ((n = tolatin1(t, len, b, size)) < 0) {
-            FreeVec(b);
-            return NULL;
-        }
+    long n = 0;
+    while (p < e) {
+        const UBYTE *q = p;
+        while (q < e && *q != '\n') q++;
+        if (q < e) q++;
+        n += Utf8ToCharset((CONST_STRPTR)p, q - p, NULL, 0, U8CS_LATIN1, 0);
+        p = q;
     }
-    /* a CR would show as a box at the end of every line */
-    for (s = b, end = b + n, d = b; s < end; s++)
-        if (*s != '\r' || s + 1 == end || s[1] != '\n') *d++ = *s;
-    *outlen = d - b;
-    return b;
+    return n;
 }
 
-/* text.datatype (40 and 47, and AROS's, which 3.1.4 and 3.2 are) does not
- * free its buffer when given another (it leaked the file's size at each
- * open). So the Latin-1 text goes back into the same buffer when it fits,
- * nearly always, and only the length changes; when it grew, the new buffer
- * replaces the old and the old is freed here. The byte after the text
- * (text.datatype's own end mark) is kept. */
+/* The file into Latin-1 where it lies: lines are written back over their
+ * own UTF-8, which nearly always ends further on (memory: the file and one
+ * line, not two files). Korean and a few Russian letters are spelt longer
+ * than their UTF-8; when the text would pass what is still to be read, the
+ * rest goes into a new buffer, which replaces the old (freed here:
+ * text.datatype does not free a buffer it is given another for). A file
+ * with nothing from 128 up is left as it is (four bytes at a time to
+ * know). The byte after the text (text.datatype's own end mark) is kept. */
 static void convert(Class *cl, Object *o)
 {
     struct TagItem t[3];
     struct opSet set;
-    char *text = NULL, *b;
+    char *text = NULL, *nb = NULL, *d, *tmp;
     ULONG len = 0;
-    long n;
+    long n, tmpsize = 1024;
+    const UBYTE *p, *e;
+    int st;
     t[0].ti_Tag = TDTA_Buffer;    t[0].ti_Data = (ULONG)&text;
     t[1].ti_Tag = TDTA_BufferLen; t[1].ti_Data = (ULONG)&len;
     t[2].ti_Tag = TAG_DONE;
     GetDTAttrsA(o, t);
     D(("u8: buffer %lx len %ld\n", text, len));
-    if (!text || !len || !utf8lib() || !(b = latin1(text, len, &n))) return;
-    if (n <= len) {
-        CopyMem(b, text, n);
-        if (n < len) text[n] = text[len];
-        FreeVec(b);
-        t[0].ti_Tag = TAG_IGNORE;
+    if (!text || !len || firsthigh((const UBYTE *)text, len) < 0 || !utf8lib()) return;
+    if (!(tmp = AllocVec(tmpsize, MEMF_ANY))) return;
+    p = (const UBYTE *)text;
+    e = p + len;
+    d = text;
+    st = lines(&p, e, &d, 1, &tmp, &tmpsize);
+    if (st == 1) {
+        /* grew: what is done, then the rest, into a new buffer */
+        const UBYTE *p0 = p;
+        long done = d - text, size = done + measure(p, e) + 1;
+        if ((nb = AllocVec(size, MEMF_ANY))) {
+            char *nd = nb + done;
+            CopyMem(text, nb, done);
+            if (lines(&p, e, &nd, 0, &tmp, &tmpsize) == 0)
+                d = nd;
+            else {
+                FreeVec(nb);
+                nb = NULL;
+                p = p0;                     /* the rest as it is, below */
+                st = -1;
+            }
+        } else
+            st = -1;
+    }
+    if (tmp) FreeVec(tmp);
+    if (st < 0) {
+        /* out of memory part way: what is converted, then the rest as it was */
+        D(("u8: out of memory part way\n"));
+        while (p < e) *d++ = *p++;
+    }
+    n = d - (nb ? nb : text);
+    if (nb) {
+        nb[n] = text[len];
+        t[0].ti_Data = (ULONG)nb;
     } else {
-        b[n] = text[len];
-        t[0].ti_Data = (ULONG)b;
+        if (n < len) text[n] = text[len];
+        t[0].ti_Tag = TAG_IGNORE;
     }
     t[1].ti_Data = n;
     set.MethodID = OM_SET;
     set.ops_AttrList = t;
     set.ops_GInfo = NULL;
     dosuper(cl, o, (Msg)&set);
-    if (n > len) FreeVec(text);
-    D(("u8: now len %ld%s\n", n, n > len ? " (new buffer)" : ""));
+    if (nb) FreeVec(text);
+    D(("u8: now len %ld%s\n", n, nb ? " (new buffer)" : ""));
 }
 
 /* ---- methods ----------------------------------------------------------- */
