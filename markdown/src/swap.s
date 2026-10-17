@@ -32,3 +32,10 @@ _rawputch:
 	jsr	-516(a6)
 	move.l	(sp)+,a6
 	rts
+
+| stuffch: RawDoFmt's PutChProc that writes into the buffer in a3
+| (DEBUG builds that log to a file).
+	.globl	_stuffch
+_stuffch:
+	move.b	d0,(a3)+
+	rts

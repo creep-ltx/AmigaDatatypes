@@ -38,12 +38,14 @@ styles (bold, italic, underline). Pictures in the file are not shown (a text dat
 
 ## Tested
 
-In FS-UAE (`tests/`): OS 3.1 on a 68020; Workbench 3.2.1 on a 68020; and Workbench 3.2.1 on an A600 with a
-plain 68000, the Kickstart 3.2 A500/A600 ROM and no fast RAM. A 7.7 KB README took about 12 seconds to open on
+In FS-UAE (`tests/`): OS 3.1 on a 68020; Workbench 3.2.1 on a 68020; and a stock A600 (68000, 1 MB, Kickstart
+and Workbench 3.1). A 7.7 KB README took about 12 seconds to open on
 the 68000, MultiView's own start included. Open and close with `tests/leak.sh`: nothing lost.
 
-Memory: about five times the file while it is shown (an 89 KB README took about 450 KB; the 7.7 KB one about
-210 KB with MultiView). Not yet tried on 1 MB: Workbench 3.2.1 left too little for the test tools there.
+Memory: the file is laid out a part at a time, so what counts is what is shown: about 350 bytes a row of
+text on screen. On a stock A600 (68000, 1 MB, Kickstart 3.1, no fast RAM) a 7.7 KB README opens with 519 KB
+still free; a 96 KB one shows its first 593 rows and says the rest did not fit. On Amigas with under 3 MB, table
+borders and code frames are drawn in the text's colour (fewer pieces to keep).
 
 ## Building
 

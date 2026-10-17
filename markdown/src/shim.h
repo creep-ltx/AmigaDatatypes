@@ -9,5 +9,6 @@ UBYTE latin1(ULONG c);                       /* a code point as the nearest Lati
 
 /* no <string.h> (libnix's turns memmove into __bcopz): shim.c has these */
 void *memset(void *d, int c, unsigned long n);
+unsigned long strlen(const char *s);
 
 #endif

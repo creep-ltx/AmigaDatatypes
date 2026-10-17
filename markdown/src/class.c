@@ -45,8 +45,28 @@
 
 /* make DEBUG=1: a trace of the methods through RawPutChar (wasabi debug) */
 #ifdef DEBUG
+#ifndef DUMPFILE
+#define DUMPFILE "RAM:md-dump.txt"
+#endif
 #include <stdarg.h>
 void rawputch(void);
+#ifdef LOGFILE
+void stuffch(void);
+static void dbg(const char *fmt, ...)
+{
+    static char line[256];
+    va_list ap;
+    BPTR fh;
+    va_start(ap, fmt);
+    RawDoFmt((STRPTR)fmt, (APTR)ap, (void (*)())stuffch, line);
+    va_end(ap);
+    if ((fh = Open(LOGFILE, MODE_READWRITE))) {
+        Seek(fh, 0, OFFSET_END);
+        Write(fh, line, strlen(line));
+        Close(fh);
+    }
+}
+#else
 static void dbg(const char *fmt, ...)
 {
     va_list ap;
@@ -54,6 +74,7 @@ static void dbg(const char *fmt, ...)
     RawDoFmt((STRPTR)fmt, (APTR)ap, (void (*)())rawputch, NULL);
     va_end(ap);
 }
+#endif
 #define D(x) dbg x
 #else
 #define D(x)
@@ -68,6 +89,7 @@ struct Library *DataTypesBase;
 static struct Library *TextDTBase;      /* text.datatype, the superclass */
 static Class *mdclass;
 static int nounder;                     /* the text.datatype here draws underline wrong */
+static int lean;                        /* a small Amiga: fewer pieces (see pen()) */
 static struct SignalSemaphore mdlock;   /* md.c keeps its state in statics: one at a time */
 
 struct MdBase {
@@ -199,7 +221,11 @@ static int loadbuffer(Class *cl, Object *o, char **text, long *len)
 static UBYTE pen(UBYTE c)
 {
     if (c == TC_DEFAULT || c == 0) return 1;
-    if (c == 7 || c == 8 || c == 15) return 2;      /* grey and white: rules, boxes, dim */
+    /* grey and white: rules, boxes, dim. On a small Amiga in the text's
+     * own pen: then a table row or a framed code line is one piece, not
+     * one per border - each piece costs some 50 bytes, and a big README
+     * would not fit 1 MB otherwise */
+    if (c == 7 || c == 8 || c == 15) return lean ? 1 : 2;
     return 3;                                       /* every colour: headings, links, code */
 }
 
@@ -208,7 +234,7 @@ struct Look { UBYTE fg, bg; UBYTE style; };
 static struct Look look(const RCell *c)
 {
     struct Look l;
-    UBYTE fg = (c->at & TA_DIM) ? 2 : pen(c->fg);
+    UBYTE fg = (c->at & TA_DIM) ? (lean ? 1 : 2) : pen(c->fg);
     l.style = 0;
     if (c->at & TA_BOLD) l.style |= FSF_BOLD;
     if (c->at & TA_ITAL) l.style |= FSF_ITALIC;
@@ -254,17 +280,165 @@ static struct Line *piece(APTR pool, const RCell *c, long n, struct Look lk,
 
 /* md.c on a stack of its own: a datatype runs on whatever stack its caller
  * has (often 4 KB), and md.c takes about 1 KB a level of nested lists and
- * quotes (blocks(), -fstack-usage) */
-#define MDSTACK 32768
+ * quotes (blocks(), -fstack-usage), plus about 2.5 KB for its deepest
+ * chain. Built with MAXDEPTH 10 (Makefile): 16 KB is enough, and on a
+ * 1 MB Amiga every KB counts. */
+#define MDSTACK 16384
 
-struct RenderArgs { Doc *d; Buf *b; long cols; };
+struct RenderArgs { Doc *d; Buf *b; long from, to, cols; };
 
 void callswapped(struct StackSwapStruct *sss, void (*fn)(void *), void *arg);
 
 static void render(void *p)
 {
     struct RenderArgs *a = p;
-    md_render(a->d, a->b, a->cols, "");
+    md_render_range(a->d, a->b, a->from, a->to, a->cols, "");
+}
+
+/* ---- the file in parts ---------------------------------------------------- */
+
+/* md.c needs about 8 bytes a character while it lays a file out (its cells),
+ * so a whole 89 KB README wants some 700 KB in one piece: more than a 1 MB
+ * Amiga has. Laid out a part at a time, only one part's cells are alive. */
+#ifndef PART_BYTES
+#define PART_BYTES 4096
+#endif
+
+static int blank(const Line *l)
+{
+    long i;
+    for (i = 0; i < l->len; i++)
+        if (l->s[i] != ' ' && l->s[i] != '\t' && l->s[i] != '\r') return 0;
+    return 1;
+}
+
+/* where t first is in the line, or -1 */
+static long find(const Line *l, const char *t)
+{
+    long i, k;
+    for (i = 0; i < l->len; i++) {
+        for (k = 0; t[k] && i + k < l->len && l->s[i + k] == t[k]; k++) ;
+        if (!t[k]) return i;
+    }
+    return -1;
+}
+
+/* a code fence: up to three spaces, then three or more ` or ~ */
+static int fence(const Line *l, char *ch, long *n)
+{
+    long i = 0, k;
+    while (i < l->len && i < 3 && l->s[i] == ' ') i++;
+    if (i >= l->len || (l->s[i] != '`' && l->s[i] != '~')) return 0;
+    *ch = l->s[i];
+    for (k = i; k < l->len && l->s[k] == *ch; k++) ;
+    *n = k - i;
+    return *n >= 3;
+}
+
+/* a list item at the left edge: - * + or a number with . or ), then a space */
+static int listitem(const Line *l)
+{
+    long i = 0;
+    if (l->len >= 2 && (l->s[0] == '-' || l->s[0] == '*' || l->s[0] == '+') && l->s[1] == ' ')
+        return 1;
+    while (i < l->len && i < 9 && l->s[i] >= '0' && l->s[i] <= '9') i++;
+    return i > 0 && i + 1 < l->len && (l->s[i] == '.' || l->s[i] == ')') && l->s[i + 1] == ' ';
+}
+
+/* The end of the part that starts at line from: about PART_BYTES on, at a
+ * blank line (not inside a code fence or an HTML comment) before a line
+ * that starts at the left edge and is not a list item - so no list,
+ * quote, code block or table is cut in two. *sep: a blank row goes
+ * between this part and the next (where blocks met). A file with no such
+ * place stays whole. */
+static long partend(const Buf *b, long from, long limit, int *sep)
+{
+    long i, bytes = 0, flen = 0, n, c;
+    char fch = 0, ch;
+    int infence = 0, incomment = 0;
+    for (i = from; i < b->n; i++) {
+        const Line *l = &b->l[i];
+        if (infence) {
+            if (fence(l, &ch, &n) && ch == fch && n >= flen) infence = 0;
+        } else if (incomment) {
+            if (find(l, "-->") >= 0) incomment = 0;
+        } else if (fence(l, &ch, &n)) {
+            infence = 1;
+            fch = ch;
+            flen = n;
+        } else if ((c = find(l, "<!--")) >= 0) {
+            Line rest;
+            rest.s = l->s + c + 4;
+            rest.len = l->len - c - 4;
+            if (find(&rest, "-->") < 0) incomment = 1;
+        }
+        bytes += l->len + 1;
+        if (bytes >= limit && !infence && !incomment && i + 1 < b->n) {
+            const Line *nx = &b->l[i + 1];
+            /* not before a list item: a list is laid out as a whole (its
+             * looseness and the width of its numbers are the whole list's) */
+            *sep = 1;
+            if (blank(l) && nx->len && nx->s[0] != ' ' && nx->s[0] != '\t' && !blank(nx) &&
+                !listitem(nx))
+                return i + 1;
+            /* a list of more than 16 KB is cut between two items after all,
+             * to fit 1 MB: the parts may differ in blank rows between items */
+            if (bytes >= 4 * limit && listitem(nx)) {
+                *sep = blank(l);
+                return i + 1;
+            }
+        }
+    }
+    *sep = 0;
+    return b->n;
+}
+
+/* one row of pieces from md.c's cells, at row r */
+static int pieces(struct MdData *md, struct List *lines, struct RastPort *rp, const RRow *row,
+                  const RCell *c, long r, long *widest)
+{
+    long y = r * rp->Font->tf_YSize + rp->Font->tf_Baseline;
+    long x = 0, i = 0, n = row ? row->len : 0;
+    struct Line *ln;
+    if (n == 0) {                   /* an empty row: one empty piece ends it */
+        struct Look none = { 1, 0, 0 };
+        if (!(ln = piece(md->pool, c, 0, none, rp, 0, y, 1))) return 0;
+        AddTail(lines, (struct Node *)ln);
+    }
+    while (i < n) {
+        struct Look lk = look(&c[i]), lk2;
+        long j = i + 1;
+        while (j < n) {
+            lk2 = look(&c[j]);
+            if (lk2.fg != lk.fg || lk2.bg != lk.bg || lk2.style != lk.style) break;
+            j++;
+        }
+        if (!(ln = piece(md->pool, c + i, j - i, lk, rp, x, y, j == n))) return 0;
+        AddTail(lines, (struct Node *)ln);
+        x += ln->ln_Width;
+        i = j;
+    }
+    if (x > *widest) *widest = x;
+    return 1;
+}
+
+/* the line that says the rest did not fit */
+static void toofull(struct MdData *md, struct List *lines, struct RastPort *rp, long r, long *widest)
+{
+    static const char msg[] = "[ Not enough memory to show the rest of this file ]";
+    RCell c[sizeof(msg)];
+    RRow row;
+    long i;
+    for (i = 0; msg[i]; i++) {
+        c[i].c = (UBYTE)msg[i];
+        c[i].fg = 12;               /* blue */
+        c[i].bg = TC_DEFAULT;
+        c[i].at = TA_BOLD;
+        c[i].fl = 0;
+    }
+    row.cell = 0;
+    row.len = i;
+    pieces(md, lines, rp, &row, c, r, widest);
 }
 
 /* the pieces for the whole document; returns the rows made, -1 out of memory */
@@ -276,60 +450,76 @@ static long build(struct MdData *md, struct List *lines, struct TextFont *font,
     struct StackSwapStruct sss;
     struct RenderArgs args;
     APTR stack;
-    long r, total = 0;
-    memset(&d, 0, sizeof(d));
-    d.rev = -1;
+    long r, total = 0, from = 0, limit = PART_BYTES;
+    int sep = 0, nextsep;
     InitRastPort(&rp);
     SetFont(&rp, font);
     *widest = 0;
 
-    if (!(stack = AllocVec(MDSTACK, MEMF_ANY))) return -1;
+    if (!(stack = AllocVec(MDSTACK, MEMF_ANY | MEMF_REVERSE))) return -1;
     sss.stk_Lower = stack;
     sss.stk_Upper = (ULONG)stack + MDSTACK;
     sss.stk_Pointer = (APTR)sss.stk_Upper;
     args.d = &d;
     args.b = &md->buf;
     args.cols = cols;
-    ObtainSemaphore(&mdlock);
-    md_unicode = 0;             /* Latin-1 fonts: ASCII bullets and boxes */
-    md_pictures = 0;            /* no pictures in a text.datatype */
-    md_cellw = md_cellh = 0;
-    callswapped(&sss, render, &args);
-    ReleaseSemaphore(&mdlock);
-    FreeVec(stack);
-
-    for (r = 0; r < d.nrows; r++) {
-        const RRow *row = &d.rows[r];
-        const RCell *c = d.cells + row->cell;
-        long y = r * font->tf_YSize + font->tf_Baseline;
-        long x = 0, i = 0, n = row->len;
-        struct Line *ln;
-        if (n == 0) {               /* an empty row: one empty piece ends it */
-            struct Look none = { 1, 0, 0 };
-            if (!(ln = piece(md->pool, c, 0, none, &rp, 0, y, 1))) goto oom;
-            AddTail(lines, (struct Node *)ln);
-        }
-        while (i < n) {
-            struct Look lk = look(&c[i]), lk2;
-            long j = i + 1;
-            while (j < n) {
-                lk2 = look(&c[j]);
-                if (lk2.fg != lk.fg || lk2.bg != lk.bg || lk2.style != lk.style) break;
-                j++;
+    while (from < md->buf.n) {
+        memset(&d, 0, sizeof(d));
+        d.rev = -1;
+        args.from = from;
+        args.to = partend(&md->buf, from, limit, &nextsep);
+        ObtainSemaphore(&mdlock);
+        md_unicode = 0;             /* Latin-1 fonts: ASCII bullets and boxes */
+        md_pictures = 0;            /* no pictures in a text.datatype */
+        md_cellw = md_cellh = 0;
+        callswapped(&sss, render, &args);
+        ReleaseSemaphore(&mdlock);
+        D(("md: part %ld-%ld: %ld rows, %ld cells, failed %ld, free %ld\n", args.from, args.to,
+           d.nrows, d.ncells, (long)d.failed, AvailMem(MEMF_ANY)));
+        if (d.failed) {
+            D(("md: part %ld-%ld failed (limit %ld), free %ld largest %ld\n", args.from, args.to, limit,
+               AvailMem(MEMF_ANY), AvailMem(MEMF_ANY | MEMF_LARGEST)));
+            /* no room for this part's cells in one piece: the same lines
+             * again in smaller parts, down to 512 bytes */
+            md_free(&d);
+            if (limit > 512) {
+                limit /= 2;
+                continue;
             }
-            if (!(ln = piece(md->pool, c + i, j - i, lk, &rp, x, y, j == n))) goto oom;
-            AddTail(lines, (struct Node *)ln);
-            x += ln->ln_Width;
-            i = j;
+            toofull(md, lines, &rp, total++, widest);
+            break;
         }
-        if (x > *widest) *widest = x;
-        total++;
+        /* parts meet where a block ended: the blank row md.c puts between
+         * blocks (not where a long list was cut between two items) */
+        if (total && d.nrows && sep) {
+            if (!pieces(md, lines, &rp, NULL, NULL, total, widest)) goto full;
+            total++;
+        }
+        for (r = 0; r < d.nrows; r++) {
+            if (!pieces(md, lines, &rp, &d.rows[r], d.cells + d.rows[r].cell, total, widest))
+                goto full;
+            total++;
+        }
+        md_free(&d);
+        from = args.to;
+        sep = nextsep;
     }
-    md_free(&d);
+    FreeVec(stack);
     return total;
-oom:
+full:
     md_free(&d);
-    return total ? total : -1;
+    FreeVec(stack);
+    D(("md: out of memory for pieces at row %ld, part %ld-%ld, free %ld largest %ld\n", total, args.from,
+       args.to, AvailMem(MEMF_ANY), AvailMem(MEMF_ANY | MEMF_LARGEST)));
+    {   /* out of memory in the middle of a row: end that row first */
+        struct Line *last = (struct Line *)lines->lh_TailPred;
+        if (last->ln_Link.mln_Pred && !(last->ln_Flags & LNF_LF)) {
+            last->ln_Flags |= LNF_LF;
+            total++;
+        }
+    }
+    toofull(md, lines, &rp, total++, widest);
+    return total;
 }
 
 static ULONG layout(Class *cl, Object *o, struct gpLayout *gpl)
@@ -368,8 +558,25 @@ static ULONG layout(Class *cl, Object *o, struct gpLayout *gpl)
 #endif
         newlist(lines);
         if (md->pool) DeletePool(md->pool);
-        md->pool = CreatePool(MEMF_ANY | MEMF_PUBLIC, 8192, 4096);
+        /* the pieces live long, md.c's arrays a part at a time: the
+         * pieces from the top of memory (MEMF_REVERSE, exec 39), so the
+         * arrays find their big blocks in one piece below them */
+        md->pool = CreatePool(MEMF_ANY | MEMF_PUBLIC | MEMF_REVERSE, 16384, 8192);
         total = md->pool ? build(md, lines, font, cols, &widest) : -1;
+#ifdef DEBUG
+        {   /* what was laid out, as text, for comparing builds on the PC */
+            BPTR fh = Open(DUMPFILE, MODE_NEWFILE);
+            struct Line *ln;
+            if (fh) {
+                for (ln = (struct Line *)lines->lh_Head; ln->ln_Link.mln_Succ;
+                     ln = (struct Line *)ln->ln_Link.mln_Succ) {
+                    Write(fh, ln->ln_Text, ln->ln_TextLen);
+                    if (ln->ln_Flags & LNF_LF) Write(fh, "\n", 1);
+                }
+                Close(fh);
+            }
+        }
+#endif
         if (total < 0) {
             newlist(lines);
             total = 0;
@@ -559,6 +766,7 @@ static struct Library *initlib(REG(d0, struct MdBase *b), REG(a0, BPTR seg), REG
         mdclass->cl_Dispatcher.h_Entry = (ULONG (*)())(APTR)dispatch;
         mdclass->cl_UserData = (ULONG)b;
         nounder = TextDTBase->lib_Version >= 45;
+        lean = AvailMem(MEMF_TOTAL) < 3L * 1024 * 1024;
         AddClass(mdclass);
         return &b->lib;
     }

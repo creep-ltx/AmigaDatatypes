@@ -25,6 +25,9 @@ CFLAGS  = -Os -m68000 -noixemul -fomit-frame-pointer -fno-common -fbbb=- -Wall -
 ifdef DEBUG
 CFLAGS += -DDEBUG
 endif
+ifdef PART_BYTES
+CFLAGS += -DPART_BYTES=$(PART_BYTES)
+endif
 VERSTR  = $(shell sed -n 's/.*MD_VERSTR *"\(.*\)"/\1/p' src/version.h)
 VERDATE = $(shell sed -n 's/.*MD_DATE *"\(.*\)"/\1/p' src/version.h)
 PATTERN = \#?.(md|markdown|mkd|mdown)
@@ -43,9 +46,11 @@ build/shim.o: src/shim.c src/shim.h
 	@mkdir -p build
 	$(CC) $(CFLAGS) -c $< -o $@
 
+# MAXDEPTH: lists and quotes nested at most 10 deep (the viewer: 24), so
+# md.c fits the 16 KB stack class.c gives it
 build/md.o: $(MDSRC)/md.c $(MDSRC)/md.h $(MDSRC)/markdown.h
 	@mkdir -p build
-	$(CC) $(CFLAGS) -fstack-usage -c $< -o $@
+	$(CC) $(CFLAGS) -DMAXDEPTH=10 -fstack-usage -c $< -o $@
 
 build/syntax.o: $(MDSRC)/syntax.c $(MDSRC)/markdown.h
 	@mkdir -p build
