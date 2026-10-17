@@ -1,0 +1,2400 @@
+utf8.datatype test file (UTF-8)
+
+Swedish:  Räksmörgås, Ångström, Öland, Åre
+German:   Grüße aus Köln, Straße, Äpfel
+French:   café, crème brûlée, garçon, Noël, œuvre
+Spanish:  ¿Dónde está el niño? ¡Olé!
+Polish:   Łódź, Gdańsk, Kraków, żółć (no Latin-1 letters: nearest)
+Czech:    Dvořák, Škoda, přítel
+Quotes:   “double” ‘single’ „low” «guillemets»
+Dashes:   en – dash, em — dash, ellipsis… minus −5
+Money:    €20, £5, ¥100, ¢50
+Signs:    © ® ™ ° ± × ÷ ½ ¼ µ ≤ ≥ ≠ → ←
+Bullets:  • one  • two  · three
+Boxes:    ┌──┬──┐ │a │b │ └──┴──┘ ═ ║ █
+Greek:    αβγ ΑΒΓ Ωμέγα
+Russian:  Привет, мир
+Japanese: こんにちは, カタカナ, 日本語
+Emoji:    ✓ ✗ ★ 😀 👍🏽
+Tabs:	one	two	three
+End.
+utf8.datatype test file (UTF-8)
+
+Swedish:  Räksmörgås, Ångström, Öland, Åre
+German:   Grüße aus Köln, Straße, Äpfel
+French:   café, crème brûlée, garçon, Noël, œuvre
+Spanish:  ¿Dónde está el niño? ¡Olé!
+Polish:   Łódź, Gdańsk, Kraków, żółć (no Latin-1 letters: nearest)
+Czech:    Dvořák, Škoda, přítel
+Quotes:   “double” ‘single’ „low” «guillemets»
+Dashes:   en – dash, em — dash, ellipsis… minus −5
+Money:    €20, £5, ¥100, ¢50
+Signs:    © ® ™ ° ± × ÷ ½ ¼ µ ≤ ≥ ≠ → ←
+Bullets:  • one  • two  · three
+Boxes:    ┌──┬──┐ │a │b │ └──┴──┘ ═ ║ █
+Greek:    αβγ ΑΒΓ Ωμέγα
+Russian:  Привет, мир
+Japanese: こんにちは, カタカナ, 日本語
+Emoji:    ✓ ✗ ★ 😀 👍🏽
+Tabs:	one	two	three
+End.
+utf8.datatype test file (UTF-8)
+
+Swedish:  Räksmörgås, Ångström, Öland, Åre
+German:   Grüße aus Köln, Straße, Äpfel
+French:   café, crème brûlée, garçon, Noël, œuvre
+Spanish:  ¿Dónde está el niño? ¡Olé!
+Polish:   Łódź, Gdańsk, Kraków, żółć (no Latin-1 letters: nearest)
+Czech:    Dvořák, Škoda, přítel
+Quotes:   “double” ‘single’ „low” «guillemets»
+Dashes:   en – dash, em — dash, ellipsis… minus −5
+Money:    €20, £5, ¥100, ¢50
+Signs:    © ® ™ ° ± × ÷ ½ ¼ µ ≤ ≥ ≠ → ←
+Bullets:  • one  • two  · three
+Boxes:    ┌──┬──┐ │a │b │ └──┴──┘ ═ ║ █
+Greek:    αβγ ΑΒΓ Ωμέγα
+Russian:  Привет, мир
+Japanese: こんにちは, カタカナ, 日本語
+Emoji:    ✓ ✗ ★ 😀 👍🏽
+Tabs:	one	two	three
+End.
+utf8.datatype test file (UTF-8)
+
+Swedish:  Räksmörgås, Ångström, Öland, Åre
+German:   Grüße aus Köln, Straße, Äpfel
+French:   café, crème brûlée, garçon, Noël, œuvre
+Spanish:  ¿Dónde está el niño? ¡Olé!
+Polish:   Łódź, Gdańsk, Kraków, żółć (no Latin-1 letters: nearest)
+Czech:    Dvořák, Škoda, přítel
+Quotes:   “double” ‘single’ „low” «guillemets»
+Dashes:   en – dash, em — dash, ellipsis… minus −5
+Money:    €20, £5, ¥100, ¢50
+Signs:    © ® ™ ° ± × ÷ ½ ¼ µ ≤ ≥ ≠ → ←
+Bullets:  • one  • two  · three
+Boxes:    ┌──┬──┐ │a │b │ └──┴──┘ ═ ║ █
+Greek:    αβγ ΑΒΓ Ωμέγα
+Russian:  Привет, мир
+Japanese: こんにちは, カタカナ, 日本語
+Emoji:    ✓ ✗ ★ 😀 👍🏽
+Tabs:	one	two	three
+End.
+utf8.datatype test file (UTF-8)
+
+Swedish:  Räksmörgås, Ångström, Öland, Åre
+German:   Grüße aus Köln, Straße, Äpfel
+French:   café, crème brûlée, garçon, Noël, œuvre
+Spanish:  ¿Dónde está el niño? ¡Olé!
+Polish:   Łódź, Gdańsk, Kraków, żółć (no Latin-1 letters: nearest)
+Czech:    Dvořák, Škoda, přítel
+Quotes:   “double” ‘single’ „low” «guillemets»
+Dashes:   en – dash, em — dash, ellipsis… minus −5
+Money:    €20, £5, ¥100, ¢50
+Signs:    © ® ™ ° ± × ÷ ½ ¼ µ ≤ ≥ ≠ → ←
+Bullets:  • one  • two  · three
+Boxes:    ┌──┬──┐ │a │b │ └──┴──┘ ═ ║ █
+Greek:    αβγ ΑΒΓ Ωμέγα
+Russian:  Привет, мир
+Japanese: こんにちは, カタカナ, 日本語
+Emoji:    ✓ ✗ ★ 😀 👍🏽
+Tabs:	one	two	three
+End.
+utf8.datatype test file (UTF-8)
+
+Swedish:  Räksmörgås, Ångström, Öland, Åre
+German:   Grüße aus Köln, Straße, Äpfel
+French:   café, crème brûlée, garçon, Noël, œuvre
+Spanish:  ¿Dónde está el niño? ¡Olé!
+Polish:   Łódź, Gdańsk, Kraków, żółć (no Latin-1 letters: nearest)
+Czech:    Dvořák, Škoda, přítel
+Quotes:   “double” ‘single’ „low” «guillemets»
+Dashes:   en – dash, em — dash, ellipsis… minus −5
+Money:    €20, £5, ¥100, ¢50
+Signs:    © ® ™ ° ± × ÷ ½ ¼ µ ≤ ≥ ≠ → ←
+Bullets:  • one  • two  · three
+Boxes:    ┌──┬──┐ │a │b │ └──┴──┘ ═ ║ █
+Greek:    αβγ ΑΒΓ Ωμέγα
+Russian:  Привет, мир
+Japanese: こんにちは, カタカナ, 日本語
+Emoji:    ✓ ✗ ★ 😀 👍🏽
+Tabs:	one	two	three
+End.
+utf8.datatype test file (UTF-8)
+
+Swedish:  Räksmörgås, Ångström, Öland, Åre
+German:   Grüße aus Köln, Straße, Äpfel
+French:   café, crème brûlée, garçon, Noël, œuvre
+Spanish:  ¿Dónde está el niño? ¡Olé!
+Polish:   Łódź, Gdańsk, Kraków, żółć (no Latin-1 letters: nearest)
+Czech:    Dvořák, Škoda, přítel
+Quotes:   “double” ‘single’ „low” «guillemets»
+Dashes:   en – dash, em — dash, ellipsis… minus −5
+Money:    €20, £5, ¥100, ¢50
+Signs:    © ® ™ ° ± × ÷ ½ ¼ µ ≤ ≥ ≠ → ←
+Bullets:  • one  • two  · three
+Boxes:    ┌──┬──┐ │a │b │ └──┴──┘ ═ ║ █
+Greek:    αβγ ΑΒΓ Ωμέγα
+Russian:  Привет, мир
+Japanese: こんにちは, カタカナ, 日本語
+Emoji:    ✓ ✗ ★ 😀 👍🏽
+Tabs:	one	two	three
+End.
+utf8.datatype test file (UTF-8)
+
+Swedish:  Räksmörgås, Ångström, Öland, Åre
+German:   Grüße aus Köln, Straße, Äpfel
+French:   café, crème brûlée, garçon, Noël, œuvre
+Spanish:  ¿Dónde está el niño? ¡Olé!
+Polish:   Łódź, Gdańsk, Kraków, żółć (no Latin-1 letters: nearest)
+Czech:    Dvořák, Škoda, přítel
+Quotes:   “double” ‘single’ „low” «guillemets»
+Dashes:   en – dash, em — dash, ellipsis… minus −5
+Money:    €20, £5, ¥100, ¢50
+Signs:    © ® ™ ° ± × ÷ ½ ¼ µ ≤ ≥ ≠ → ←
+Bullets:  • one  • two  · three
+Boxes:    ┌──┬──┐ │a │b │ └──┴──┘ ═ ║ █
+Greek:    αβγ ΑΒΓ Ωμέγα
+Russian:  Привет, мир
+Japanese: こんにちは, カタカナ, 日本語
+Emoji:    ✓ ✗ ★ 😀 👍🏽
+Tabs:	one	two	three
+End.
+utf8.datatype test file (UTF-8)
+
+Swedish:  Räksmörgås, Ångström, Öland, Åre
+German:   Grüße aus Köln, Straße, Äpfel
+French:   café, crème brûlée, garçon, Noël, œuvre
+Spanish:  ¿Dónde está el niño? ¡Olé!
+Polish:   Łódź, Gdańsk, Kraków, żółć (no Latin-1 letters: nearest)
+Czech:    Dvořák, Škoda, přítel
+Quotes:   “double” ‘single’ „low” «guillemets»
+Dashes:   en – dash, em — dash, ellipsis… minus −5
+Money:    €20, £5, ¥100, ¢50
+Signs:    © ® ™ ° ± × ÷ ½ ¼ µ ≤ ≥ ≠ → ←
+Bullets:  • one  • two  · three
+Boxes:    ┌──┬──┐ │a │b │ └──┴──┘ ═ ║ █
+Greek:    αβγ ΑΒΓ Ωμέγα
+Russian:  Привет, мир
+Japanese: こんにちは, カタカナ, 日本語
+Emoji:    ✓ ✗ ★ 😀 👍🏽
+Tabs:	one	two	three
+End.
+utf8.datatype test file (UTF-8)
+
+Swedish:  Räksmörgås, Ångström, Öland, Åre
+German:   Grüße aus Köln, Straße, Äpfel
+French:   café, crème brûlée, garçon, Noël, œuvre
+Spanish:  ¿Dónde está el niño? ¡Olé!
+Polish:   Łódź, Gdańsk, Kraków, żółć (no Latin-1 letters: nearest)
+Czech:    Dvořák, Škoda, přítel
+Quotes:   “double” ‘single’ „low” «guillemets»
+Dashes:   en – dash, em — dash, ellipsis… minus −5
+Money:    €20, £5, ¥100, ¢50
+Signs:    © ® ™ ° ± × ÷ ½ ¼ µ ≤ ≥ ≠ → ←
+Bullets:  • one  • two  · three
+Boxes:    ┌──┬──┐ │a │b │ └──┴──┘ ═ ║ █
+Greek:    αβγ ΑΒΓ Ωμέγα
+Russian:  Привет, мир
+Japanese: こんにちは, カタカナ, 日本語
+Emoji:    ✓ ✗ ★ 😀 👍🏽
+Tabs:	one	two	three
+End.
+utf8.datatype test file (UTF-8)
+
+Swedish:  Räksmörgås, Ångström, Öland, Åre
+German:   Grüße aus Köln, Straße, Äpfel
+French:   café, crème brûlée, garçon, Noël, œuvre
+Spanish:  ¿Dónde está el niño? ¡Olé!
+Polish:   Łódź, Gdańsk, Kraków, żółć (no Latin-1 letters: nearest)
+Czech:    Dvořák, Škoda, přítel
+Quotes:   “double” ‘single’ „low” «guillemets»
+Dashes:   en – dash, em — dash, ellipsis… minus −5
+Money:    €20, £5, ¥100, ¢50
+Signs:    © ® ™ ° ± × ÷ ½ ¼ µ ≤ ≥ ≠ → ←
+Bullets:  • one  • two  · three
+Boxes:    ┌──┬──┐ │a │b │ └──┴──┘ ═ ║ █
+Greek:    αβγ ΑΒΓ Ωμέγα
+Russian:  Привет, мир
+Japanese: こんにちは, カタカナ, 日本語
+Emoji:    ✓ ✗ ★ 😀 👍🏽
+Tabs:	one	two	three
+End.
+utf8.datatype test file (UTF-8)
+
+Swedish:  Räksmörgås, Ångström, Öland, Åre
+German:   Grüße aus Köln, Straße, Äpfel
+French:   café, crème brûlée, garçon, Noël, œuvre
+Spanish:  ¿Dónde está el niño? ¡Olé!
+Polish:   Łódź, Gdańsk, Kraków, żółć (no Latin-1 letters: nearest)
+Czech:    Dvořák, Škoda, přítel
+Quotes:   “double” ‘single’ „low” «guillemets»
+Dashes:   en – dash, em — dash, ellipsis… minus −5
+Money:    €20, £5, ¥100, ¢50
+Signs:    © ® ™ ° ± × ÷ ½ ¼ µ ≤ ≥ ≠ → ←
+Bullets:  • one  • two  · three
+Boxes:    ┌──┬──┐ │a │b │ └──┴──┘ ═ ║ █
+Greek:    αβγ ΑΒΓ Ωμέγα
+Russian:  Привет, мир
+Japanese: こんにちは, カタカナ, 日本語
+Emoji:    ✓ ✗ ★ 😀 👍🏽
+Tabs:	one	two	three
+End.
+utf8.datatype test file (UTF-8)
+
+Swedish:  Räksmörgås, Ångström, Öland, Åre
+German:   Grüße aus Köln, Straße, Äpfel
+French:   café, crème brûlée, garçon, Noël, œuvre
+Spanish:  ¿Dónde está el niño? ¡Olé!
+Polish:   Łódź, Gdańsk, Kraków, żółć (no Latin-1 letters: nearest)
+Czech:    Dvořák, Škoda, přítel
+Quotes:   “double” ‘single’ „low” «guillemets»
+Dashes:   en – dash, em — dash, ellipsis… minus −5
+Money:    €20, £5, ¥100, ¢50
+Signs:    © ® ™ ° ± × ÷ ½ ¼ µ ≤ ≥ ≠ → ←
+Bullets:  • one  • two  · three
+Boxes:    ┌──┬──┐ │a │b │ └──┴──┘ ═ ║ █
+Greek:    αβγ ΑΒΓ Ωμέγα
+Russian:  Привет, мир
+Japanese: こんにちは, カタカナ, 日本語
+Emoji:    ✓ ✗ ★ 😀 👍🏽
+Tabs:	one	two	three
+End.
+utf8.datatype test file (UTF-8)
+
+Swedish:  Räksmörgås, Ångström, Öland, Åre
+German:   Grüße aus Köln, Straße, Äpfel
+French:   café, crème brûlée, garçon, Noël, œuvre
+Spanish:  ¿Dónde está el niño? ¡Olé!
+Polish:   Łódź, Gdańsk, Kraków, żółć (no Latin-1 letters: nearest)
+Czech:    Dvořák, Škoda, přítel
+Quotes:   “double” ‘single’ „low” «guillemets»
+Dashes:   en – dash, em — dash, ellipsis… minus −5
+Money:    €20, £5, ¥100, ¢50
+Signs:    © ® ™ ° ± × ÷ ½ ¼ µ ≤ ≥ ≠ → ←
+Bullets:  • one  • two  · three
+Boxes:    ┌──┬──┐ │a │b │ └──┴──┘ ═ ║ █
+Greek:    αβγ ΑΒΓ Ωμέγα
+Russian:  Привет, мир
+Japanese: こんにちは, カタカナ, 日本語
+Emoji:    ✓ ✗ ★ 😀 👍🏽
+Tabs:	one	two	three
+End.
+utf8.datatype test file (UTF-8)
+
+Swedish:  Räksmörgås, Ångström, Öland, Åre
+German:   Grüße aus Köln, Straße, Äpfel
+French:   café, crème brûlée, garçon, Noël, œuvre
+Spanish:  ¿Dónde está el niño? ¡Olé!
+Polish:   Łódź, Gdańsk, Kraków, żółć (no Latin-1 letters: nearest)
+Czech:    Dvořák, Škoda, přítel
+Quotes:   “double” ‘single’ „low” «guillemets»
+Dashes:   en – dash, em — dash, ellipsis… minus −5
+Money:    €20, £5, ¥100, ¢50
+Signs:    © ® ™ ° ± × ÷ ½ ¼ µ ≤ ≥ ≠ → ←
+Bullets:  • one  • two  · three
+Boxes:    ┌──┬──┐ │a │b │ └──┴──┘ ═ ║ █
+Greek:    αβγ ΑΒΓ Ωμέγα
+Russian:  Привет, мир
+Japanese: こんにちは, カタカナ, 日本語
+Emoji:    ✓ ✗ ★ 😀 👍🏽
+Tabs:	one	two	three
+End.
+utf8.datatype test file (UTF-8)
+
+Swedish:  Räksmörgås, Ångström, Öland, Åre
+German:   Grüße aus Köln, Straße, Äpfel
+French:   café, crème brûlée, garçon, Noël, œuvre
+Spanish:  ¿Dónde está el niño? ¡Olé!
+Polish:   Łódź, Gdańsk, Kraków, żółć (no Latin-1 letters: nearest)
+Czech:    Dvořák, Škoda, přítel
+Quotes:   “double” ‘single’ „low” «guillemets»
+Dashes:   en – dash, em — dash, ellipsis… minus −5
+Money:    €20, £5, ¥100, ¢50
+Signs:    © ® ™ ° ± × ÷ ½ ¼ µ ≤ ≥ ≠ → ←
+Bullets:  • one  • two  · three
+Boxes:    ┌──┬──┐ │a │b │ └──┴──┘ ═ ║ █
+Greek:    αβγ ΑΒΓ Ωμέγα
+Russian:  Привет, мир
+Japanese: こんにちは, カタカナ, 日本語
+Emoji:    ✓ ✗ ★ 😀 👍🏽
+Tabs:	one	two	three
+End.
+utf8.datatype test file (UTF-8)
+
+Swedish:  Räksmörgås, Ångström, Öland, Åre
+German:   Grüße aus Köln, Straße, Äpfel
+French:   café, crème brûlée, garçon, Noël, œuvre
+Spanish:  ¿Dónde está el niño? ¡Olé!
+Polish:   Łódź, Gdańsk, Kraków, żółć (no Latin-1 letters: nearest)
+Czech:    Dvořák, Škoda, přítel
+Quotes:   “double” ‘single’ „low” «guillemets»
+Dashes:   en – dash, em — dash, ellipsis… minus −5
+Money:    €20, £5, ¥100, ¢50
+Signs:    © ® ™ ° ± × ÷ ½ ¼ µ ≤ ≥ ≠ → ←
+Bullets:  • one  • two  · three
+Boxes:    ┌──┬──┐ │a │b │ └──┴──┘ ═ ║ █
+Greek:    αβγ ΑΒΓ Ωμέγα
+Russian:  Привет, мир
+Japanese: こんにちは, カタカナ, 日本語
+Emoji:    ✓ ✗ ★ 😀 👍🏽
+Tabs:	one	two	three
+End.
+utf8.datatype test file (UTF-8)
+
+Swedish:  Räksmörgås, Ångström, Öland, Åre
+German:   Grüße aus Köln, Straße, Äpfel
+French:   café, crème brûlée, garçon, Noël, œuvre
+Spanish:  ¿Dónde está el niño? ¡Olé!
+Polish:   Łódź, Gdańsk, Kraków, żółć (no Latin-1 letters: nearest)
+Czech:    Dvořák, Škoda, přítel
+Quotes:   “double” ‘single’ „low” «guillemets»
+Dashes:   en – dash, em — dash, ellipsis… minus −5
+Money:    €20, £5, ¥100, ¢50
+Signs:    © ® ™ ° ± × ÷ ½ ¼ µ ≤ ≥ ≠ → ←
+Bullets:  • one  • two  · three
+Boxes:    ┌──┬──┐ │a │b │ └──┴──┘ ═ ║ █
+Greek:    αβγ ΑΒΓ Ωμέγα
+Russian:  Привет, мир
+Japanese: こんにちは, カタカナ, 日本語
+Emoji:    ✓ ✗ ★ 😀 👍🏽
+Tabs:	one	two	three
+End.
+utf8.datatype test file (UTF-8)
+
+Swedish:  Räksmörgås, Ångström, Öland, Åre
+German:   Grüße aus Köln, Straße, Äpfel
+French:   café, crème brûlée, garçon, Noël, œuvre
+Spanish:  ¿Dónde está el niño? ¡Olé!
+Polish:   Łódź, Gdańsk, Kraków, żółć (no Latin-1 letters: nearest)
+Czech:    Dvořák, Škoda, přítel
+Quotes:   “double” ‘single’ „low” «guillemets»
+Dashes:   en – dash, em — dash, ellipsis… minus −5
+Money:    €20, £5, ¥100, ¢50
+Signs:    © ® ™ ° ± × ÷ ½ ¼ µ ≤ ≥ ≠ → ←
+Bullets:  • one  • two  · three
+Boxes:    ┌──┬──┐ │a │b │ └──┴──┘ ═ ║ █
+Greek:    αβγ ΑΒΓ Ωμέγα
+Russian:  Привет, мир
+Japanese: こんにちは, カタカナ, 日本語
+Emoji:    ✓ ✗ ★ 😀 👍🏽
+Tabs:	one	two	three
+End.
+utf8.datatype test file (UTF-8)
+
+Swedish:  Räksmörgås, Ångström, Öland, Åre
+German:   Grüße aus Köln, Straße, Äpfel
+French:   café, crème brûlée, garçon, Noël, œuvre
+Spanish:  ¿Dónde está el niño? ¡Olé!
+Polish:   Łódź, Gdańsk, Kraków, żółć (no Latin-1 letters: nearest)
+Czech:    Dvořák, Škoda, přítel
+Quotes:   “double” ‘single’ „low” «guillemets»
+Dashes:   en – dash, em — dash, ellipsis… minus −5
+Money:    €20, £5, ¥100, ¢50
+Signs:    © ® ™ ° ± × ÷ ½ ¼ µ ≤ ≥ ≠ → ←
+Bullets:  • one  • two  · three
+Boxes:    ┌──┬──┐ │a │b │ └──┴──┘ ═ ║ █
+Greek:    αβγ ΑΒΓ Ωμέγα
+Russian:  Привет, мир
+Japanese: こんにちは, カタカナ, 日本語
+Emoji:    ✓ ✗ ★ 😀 👍🏽
+Tabs:	one	two	three
+End.
+utf8.datatype test file (UTF-8)
+
+Swedish:  Räksmörgås, Ångström, Öland, Åre
+German:   Grüße aus Köln, Straße, Äpfel
+French:   café, crème brûlée, garçon, Noël, œuvre
+Spanish:  ¿Dónde está el niño? ¡Olé!
+Polish:   Łódź, Gdańsk, Kraków, żółć (no Latin-1 letters: nearest)
+Czech:    Dvořák, Škoda, přítel
+Quotes:   “double” ‘single’ „low” «guillemets»
+Dashes:   en – dash, em — dash, ellipsis… minus −5
+Money:    €20, £5, ¥100, ¢50
+Signs:    © ® ™ ° ± × ÷ ½ ¼ µ ≤ ≥ ≠ → ←
+Bullets:  • one  • two  · three
+Boxes:    ┌──┬──┐ │a │b │ └──┴──┘ ═ ║ █
+Greek:    αβγ ΑΒΓ Ωμέγα
+Russian:  Привет, мир
+Japanese: こんにちは, カタカナ, 日本語
+Emoji:    ✓ ✗ ★ 😀 👍🏽
+Tabs:	one	two	three
+End.
+utf8.datatype test file (UTF-8)
+
+Swedish:  Räksmörgås, Ångström, Öland, Åre
+German:   Grüße aus Köln, Straße, Äpfel
+French:   café, crème brûlée, garçon, Noël, œuvre
+Spanish:  ¿Dónde está el niño? ¡Olé!
+Polish:   Łódź, Gdańsk, Kraków, żółć (no Latin-1 letters: nearest)
+Czech:    Dvořák, Škoda, přítel
+Quotes:   “double” ‘single’ „low” «guillemets»
+Dashes:   en – dash, em — dash, ellipsis… minus −5
+Money:    €20, £5, ¥100, ¢50
+Signs:    © ® ™ ° ± × ÷ ½ ¼ µ ≤ ≥ ≠ → ←
+Bullets:  • one  • two  · three
+Boxes:    ┌──┬──┐ │a │b │ └──┴──┘ ═ ║ █
+Greek:    αβγ ΑΒΓ Ωμέγα
+Russian:  Привет, мир
+Japanese: こんにちは, カタカナ, 日本語
+Emoji:    ✓ ✗ ★ 😀 👍🏽
+Tabs:	one	two	three
+End.
+utf8.datatype test file (UTF-8)
+
+Swedish:  Räksmörgås, Ångström, Öland, Åre
+German:   Grüße aus Köln, Straße, Äpfel
+French:   café, crème brûlée, garçon, Noël, œuvre
+Spanish:  ¿Dónde está el niño? ¡Olé!
+Polish:   Łódź, Gdańsk, Kraków, żółć (no Latin-1 letters: nearest)
+Czech:    Dvořák, Škoda, přítel
+Quotes:   “double” ‘single’ „low” «guillemets»
+Dashes:   en – dash, em — dash, ellipsis… minus −5
+Money:    €20, £5, ¥100, ¢50
+Signs:    © ® ™ ° ± × ÷ ½ ¼ µ ≤ ≥ ≠ → ←
+Bullets:  • one  • two  · three
+Boxes:    ┌──┬──┐ │a │b │ └──┴──┘ ═ ║ █
+Greek:    αβγ ΑΒΓ Ωμέγα
+Russian:  Привет, мир
+Japanese: こんにちは, カタカナ, 日本語
+Emoji:    ✓ ✗ ★ 😀 👍🏽
+Tabs:	one	two	three
+End.
+utf8.datatype test file (UTF-8)
+
+Swedish:  Räksmörgås, Ångström, Öland, Åre
+German:   Grüße aus Köln, Straße, Äpfel
+French:   café, crème brûlée, garçon, Noël, œuvre
+Spanish:  ¿Dónde está el niño? ¡Olé!
+Polish:   Łódź, Gdańsk, Kraków, żółć (no Latin-1 letters: nearest)
+Czech:    Dvořák, Škoda, přítel
+Quotes:   “double” ‘single’ „low” «guillemets»
+Dashes:   en – dash, em — dash, ellipsis… minus −5
+Money:    €20, £5, ¥100, ¢50
+Signs:    © ® ™ ° ± × ÷ ½ ¼ µ ≤ ≥ ≠ → ←
+Bullets:  • one  • two  · three
+Boxes:    ┌──┬──┐ │a │b │ └──┴──┘ ═ ║ █
+Greek:    αβγ ΑΒΓ Ωμέγα
+Russian:  Привет, мир
+Japanese: こんにちは, カタカナ, 日本語
+Emoji:    ✓ ✗ ★ 😀 👍🏽
+Tabs:	one	two	three
+End.
+utf8.datatype test file (UTF-8)
+
+Swedish:  Räksmörgås, Ångström, Öland, Åre
+German:   Grüße aus Köln, Straße, Äpfel
+French:   café, crème brûlée, garçon, Noël, œuvre
+Spanish:  ¿Dónde está el niño? ¡Olé!
+Polish:   Łódź, Gdańsk, Kraków, żółć (no Latin-1 letters: nearest)
+Czech:    Dvořák, Škoda, přítel
+Quotes:   “double” ‘single’ „low” «guillemets»
+Dashes:   en – dash, em — dash, ellipsis… minus −5
+Money:    €20, £5, ¥100, ¢50
+Signs:    © ® ™ ° ± × ÷ ½ ¼ µ ≤ ≥ ≠ → ←
+Bullets:  • one  • two  · three
+Boxes:    ┌──┬──┐ │a │b │ └──┴──┘ ═ ║ █
+Greek:    αβγ ΑΒΓ Ωμέγα
+Russian:  Привет, мир
+Japanese: こんにちは, カタカナ, 日本語
+Emoji:    ✓ ✗ ★ 😀 👍🏽
+Tabs:	one	two	three
+End.
+utf8.datatype test file (UTF-8)
+
+Swedish:  Räksmörgås, Ångström, Öland, Åre
+German:   Grüße aus Köln, Straße, Äpfel
+French:   café, crème brûlée, garçon, Noël, œuvre
+Spanish:  ¿Dónde está el niño? ¡Olé!
+Polish:   Łódź, Gdańsk, Kraków, żółć (no Latin-1 letters: nearest)
+Czech:    Dvořák, Škoda, přítel
+Quotes:   “double” ‘single’ „low” «guillemets»
+Dashes:   en – dash, em — dash, ellipsis… minus −5
+Money:    €20, £5, ¥100, ¢50
+Signs:    © ® ™ ° ± × ÷ ½ ¼ µ ≤ ≥ ≠ → ←
+Bullets:  • one  • two  · three
+Boxes:    ┌──┬──┐ │a │b │ └──┴──┘ ═ ║ █
+Greek:    αβγ ΑΒΓ Ωμέγα
+Russian:  Привет, мир
+Japanese: こんにちは, カタカナ, 日本語
+Emoji:    ✓ ✗ ★ 😀 👍🏽
+Tabs:	one	two	three
+End.
+utf8.datatype test file (UTF-8)
+
+Swedish:  Räksmörgås, Ångström, Öland, Åre
+German:   Grüße aus Köln, Straße, Äpfel
+French:   café, crème brûlée, garçon, Noël, œuvre
+Spanish:  ¿Dónde está el niño? ¡Olé!
+Polish:   Łódź, Gdańsk, Kraków, żółć (no Latin-1 letters: nearest)
+Czech:    Dvořák, Škoda, přítel
+Quotes:   “double” ‘single’ „low” «guillemets»
+Dashes:   en – dash, em — dash, ellipsis… minus −5
+Money:    €20, £5, ¥100, ¢50
+Signs:    © ® ™ ° ± × ÷ ½ ¼ µ ≤ ≥ ≠ → ←
+Bullets:  • one  • two  · three
+Boxes:    ┌──┬──┐ │a │b │ └──┴──┘ ═ ║ █
+Greek:    αβγ ΑΒΓ Ωμέγα
+Russian:  Привет, мир
+Japanese: こんにちは, カタカナ, 日本語
+Emoji:    ✓ ✗ ★ 😀 👍🏽
+Tabs:	one	two	three
+End.
+utf8.datatype test file (UTF-8)
+
+Swedish:  Räksmörgås, Ångström, Öland, Åre
+German:   Grüße aus Köln, Straße, Äpfel
+French:   café, crème brûlée, garçon, Noël, œuvre
+Spanish:  ¿Dónde está el niño? ¡Olé!
+Polish:   Łódź, Gdańsk, Kraków, żółć (no Latin-1 letters: nearest)
+Czech:    Dvořák, Škoda, přítel
+Quotes:   “double” ‘single’ „low” «guillemets»
+Dashes:   en – dash, em — dash, ellipsis… minus −5
+Money:    €20, £5, ¥100, ¢50
+Signs:    © ® ™ ° ± × ÷ ½ ¼ µ ≤ ≥ ≠ → ←
+Bullets:  • one  • two  · three
+Boxes:    ┌──┬──┐ │a │b │ └──┴──┘ ═ ║ █
+Greek:    αβγ ΑΒΓ Ωμέγα
+Russian:  Привет, мир
+Japanese: こんにちは, カタカナ, 日本語
+Emoji:    ✓ ✗ ★ 😀 👍🏽
+Tabs:	one	two	three
+End.
+utf8.datatype test file (UTF-8)
+
+Swedish:  Räksmörgås, Ångström, Öland, Åre
+German:   Grüße aus Köln, Straße, Äpfel
+French:   café, crème brûlée, garçon, Noël, œuvre
+Spanish:  ¿Dónde está el niño? ¡Olé!
+Polish:   Łódź, Gdańsk, Kraków, żółć (no Latin-1 letters: nearest)
+Czech:    Dvořák, Škoda, přítel
+Quotes:   “double” ‘single’ „low” «guillemets»
+Dashes:   en – dash, em — dash, ellipsis… minus −5
+Money:    €20, £5, ¥100, ¢50
+Signs:    © ® ™ ° ± × ÷ ½ ¼ µ ≤ ≥ ≠ → ←
+Bullets:  • one  • two  · three
+Boxes:    ┌──┬──┐ │a │b │ └──┴──┘ ═ ║ █
+Greek:    αβγ ΑΒΓ Ωμέγα
+Russian:  Привет, мир
+Japanese: こんにちは, カタカナ, 日本語
+Emoji:    ✓ ✗ ★ 😀 👍🏽
+Tabs:	one	two	three
+End.
+utf8.datatype test file (UTF-8)
+
+Swedish:  Räksmörgås, Ångström, Öland, Åre
+German:   Grüße aus Köln, Straße, Äpfel
+French:   café, crème brûlée, garçon, Noël, œuvre
+Spanish:  ¿Dónde está el niño? ¡Olé!
+Polish:   Łódź, Gdańsk, Kraków, żółć (no Latin-1 letters: nearest)
+Czech:    Dvořák, Škoda, přítel
+Quotes:   “double” ‘single’ „low” «guillemets»
+Dashes:   en – dash, em — dash, ellipsis… minus −5
+Money:    €20, £5, ¥100, ¢50
+Signs:    © ® ™ ° ± × ÷ ½ ¼ µ ≤ ≥ ≠ → ←
+Bullets:  • one  • two  · three
+Boxes:    ┌──┬──┐ │a │b │ └──┴──┘ ═ ║ █
+Greek:    αβγ ΑΒΓ Ωμέγα
+Russian:  Привет, мир
+Japanese: こんにちは, カタカナ, 日本語
+Emoji:    ✓ ✗ ★ 😀 👍🏽
+Tabs:	one	two	three
+End.
+utf8.datatype test file (UTF-8)
+
+Swedish:  Räksmörgås, Ångström, Öland, Åre
+German:   Grüße aus Köln, Straße, Äpfel
+French:   café, crème brûlée, garçon, Noël, œuvre
+Spanish:  ¿Dónde está el niño? ¡Olé!
+Polish:   Łódź, Gdańsk, Kraków, żółć (no Latin-1 letters: nearest)
+Czech:    Dvořák, Škoda, přítel
+Quotes:   “double” ‘single’ „low” «guillemets»
+Dashes:   en – dash, em — dash, ellipsis… minus −5
+Money:    €20, £5, ¥100, ¢50
+Signs:    © ® ™ ° ± × ÷ ½ ¼ µ ≤ ≥ ≠ → ←
+Bullets:  • one  • two  · three
+Boxes:    ┌──┬──┐ │a │b │ └──┴──┘ ═ ║ █
+Greek:    αβγ ΑΒΓ Ωμέγα
+Russian:  Привет, мир
+Japanese: こんにちは, カタカナ, 日本語
+Emoji:    ✓ ✗ ★ 😀 👍🏽
+Tabs:	one	two	three
+End.
+utf8.datatype test file (UTF-8)
+
+Swedish:  Räksmörgås, Ångström, Öland, Åre
+German:   Grüße aus Köln, Straße, Äpfel
+French:   café, crème brûlée, garçon, Noël, œuvre
+Spanish:  ¿Dónde está el niño? ¡Olé!
+Polish:   Łódź, Gdańsk, Kraków, żółć (no Latin-1 letters: nearest)
+Czech:    Dvořák, Škoda, přítel
+Quotes:   “double” ‘single’ „low” «guillemets»
+Dashes:   en – dash, em — dash, ellipsis… minus −5
+Money:    €20, £5, ¥100, ¢50
+Signs:    © ® ™ ° ± × ÷ ½ ¼ µ ≤ ≥ ≠ → ←
+Bullets:  • one  • two  · three
+Boxes:    ┌──┬──┐ │a │b │ └──┴──┘ ═ ║ █
+Greek:    αβγ ΑΒΓ Ωμέγα
+Russian:  Привет, мир
+Japanese: こんにちは, カタカナ, 日本語
+Emoji:    ✓ ✗ ★ 😀 👍🏽
+Tabs:	one	two	three
+End.
+utf8.datatype test file (UTF-8)
+
+Swedish:  Räksmörgås, Ångström, Öland, Åre
+German:   Grüße aus Köln, Straße, Äpfel
+French:   café, crème brûlée, garçon, Noël, œuvre
+Spanish:  ¿Dónde está el niño? ¡Olé!
+Polish:   Łódź, Gdańsk, Kraków, żółć (no Latin-1 letters: nearest)
+Czech:    Dvořák, Škoda, přítel
+Quotes:   “double” ‘single’ „low” «guillemets»
+Dashes:   en – dash, em — dash, ellipsis… minus −5
+Money:    €20, £5, ¥100, ¢50
+Signs:    © ® ™ ° ± × ÷ ½ ¼ µ ≤ ≥ ≠ → ←
+Bullets:  • one  • two  · three
+Boxes:    ┌──┬──┐ │a │b │ └──┴──┘ ═ ║ █
+Greek:    αβγ ΑΒΓ Ωμέγα
+Russian:  Привет, мир
+Japanese: こんにちは, カタカナ, 日本語
+Emoji:    ✓ ✗ ★ 😀 👍🏽
+Tabs:	one	two	three
+End.
+utf8.datatype test file (UTF-8)
+
+Swedish:  Räksmörgås, Ångström, Öland, Åre
+German:   Grüße aus Köln, Straße, Äpfel
+French:   café, crème brûlée, garçon, Noël, œuvre
+Spanish:  ¿Dónde está el niño? ¡Olé!
+Polish:   Łódź, Gdańsk, Kraków, żółć (no Latin-1 letters: nearest)
+Czech:    Dvořák, Škoda, přítel
+Quotes:   “double” ‘single’ „low” «guillemets»
+Dashes:   en – dash, em — dash, ellipsis… minus −5
+Money:    €20, £5, ¥100, ¢50
+Signs:    © ® ™ ° ± × ÷ ½ ¼ µ ≤ ≥ ≠ → ←
+Bullets:  • one  • two  · three
+Boxes:    ┌──┬──┐ │a │b │ └──┴──┘ ═ ║ █
+Greek:    αβγ ΑΒΓ Ωμέγα
+Russian:  Привет, мир
+Japanese: こんにちは, カタカナ, 日本語
+Emoji:    ✓ ✗ ★ 😀 👍🏽
+Tabs:	one	two	three
+End.
+utf8.datatype test file (UTF-8)
+
+Swedish:  Räksmörgås, Ångström, Öland, Åre
+German:   Grüße aus Köln, Straße, Äpfel
+French:   café, crème brûlée, garçon, Noël, œuvre
+Spanish:  ¿Dónde está el niño? ¡Olé!
+Polish:   Łódź, Gdańsk, Kraków, żółć (no Latin-1 letters: nearest)
+Czech:    Dvořák, Škoda, přítel
+Quotes:   “double” ‘single’ „low” «guillemets»
+Dashes:   en – dash, em — dash, ellipsis… minus −5
+Money:    €20, £5, ¥100, ¢50
+Signs:    © ® ™ ° ± × ÷ ½ ¼ µ ≤ ≥ ≠ → ←
+Bullets:  • one  • two  · three
+Boxes:    ┌──┬──┐ │a │b │ └──┴──┘ ═ ║ █
+Greek:    αβγ ΑΒΓ Ωμέγα
+Russian:  Привет, мир
+Japanese: こんにちは, カタカナ, 日本語
+Emoji:    ✓ ✗ ★ 😀 👍🏽
+Tabs:	one	two	three
+End.
+utf8.datatype test file (UTF-8)
+
+Swedish:  Räksmörgås, Ångström, Öland, Åre
+German:   Grüße aus Köln, Straße, Äpfel
+French:   café, crème brûlée, garçon, Noël, œuvre
+Spanish:  ¿Dónde está el niño? ¡Olé!
+Polish:   Łódź, Gdańsk, Kraków, żółć (no Latin-1 letters: nearest)
+Czech:    Dvořák, Škoda, přítel
+Quotes:   “double” ‘single’ „low” «guillemets»
+Dashes:   en – dash, em — dash, ellipsis… minus −5
+Money:    €20, £5, ¥100, ¢50
+Signs:    © ® ™ ° ± × ÷ ½ ¼ µ ≤ ≥ ≠ → ←
+Bullets:  • one  • two  · three
+Boxes:    ┌──┬──┐ │a │b │ └──┴──┘ ═ ║ █
+Greek:    αβγ ΑΒΓ Ωμέγα
+Russian:  Привет, мир
+Japanese: こんにちは, カタカナ, 日本語
+Emoji:    ✓ ✗ ★ 😀 👍🏽
+Tabs:	one	two	three
+End.
+utf8.datatype test file (UTF-8)
+
+Swedish:  Räksmörgås, Ångström, Öland, Åre
+German:   Grüße aus Köln, Straße, Äpfel
+French:   café, crème brûlée, garçon, Noël, œuvre
+Spanish:  ¿Dónde está el niño? ¡Olé!
+Polish:   Łódź, Gdańsk, Kraków, żółć (no Latin-1 letters: nearest)
+Czech:    Dvořák, Škoda, přítel
+Quotes:   “double” ‘single’ „low” «guillemets»
+Dashes:   en – dash, em — dash, ellipsis… minus −5
+Money:    €20, £5, ¥100, ¢50
+Signs:    © ® ™ ° ± × ÷ ½ ¼ µ ≤ ≥ ≠ → ←
+Bullets:  • one  • two  · three
+Boxes:    ┌──┬──┐ │a │b │ └──┴──┘ ═ ║ █
+Greek:    αβγ ΑΒΓ Ωμέγα
+Russian:  Привет, мир
+Japanese: こんにちは, カタカナ, 日本語
+Emoji:    ✓ ✗ ★ 😀 👍🏽
+Tabs:	one	two	three
+End.
+utf8.datatype test file (UTF-8)
+
+Swedish:  Räksmörgås, Ångström, Öland, Åre
+German:   Grüße aus Köln, Straße, Äpfel
+French:   café, crème brûlée, garçon, Noël, œuvre
+Spanish:  ¿Dónde está el niño? ¡Olé!
+Polish:   Łódź, Gdańsk, Kraków, żółć (no Latin-1 letters: nearest)
+Czech:    Dvořák, Škoda, přítel
+Quotes:   “double” ‘single’ „low” «guillemets»
+Dashes:   en – dash, em — dash, ellipsis… minus −5
+Money:    €20, £5, ¥100, ¢50
+Signs:    © ® ™ ° ± × ÷ ½ ¼ µ ≤ ≥ ≠ → ←
+Bullets:  • one  • two  · three
+Boxes:    ┌──┬──┐ │a │b │ └──┴──┘ ═ ║ █
+Greek:    αβγ ΑΒΓ Ωμέγα
+Russian:  Привет, мир
+Japanese: こんにちは, カタカナ, 日本語
+Emoji:    ✓ ✗ ★ 😀 👍🏽
+Tabs:	one	two	three
+End.
+utf8.datatype test file (UTF-8)
+
+Swedish:  Räksmörgås, Ångström, Öland, Åre
+German:   Grüße aus Köln, Straße, Äpfel
+French:   café, crème brûlée, garçon, Noël, œuvre
+Spanish:  ¿Dónde está el niño? ¡Olé!
+Polish:   Łódź, Gdańsk, Kraków, żółć (no Latin-1 letters: nearest)
+Czech:    Dvořák, Škoda, přítel
+Quotes:   “double” ‘single’ „low” «guillemets»
+Dashes:   en – dash, em — dash, ellipsis… minus −5
+Money:    €20, £5, ¥100, ¢50
+Signs:    © ® ™ ° ± × ÷ ½ ¼ µ ≤ ≥ ≠ → ←
+Bullets:  • one  • two  · three
+Boxes:    ┌──┬──┐ │a │b │ └──┴──┘ ═ ║ █
+Greek:    αβγ ΑΒΓ Ωμέγα
+Russian:  Привет, мир
+Japanese: こんにちは, カタカナ, 日本語
+Emoji:    ✓ ✗ ★ 😀 👍🏽
+Tabs:	one	two	three
+End.
+utf8.datatype test file (UTF-8)
+
+Swedish:  Räksmörgås, Ångström, Öland, Åre
+German:   Grüße aus Köln, Straße, Äpfel
+French:   café, crème brûlée, garçon, Noël, œuvre
+Spanish:  ¿Dónde está el niño? ¡Olé!
+Polish:   Łódź, Gdańsk, Kraków, żółć (no Latin-1 letters: nearest)
+Czech:    Dvořák, Škoda, přítel
+Quotes:   “double” ‘single’ „low” «guillemets»
+Dashes:   en – dash, em — dash, ellipsis… minus −5
+Money:    €20, £5, ¥100, ¢50
+Signs:    © ® ™ ° ± × ÷ ½ ¼ µ ≤ ≥ ≠ → ←
+Bullets:  • one  • two  · three
+Boxes:    ┌──┬──┐ │a │b │ └──┴──┘ ═ ║ █
+Greek:    αβγ ΑΒΓ Ωμέγα
+Russian:  Привет, мир
+Japanese: こんにちは, カタカナ, 日本語
+Emoji:    ✓ ✗ ★ 😀 👍🏽
+Tabs:	one	two	three
+End.
+utf8.datatype test file (UTF-8)
+
+Swedish:  Räksmörgås, Ångström, Öland, Åre
+German:   Grüße aus Köln, Straße, Äpfel
+French:   café, crème brûlée, garçon, Noël, œuvre
+Spanish:  ¿Dónde está el niño? ¡Olé!
+Polish:   Łódź, Gdańsk, Kraków, żółć (no Latin-1 letters: nearest)
+Czech:    Dvořák, Škoda, přítel
+Quotes:   “double” ‘single’ „low” «guillemets»
+Dashes:   en – dash, em — dash, ellipsis… minus −5
+Money:    €20, £5, ¥100, ¢50
+Signs:    © ® ™ ° ± × ÷ ½ ¼ µ ≤ ≥ ≠ → ←
+Bullets:  • one  • two  · three
+Boxes:    ┌──┬──┐ │a │b │ └──┴──┘ ═ ║ █
+Greek:    αβγ ΑΒΓ Ωμέγα
+Russian:  Привет, мир
+Japanese: こんにちは, カタカナ, 日本語
+Emoji:    ✓ ✗ ★ 😀 👍🏽
+Tabs:	one	two	three
+End.
+utf8.datatype test file (UTF-8)
+
+Swedish:  Räksmörgås, Ångström, Öland, Åre
+German:   Grüße aus Köln, Straße, Äpfel
+French:   café, crème brûlée, garçon, Noël, œuvre
+Spanish:  ¿Dónde está el niño? ¡Olé!
+Polish:   Łódź, Gdańsk, Kraków, żółć (no Latin-1 letters: nearest)
+Czech:    Dvořák, Škoda, přítel
+Quotes:   “double” ‘single’ „low” «guillemets»
+Dashes:   en – dash, em — dash, ellipsis… minus −5
+Money:    €20, £5, ¥100, ¢50
+Signs:    © ® ™ ° ± × ÷ ½ ¼ µ ≤ ≥ ≠ → ←
+Bullets:  • one  • two  · three
+Boxes:    ┌──┬──┐ │a │b │ └──┴──┘ ═ ║ █
+Greek:    αβγ ΑΒΓ Ωμέγα
+Russian:  Привет, мир
+Japanese: こんにちは, カタカナ, 日本語
+Emoji:    ✓ ✗ ★ 😀 👍🏽
+Tabs:	one	two	three
+End.
+utf8.datatype test file (UTF-8)
+
+Swedish:  Räksmörgås, Ångström, Öland, Åre
+German:   Grüße aus Köln, Straße, Äpfel
+French:   café, crème brûlée, garçon, Noël, œuvre
+Spanish:  ¿Dónde está el niño? ¡Olé!
+Polish:   Łódź, Gdańsk, Kraków, żółć (no Latin-1 letters: nearest)
+Czech:    Dvořák, Škoda, přítel
+Quotes:   “double” ‘single’ „low” «guillemets»
+Dashes:   en – dash, em — dash, ellipsis… minus −5
+Money:    €20, £5, ¥100, ¢50
+Signs:    © ® ™ ° ± × ÷ ½ ¼ µ ≤ ≥ ≠ → ←
+Bullets:  • one  • two  · three
+Boxes:    ┌──┬──┐ │a │b │ └──┴──┘ ═ ║ █
+Greek:    αβγ ΑΒΓ Ωμέγα
+Russian:  Привет, мир
+Japanese: こんにちは, カタカナ, 日本語
+Emoji:    ✓ ✗ ★ 😀 👍🏽
+Tabs:	one	two	three
+End.
+utf8.datatype test file (UTF-8)
+
+Swedish:  Räksmörgås, Ångström, Öland, Åre
+German:   Grüße aus Köln, Straße, Äpfel
+French:   café, crème brûlée, garçon, Noël, œuvre
+Spanish:  ¿Dónde está el niño? ¡Olé!
+Polish:   Łódź, Gdańsk, Kraków, żółć (no Latin-1 letters: nearest)
+Czech:    Dvořák, Škoda, přítel
+Quotes:   “double” ‘single’ „low” «guillemets»
+Dashes:   en – dash, em — dash, ellipsis… minus −5
+Money:    €20, £5, ¥100, ¢50
+Signs:    © ® ™ ° ± × ÷ ½ ¼ µ ≤ ≥ ≠ → ←
+Bullets:  • one  • two  · three
+Boxes:    ┌──┬──┐ │a │b │ └──┴──┘ ═ ║ █
+Greek:    αβγ ΑΒΓ Ωμέγα
+Russian:  Привет, мир
+Japanese: こんにちは, カタカナ, 日本語
+Emoji:    ✓ ✗ ★ 😀 👍🏽
+Tabs:	one	two	three
+End.
+utf8.datatype test file (UTF-8)
+
+Swedish:  Räksmörgås, Ångström, Öland, Åre
+German:   Grüße aus Köln, Straße, Äpfel
+French:   café, crème brûlée, garçon, Noël, œuvre
+Spanish:  ¿Dónde está el niño? ¡Olé!
+Polish:   Łódź, Gdańsk, Kraków, żółć (no Latin-1 letters: nearest)
+Czech:    Dvořák, Škoda, přítel
+Quotes:   “double” ‘single’ „low” «guillemets»
+Dashes:   en – dash, em — dash, ellipsis… minus −5
+Money:    €20, £5, ¥100, ¢50
+Signs:    © ® ™ ° ± × ÷ ½ ¼ µ ≤ ≥ ≠ → ←
+Bullets:  • one  • two  · three
+Boxes:    ┌──┬──┐ │a │b │ └──┴──┘ ═ ║ █
+Greek:    αβγ ΑΒΓ Ωμέγα
+Russian:  Привет, мир
+Japanese: こんにちは, カタカナ, 日本語
+Emoji:    ✓ ✗ ★ 😀 👍🏽
+Tabs:	one	two	three
+End.
+utf8.datatype test file (UTF-8)
+
+Swedish:  Räksmörgås, Ångström, Öland, Åre
+German:   Grüße aus Köln, Straße, Äpfel
+French:   café, crème brûlée, garçon, Noël, œuvre
+Spanish:  ¿Dónde está el niño? ¡Olé!
+Polish:   Łódź, Gdańsk, Kraków, żółć (no Latin-1 letters: nearest)
+Czech:    Dvořák, Škoda, přítel
+Quotes:   “double” ‘single’ „low” «guillemets»
+Dashes:   en – dash, em — dash, ellipsis… minus −5
+Money:    €20, £5, ¥100, ¢50
+Signs:    © ® ™ ° ± × ÷ ½ ¼ µ ≤ ≥ ≠ → ←
+Bullets:  • one  • two  · three
+Boxes:    ┌──┬──┐ │a │b │ └──┴──┘ ═ ║ █
+Greek:    αβγ ΑΒΓ Ωμέγα
+Russian:  Привет, мир
+Japanese: こんにちは, カタカナ, 日本語
+Emoji:    ✓ ✗ ★ 😀 👍🏽
+Tabs:	one	two	three
+End.
+utf8.datatype test file (UTF-8)
+
+Swedish:  Räksmörgås, Ångström, Öland, Åre
+German:   Grüße aus Köln, Straße, Äpfel
+French:   café, crème brûlée, garçon, Noël, œuvre
+Spanish:  ¿Dónde está el niño? ¡Olé!
+Polish:   Łódź, Gdańsk, Kraków, żółć (no Latin-1 letters: nearest)
+Czech:    Dvořák, Škoda, přítel
+Quotes:   “double” ‘single’ „low” «guillemets»
+Dashes:   en – dash, em — dash, ellipsis… minus −5
+Money:    €20, £5, ¥100, ¢50
+Signs:    © ® ™ ° ± × ÷ ½ ¼ µ ≤ ≥ ≠ → ←
+Bullets:  • one  • two  · three
+Boxes:    ┌──┬──┐ │a │b │ └──┴──┘ ═ ║ █
+Greek:    αβγ ΑΒΓ Ωμέγα
+Russian:  Привет, мир
+Japanese: こんにちは, カタカナ, 日本語
+Emoji:    ✓ ✗ ★ 😀 👍🏽
+Tabs:	one	two	three
+End.
+utf8.datatype test file (UTF-8)
+
+Swedish:  Räksmörgås, Ångström, Öland, Åre
+German:   Grüße aus Köln, Straße, Äpfel
+French:   café, crème brûlée, garçon, Noël, œuvre
+Spanish:  ¿Dónde está el niño? ¡Olé!
+Polish:   Łódź, Gdańsk, Kraków, żółć (no Latin-1 letters: nearest)
+Czech:    Dvořák, Škoda, přítel
+Quotes:   “double” ‘single’ „low” «guillemets»
+Dashes:   en – dash, em — dash, ellipsis… minus −5
+Money:    €20, £5, ¥100, ¢50
+Signs:    © ® ™ ° ± × ÷ ½ ¼ µ ≤ ≥ ≠ → ←
+Bullets:  • one  • two  · three
+Boxes:    ┌──┬──┐ │a │b │ └──┴──┘ ═ ║ █
+Greek:    αβγ ΑΒΓ Ωμέγα
+Russian:  Привет, мир
+Japanese: こんにちは, カタカナ, 日本語
+Emoji:    ✓ ✗ ★ 😀 👍🏽
+Tabs:	one	two	three
+End.
+utf8.datatype test file (UTF-8)
+
+Swedish:  Räksmörgås, Ångström, Öland, Åre
+German:   Grüße aus Köln, Straße, Äpfel
+French:   café, crème brûlée, garçon, Noël, œuvre
+Spanish:  ¿Dónde está el niño? ¡Olé!
+Polish:   Łódź, Gdańsk, Kraków, żółć (no Latin-1 letters: nearest)
+Czech:    Dvořák, Škoda, přítel
+Quotes:   “double” ‘single’ „low” «guillemets»
+Dashes:   en – dash, em — dash, ellipsis… minus −5
+Money:    €20, £5, ¥100, ¢50
+Signs:    © ® ™ ° ± × ÷ ½ ¼ µ ≤ ≥ ≠ → ←
+Bullets:  • one  • two  · three
+Boxes:    ┌──┬──┐ │a │b │ └──┴──┘ ═ ║ █
+Greek:    αβγ ΑΒΓ Ωμέγα
+Russian:  Привет, мир
+Japanese: こんにちは, カタカナ, 日本語
+Emoji:    ✓ ✗ ★ 😀 👍🏽
+Tabs:	one	two	three
+End.
+utf8.datatype test file (UTF-8)
+
+Swedish:  Räksmörgås, Ångström, Öland, Åre
+German:   Grüße aus Köln, Straße, Äpfel
+French:   café, crème brûlée, garçon, Noël, œuvre
+Spanish:  ¿Dónde está el niño? ¡Olé!
+Polish:   Łódź, Gdańsk, Kraków, żółć (no Latin-1 letters: nearest)
+Czech:    Dvořák, Škoda, přítel
+Quotes:   “double” ‘single’ „low” «guillemets»
+Dashes:   en – dash, em — dash, ellipsis… minus −5
+Money:    €20, £5, ¥100, ¢50
+Signs:    © ® ™ ° ± × ÷ ½ ¼ µ ≤ ≥ ≠ → ←
+Bullets:  • one  • two  · three
+Boxes:    ┌──┬──┐ │a │b │ └──┴──┘ ═ ║ █
+Greek:    αβγ ΑΒΓ Ωμέγα
+Russian:  Привет, мир
+Japanese: こんにちは, カタカナ, 日本語
+Emoji:    ✓ ✗ ★ 😀 👍🏽
+Tabs:	one	two	three
+End.
+utf8.datatype test file (UTF-8)
+
+Swedish:  Räksmörgås, Ångström, Öland, Åre
+German:   Grüße aus Köln, Straße, Äpfel
+French:   café, crème brûlée, garçon, Noël, œuvre
+Spanish:  ¿Dónde está el niño? ¡Olé!
+Polish:   Łódź, Gdańsk, Kraków, żółć (no Latin-1 letters: nearest)
+Czech:    Dvořák, Škoda, přítel
+Quotes:   “double” ‘single’ „low” «guillemets»
+Dashes:   en – dash, em — dash, ellipsis… minus −5
+Money:    €20, £5, ¥100, ¢50
+Signs:    © ® ™ ° ± × ÷ ½ ¼ µ ≤ ≥ ≠ → ←
+Bullets:  • one  • two  · three
+Boxes:    ┌──┬──┐ │a │b │ └──┴──┘ ═ ║ █
+Greek:    αβγ ΑΒΓ Ωμέγα
+Russian:  Привет, мир
+Japanese: こんにちは, カタカナ, 日本語
+Emoji:    ✓ ✗ ★ 😀 👍🏽
+Tabs:	one	two	three
+End.
+utf8.datatype test file (UTF-8)
+
+Swedish:  Räksmörgås, Ångström, Öland, Åre
+German:   Grüße aus Köln, Straße, Äpfel
+French:   café, crème brûlée, garçon, Noël, œuvre
+Spanish:  ¿Dónde está el niño? ¡Olé!
+Polish:   Łódź, Gdańsk, Kraków, żółć (no Latin-1 letters: nearest)
+Czech:    Dvořák, Škoda, přítel
+Quotes:   “double” ‘single’ „low” «guillemets»
+Dashes:   en – dash, em — dash, ellipsis… minus −5
+Money:    €20, £5, ¥100, ¢50
+Signs:    © ® ™ ° ± × ÷ ½ ¼ µ ≤ ≥ ≠ → ←
+Bullets:  • one  • two  · three
+Boxes:    ┌──┬──┐ │a │b │ └──┴──┘ ═ ║ █
+Greek:    αβγ ΑΒΓ Ωμέγα
+Russian:  Привет, мир
+Japanese: こんにちは, カタカナ, 日本語
+Emoji:    ✓ ✗ ★ 😀 👍🏽
+Tabs:	one	two	three
+End.
+utf8.datatype test file (UTF-8)
+
+Swedish:  Räksmörgås, Ångström, Öland, Åre
+German:   Grüße aus Köln, Straße, Äpfel
+French:   café, crème brûlée, garçon, Noël, œuvre
+Spanish:  ¿Dónde está el niño? ¡Olé!
+Polish:   Łódź, Gdańsk, Kraków, żółć (no Latin-1 letters: nearest)
+Czech:    Dvořák, Škoda, přítel
+Quotes:   “double” ‘single’ „low” «guillemets»
+Dashes:   en – dash, em — dash, ellipsis… minus −5
+Money:    €20, £5, ¥100, ¢50
+Signs:    © ® ™ ° ± × ÷ ½ ¼ µ ≤ ≥ ≠ → ←
+Bullets:  • one  • two  · three
+Boxes:    ┌──┬──┐ │a │b │ └──┴──┘ ═ ║ █
+Greek:    αβγ ΑΒΓ Ωμέγα
+Russian:  Привет, мир
+Japanese: こんにちは, カタカナ, 日本語
+Emoji:    ✓ ✗ ★ 😀 👍🏽
+Tabs:	one	two	three
+End.
+utf8.datatype test file (UTF-8)
+
+Swedish:  Räksmörgås, Ångström, Öland, Åre
+German:   Grüße aus Köln, Straße, Äpfel
+French:   café, crème brûlée, garçon, Noël, œuvre
+Spanish:  ¿Dónde está el niño? ¡Olé!
+Polish:   Łódź, Gdańsk, Kraków, żółć (no Latin-1 letters: nearest)
+Czech:    Dvořák, Škoda, přítel
+Quotes:   “double” ‘single’ „low” «guillemets»
+Dashes:   en – dash, em — dash, ellipsis… minus −5
+Money:    €20, £5, ¥100, ¢50
+Signs:    © ® ™ ° ± × ÷ ½ ¼ µ ≤ ≥ ≠ → ←
+Bullets:  • one  • two  · three
+Boxes:    ┌──┬──┐ │a │b │ └──┴──┘ ═ ║ █
+Greek:    αβγ ΑΒΓ Ωμέγα
+Russian:  Привет, мир
+Japanese: こんにちは, カタカナ, 日本語
+Emoji:    ✓ ✗ ★ 😀 👍🏽
+Tabs:	one	two	three
+End.
+utf8.datatype test file (UTF-8)
+
+Swedish:  Räksmörgås, Ångström, Öland, Åre
+German:   Grüße aus Köln, Straße, Äpfel
+French:   café, crème brûlée, garçon, Noël, œuvre
+Spanish:  ¿Dónde está el niño? ¡Olé!
+Polish:   Łódź, Gdańsk, Kraków, żółć (no Latin-1 letters: nearest)
+Czech:    Dvořák, Škoda, přítel
+Quotes:   “double” ‘single’ „low” «guillemets»
+Dashes:   en – dash, em — dash, ellipsis… minus −5
+Money:    €20, £5, ¥100, ¢50
+Signs:    © ® ™ ° ± × ÷ ½ ¼ µ ≤ ≥ ≠ → ←
+Bullets:  • one  • two  · three
+Boxes:    ┌──┬──┐ │a │b │ └──┴──┘ ═ ║ █
+Greek:    αβγ ΑΒΓ Ωμέγα
+Russian:  Привет, мир
+Japanese: こんにちは, カタカナ, 日本語
+Emoji:    ✓ ✗ ★ 😀 👍🏽
+Tabs:	one	two	three
+End.
+utf8.datatype test file (UTF-8)
+
+Swedish:  Räksmörgås, Ångström, Öland, Åre
+German:   Grüße aus Köln, Straße, Äpfel
+French:   café, crème brûlée, garçon, Noël, œuvre
+Spanish:  ¿Dónde está el niño? ¡Olé!
+Polish:   Łódź, Gdańsk, Kraków, żółć (no Latin-1 letters: nearest)
+Czech:    Dvořák, Škoda, přítel
+Quotes:   “double” ‘single’ „low” «guillemets»
+Dashes:   en – dash, em — dash, ellipsis… minus −5
+Money:    €20, £5, ¥100, ¢50
+Signs:    © ® ™ ° ± × ÷ ½ ¼ µ ≤ ≥ ≠ → ←
+Bullets:  • one  • two  · three
+Boxes:    ┌──┬──┐ │a │b │ └──┴──┘ ═ ║ █
+Greek:    αβγ ΑΒΓ Ωμέγα
+Russian:  Привет, мир
+Japanese: こんにちは, カタカナ, 日本語
+Emoji:    ✓ ✗ ★ 😀 👍🏽
+Tabs:	one	two	three
+End.
+utf8.datatype test file (UTF-8)
+
+Swedish:  Räksmörgås, Ångström, Öland, Åre
+German:   Grüße aus Köln, Straße, Äpfel
+French:   café, crème brûlée, garçon, Noël, œuvre
+Spanish:  ¿Dónde está el niño? ¡Olé!
+Polish:   Łódź, Gdańsk, Kraków, żółć (no Latin-1 letters: nearest)
+Czech:    Dvořák, Škoda, přítel
+Quotes:   “double” ‘single’ „low” «guillemets»
+Dashes:   en – dash, em — dash, ellipsis… minus −5
+Money:    €20, £5, ¥100, ¢50
+Signs:    © ® ™ ° ± × ÷ ½ ¼ µ ≤ ≥ ≠ → ←
+Bullets:  • one  • two  · three
+Boxes:    ┌──┬──┐ │a │b │ └──┴──┘ ═ ║ █
+Greek:    αβγ ΑΒΓ Ωμέγα
+Russian:  Привет, мир
+Japanese: こんにちは, カタカナ, 日本語
+Emoji:    ✓ ✗ ★ 😀 👍🏽
+Tabs:	one	two	three
+End.
+utf8.datatype test file (UTF-8)
+
+Swedish:  Räksmörgås, Ångström, Öland, Åre
+German:   Grüße aus Köln, Straße, Äpfel
+French:   café, crème brûlée, garçon, Noël, œuvre
+Spanish:  ¿Dónde está el niño? ¡Olé!
+Polish:   Łódź, Gdańsk, Kraków, żółć (no Latin-1 letters: nearest)
+Czech:    Dvořák, Škoda, přítel
+Quotes:   “double” ‘single’ „low” «guillemets»
+Dashes:   en – dash, em — dash, ellipsis… minus −5
+Money:    €20, £5, ¥100, ¢50
+Signs:    © ® ™ ° ± × ÷ ½ ¼ µ ≤ ≥ ≠ → ←
+Bullets:  • one  • two  · three
+Boxes:    ┌──┬──┐ │a │b │ └──┴──┘ ═ ║ █
+Greek:    αβγ ΑΒΓ Ωμέγα
+Russian:  Привет, мир
+Japanese: こんにちは, カタカナ, 日本語
+Emoji:    ✓ ✗ ★ 😀 👍🏽
+Tabs:	one	two	three
+End.
+utf8.datatype test file (UTF-8)
+
+Swedish:  Räksmörgås, Ångström, Öland, Åre
+German:   Grüße aus Köln, Straße, Äpfel
+French:   café, crème brûlée, garçon, Noël, œuvre
+Spanish:  ¿Dónde está el niño? ¡Olé!
+Polish:   Łódź, Gdańsk, Kraków, żółć (no Latin-1 letters: nearest)
+Czech:    Dvořák, Škoda, přítel
+Quotes:   “double” ‘single’ „low” «guillemets»
+Dashes:   en – dash, em — dash, ellipsis… minus −5
+Money:    €20, £5, ¥100, ¢50
+Signs:    © ® ™ ° ± × ÷ ½ ¼ µ ≤ ≥ ≠ → ←
+Bullets:  • one  • two  · three
+Boxes:    ┌──┬──┐ │a │b │ └──┴──┘ ═ ║ █
+Greek:    αβγ ΑΒΓ Ωμέγα
+Russian:  Привет, мир
+Japanese: こんにちは, カタカナ, 日本語
+Emoji:    ✓ ✗ ★ 😀 👍🏽
+Tabs:	one	two	three
+End.
+utf8.datatype test file (UTF-8)
+
+Swedish:  Räksmörgås, Ångström, Öland, Åre
+German:   Grüße aus Köln, Straße, Äpfel
+French:   café, crème brûlée, garçon, Noël, œuvre
+Spanish:  ¿Dónde está el niño? ¡Olé!
+Polish:   Łódź, Gdańsk, Kraków, żółć (no Latin-1 letters: nearest)
+Czech:    Dvořák, Škoda, přítel
+Quotes:   “double” ‘single’ „low” «guillemets»
+Dashes:   en – dash, em — dash, ellipsis… minus −5
+Money:    €20, £5, ¥100, ¢50
+Signs:    © ® ™ ° ± × ÷ ½ ¼ µ ≤ ≥ ≠ → ←
+Bullets:  • one  • two  · three
+Boxes:    ┌──┬──┐ │a │b │ └──┴──┘ ═ ║ █
+Greek:    αβγ ΑΒΓ Ωμέγα
+Russian:  Привет, мир
+Japanese: こんにちは, カタカナ, 日本語
+Emoji:    ✓ ✗ ★ 😀 👍🏽
+Tabs:	one	two	three
+End.
+utf8.datatype test file (UTF-8)
+
+Swedish:  Räksmörgås, Ångström, Öland, Åre
+German:   Grüße aus Köln, Straße, Äpfel
+French:   café, crème brûlée, garçon, Noël, œuvre
+Spanish:  ¿Dónde está el niño? ¡Olé!
+Polish:   Łódź, Gdańsk, Kraków, żółć (no Latin-1 letters: nearest)
+Czech:    Dvořák, Škoda, přítel
+Quotes:   “double” ‘single’ „low” «guillemets»
+Dashes:   en – dash, em — dash, ellipsis… minus −5
+Money:    €20, £5, ¥100, ¢50
+Signs:    © ® ™ ° ± × ÷ ½ ¼ µ ≤ ≥ ≠ → ←
+Bullets:  • one  • two  · three
+Boxes:    ┌──┬──┐ │a │b │ └──┴──┘ ═ ║ █
+Greek:    αβγ ΑΒΓ Ωμέγα
+Russian:  Привет, мир
+Japanese: こんにちは, カタカナ, 日本語
+Emoji:    ✓ ✗ ★ 😀 👍🏽
+Tabs:	one	two	three
+End.
+utf8.datatype test file (UTF-8)
+
+Swedish:  Räksmörgås, Ångström, Öland, Åre
+German:   Grüße aus Köln, Straße, Äpfel
+French:   café, crème brûlée, garçon, Noël, œuvre
+Spanish:  ¿Dónde está el niño? ¡Olé!
+Polish:   Łódź, Gdańsk, Kraków, żółć (no Latin-1 letters: nearest)
+Czech:    Dvořák, Škoda, přítel
+Quotes:   “double” ‘single’ „low” «guillemets»
+Dashes:   en – dash, em — dash, ellipsis… minus −5
+Money:    €20, £5, ¥100, ¢50
+Signs:    © ® ™ ° ± × ÷ ½ ¼ µ ≤ ≥ ≠ → ←
+Bullets:  • one  • two  · three
+Boxes:    ┌──┬──┐ │a │b │ └──┴──┘ ═ ║ █
+Greek:    αβγ ΑΒΓ Ωμέγα
+Russian:  Привет, мир
+Japanese: こんにちは, カタカナ, 日本語
+Emoji:    ✓ ✗ ★ 😀 👍🏽
+Tabs:	one	two	three
+End.
+utf8.datatype test file (UTF-8)
+
+Swedish:  Räksmörgås, Ångström, Öland, Åre
+German:   Grüße aus Köln, Straße, Äpfel
+French:   café, crème brûlée, garçon, Noël, œuvre
+Spanish:  ¿Dónde está el niño? ¡Olé!
+Polish:   Łódź, Gdańsk, Kraków, żółć (no Latin-1 letters: nearest)
+Czech:    Dvořák, Škoda, přítel
+Quotes:   “double” ‘single’ „low” «guillemets»
+Dashes:   en – dash, em — dash, ellipsis… minus −5
+Money:    €20, £5, ¥100, ¢50
+Signs:    © ® ™ ° ± × ÷ ½ ¼ µ ≤ ≥ ≠ → ←
+Bullets:  • one  • two  · three
+Boxes:    ┌──┬──┐ │a │b │ └──┴──┘ ═ ║ █
+Greek:    αβγ ΑΒΓ Ωμέγα
+Russian:  Привет, мир
+Japanese: こんにちは, カタカナ, 日本語
+Emoji:    ✓ ✗ ★ 😀 👍🏽
+Tabs:	one	two	three
+End.
+utf8.datatype test file (UTF-8)
+
+Swedish:  Räksmörgås, Ångström, Öland, Åre
+German:   Grüße aus Köln, Straße, Äpfel
+French:   café, crème brûlée, garçon, Noël, œuvre
+Spanish:  ¿Dónde está el niño? ¡Olé!
+Polish:   Łódź, Gdańsk, Kraków, żółć (no Latin-1 letters: nearest)
+Czech:    Dvořák, Škoda, přítel
+Quotes:   “double” ‘single’ „low” «guillemets»
+Dashes:   en – dash, em — dash, ellipsis… minus −5
+Money:    €20, £5, ¥100, ¢50
+Signs:    © ® ™ ° ± × ÷ ½ ¼ µ ≤ ≥ ≠ → ←
+Bullets:  • one  • two  · three
+Boxes:    ┌──┬──┐ │a │b │ └──┴──┘ ═ ║ █
+Greek:    αβγ ΑΒΓ Ωμέγα
+Russian:  Привет, мир
+Japanese: こんにちは, カタカナ, 日本語
+Emoji:    ✓ ✗ ★ 😀 👍🏽
+Tabs:	one	two	three
+End.
+utf8.datatype test file (UTF-8)
+
+Swedish:  Räksmörgås, Ångström, Öland, Åre
+German:   Grüße aus Köln, Straße, Äpfel
+French:   café, crème brûlée, garçon, Noël, œuvre
+Spanish:  ¿Dónde está el niño? ¡Olé!
+Polish:   Łódź, Gdańsk, Kraków, żółć (no Latin-1 letters: nearest)
+Czech:    Dvořák, Škoda, přítel
+Quotes:   “double” ‘single’ „low” «guillemets»
+Dashes:   en – dash, em — dash, ellipsis… minus −5
+Money:    €20, £5, ¥100, ¢50
+Signs:    © ® ™ ° ± × ÷ ½ ¼ µ ≤ ≥ ≠ → ←
+Bullets:  • one  • two  · three
+Boxes:    ┌──┬──┐ │a │b │ └──┴──┘ ═ ║ █
+Greek:    αβγ ΑΒΓ Ωμέγα
+Russian:  Привет, мир
+Japanese: こんにちは, カタカナ, 日本語
+Emoji:    ✓ ✗ ★ 😀 👍🏽
+Tabs:	one	two	three
+End.
+utf8.datatype test file (UTF-8)
+
+Swedish:  Räksmörgås, Ångström, Öland, Åre
+German:   Grüße aus Köln, Straße, Äpfel
+French:   café, crème brûlée, garçon, Noël, œuvre
+Spanish:  ¿Dónde está el niño? ¡Olé!
+Polish:   Łódź, Gdańsk, Kraków, żółć (no Latin-1 letters: nearest)
+Czech:    Dvořák, Škoda, přítel
+Quotes:   “double” ‘single’ „low” «guillemets»
+Dashes:   en – dash, em — dash, ellipsis… minus −5
+Money:    €20, £5, ¥100, ¢50
+Signs:    © ® ™ ° ± × ÷ ½ ¼ µ ≤ ≥ ≠ → ←
+Bullets:  • one  • two  · three
+Boxes:    ┌──┬──┐ │a │b │ └──┴──┘ ═ ║ █
+Greek:    αβγ ΑΒΓ Ωμέγα
+Russian:  Привет, мир
+Japanese: こんにちは, カタカナ, 日本語
+Emoji:    ✓ ✗ ★ 😀 👍🏽
+Tabs:	one	two	three
+End.
+utf8.datatype test file (UTF-8)
+
+Swedish:  Räksmörgås, Ångström, Öland, Åre
+German:   Grüße aus Köln, Straße, Äpfel
+French:   café, crème brûlée, garçon, Noël, œuvre
+Spanish:  ¿Dónde está el niño? ¡Olé!
+Polish:   Łódź, Gdańsk, Kraków, żółć (no Latin-1 letters: nearest)
+Czech:    Dvořák, Škoda, přítel
+Quotes:   “double” ‘single’ „low” «guillemets»
+Dashes:   en – dash, em — dash, ellipsis… minus −5
+Money:    €20, £5, ¥100, ¢50
+Signs:    © ® ™ ° ± × ÷ ½ ¼ µ ≤ ≥ ≠ → ←
+Bullets:  • one  • two  · three
+Boxes:    ┌──┬──┐ │a │b │ └──┴──┘ ═ ║ █
+Greek:    αβγ ΑΒΓ Ωμέγα
+Russian:  Привет, мир
+Japanese: こんにちは, カタカナ, 日本語
+Emoji:    ✓ ✗ ★ 😀 👍🏽
+Tabs:	one	two	three
+End.
+utf8.datatype test file (UTF-8)
+
+Swedish:  Räksmörgås, Ångström, Öland, Åre
+German:   Grüße aus Köln, Straße, Äpfel
+French:   café, crème brûlée, garçon, Noël, œuvre
+Spanish:  ¿Dónde está el niño? ¡Olé!
+Polish:   Łódź, Gdańsk, Kraków, żółć (no Latin-1 letters: nearest)
+Czech:    Dvořák, Škoda, přítel
+Quotes:   “double” ‘single’ „low” «guillemets»
+Dashes:   en – dash, em — dash, ellipsis… minus −5
+Money:    €20, £5, ¥100, ¢50
+Signs:    © ® ™ ° ± × ÷ ½ ¼ µ ≤ ≥ ≠ → ←
+Bullets:  • one  • two  · three
+Boxes:    ┌──┬──┐ │a │b │ └──┴──┘ ═ ║ █
+Greek:    αβγ ΑΒΓ Ωμέγα
+Russian:  Привет, мир
+Japanese: こんにちは, カタカナ, 日本語
+Emoji:    ✓ ✗ ★ 😀 👍🏽
+Tabs:	one	two	three
+End.
+utf8.datatype test file (UTF-8)
+
+Swedish:  Räksmörgås, Ångström, Öland, Åre
+German:   Grüße aus Köln, Straße, Äpfel
+French:   café, crème brûlée, garçon, Noël, œuvre
+Spanish:  ¿Dónde está el niño? ¡Olé!
+Polish:   Łódź, Gdańsk, Kraków, żółć (no Latin-1 letters: nearest)
+Czech:    Dvořák, Škoda, přítel
+Quotes:   “double” ‘single’ „low” «guillemets»
+Dashes:   en – dash, em — dash, ellipsis… minus −5
+Money:    €20, £5, ¥100, ¢50
+Signs:    © ® ™ ° ± × ÷ ½ ¼ µ ≤ ≥ ≠ → ←
+Bullets:  • one  • two  · three
+Boxes:    ┌──┬──┐ │a │b │ └──┴──┘ ═ ║ █
+Greek:    αβγ ΑΒΓ Ωμέγα
+Russian:  Привет, мир
+Japanese: こんにちは, カタカナ, 日本語
+Emoji:    ✓ ✗ ★ 😀 👍🏽
+Tabs:	one	two	three
+End.
+utf8.datatype test file (UTF-8)
+
+Swedish:  Räksmörgås, Ångström, Öland, Åre
+German:   Grüße aus Köln, Straße, Äpfel
+French:   café, crème brûlée, garçon, Noël, œuvre
+Spanish:  ¿Dónde está el niño? ¡Olé!
+Polish:   Łódź, Gdańsk, Kraków, żółć (no Latin-1 letters: nearest)
+Czech:    Dvořák, Škoda, přítel
+Quotes:   “double” ‘single’ „low” «guillemets»
+Dashes:   en – dash, em — dash, ellipsis… minus −5
+Money:    €20, £5, ¥100, ¢50
+Signs:    © ® ™ ° ± × ÷ ½ ¼ µ ≤ ≥ ≠ → ←
+Bullets:  • one  • two  · three
+Boxes:    ┌──┬──┐ │a │b │ └──┴──┘ ═ ║ █
+Greek:    αβγ ΑΒΓ Ωμέγα
+Russian:  Привет, мир
+Japanese: こんにちは, カタカナ, 日本語
+Emoji:    ✓ ✗ ★ 😀 👍🏽
+Tabs:	one	two	three
+End.
+utf8.datatype test file (UTF-8)
+
+Swedish:  Räksmörgås, Ångström, Öland, Åre
+German:   Grüße aus Köln, Straße, Äpfel
+French:   café, crème brûlée, garçon, Noël, œuvre
+Spanish:  ¿Dónde está el niño? ¡Olé!
+Polish:   Łódź, Gdańsk, Kraków, żółć (no Latin-1 letters: nearest)
+Czech:    Dvořák, Škoda, přítel
+Quotes:   “double” ‘single’ „low” «guillemets»
+Dashes:   en – dash, em — dash, ellipsis… minus −5
+Money:    €20, £5, ¥100, ¢50
+Signs:    © ® ™ ° ± × ÷ ½ ¼ µ ≤ ≥ ≠ → ←
+Bullets:  • one  • two  · three
+Boxes:    ┌──┬──┐ │a │b │ └──┴──┘ ═ ║ █
+Greek:    αβγ ΑΒΓ Ωμέγα
+Russian:  Привет, мир
+Japanese: こんにちは, カタカナ, 日本語
+Emoji:    ✓ ✗ ★ 😀 👍🏽
+Tabs:	one	two	three
+End.
+utf8.datatype test file (UTF-8)
+
+Swedish:  Räksmörgås, Ångström, Öland, Åre
+German:   Grüße aus Köln, Straße, Äpfel
+French:   café, crème brûlée, garçon, Noël, œuvre
+Spanish:  ¿Dónde está el niño? ¡Olé!
+Polish:   Łódź, Gdańsk, Kraków, żółć (no Latin-1 letters: nearest)
+Czech:    Dvořák, Škoda, přítel
+Quotes:   “double” ‘single’ „low” «guillemets»
+Dashes:   en – dash, em — dash, ellipsis… minus −5
+Money:    €20, £5, ¥100, ¢50
+Signs:    © ® ™ ° ± × ÷ ½ ¼ µ ≤ ≥ ≠ → ←
+Bullets:  • one  • two  · three
+Boxes:    ┌──┬──┐ │a │b │ └──┴──┘ ═ ║ █
+Greek:    αβγ ΑΒΓ Ωμέγα
+Russian:  Привет, мир
+Japanese: こんにちは, カタカナ, 日本語
+Emoji:    ✓ ✗ ★ 😀 👍🏽
+Tabs:	one	two	three
+End.
+utf8.datatype test file (UTF-8)
+
+Swedish:  Räksmörgås, Ångström, Öland, Åre
+German:   Grüße aus Köln, Straße, Äpfel
+French:   café, crème brûlée, garçon, Noël, œuvre
+Spanish:  ¿Dónde está el niño? ¡Olé!
+Polish:   Łódź, Gdańsk, Kraków, żółć (no Latin-1 letters: nearest)
+Czech:    Dvořák, Škoda, přítel
+Quotes:   “double” ‘single’ „low” «guillemets»
+Dashes:   en – dash, em — dash, ellipsis… minus −5
+Money:    €20, £5, ¥100, ¢50
+Signs:    © ® ™ ° ± × ÷ ½ ¼ µ ≤ ≥ ≠ → ←
+Bullets:  • one  • two  · three
+Boxes:    ┌──┬──┐ │a │b │ └──┴──┘ ═ ║ █
+Greek:    αβγ ΑΒΓ Ωμέγα
+Russian:  Привет, мир
+Japanese: こんにちは, カタカナ, 日本語
+Emoji:    ✓ ✗ ★ 😀 👍🏽
+Tabs:	one	two	three
+End.
+utf8.datatype test file (UTF-8)
+
+Swedish:  Räksmörgås, Ångström, Öland, Åre
+German:   Grüße aus Köln, Straße, Äpfel
+French:   café, crème brûlée, garçon, Noël, œuvre
+Spanish:  ¿Dónde está el niño? ¡Olé!
+Polish:   Łódź, Gdańsk, Kraków, żółć (no Latin-1 letters: nearest)
+Czech:    Dvořák, Škoda, přítel
+Quotes:   “double” ‘single’ „low” «guillemets»
+Dashes:   en – dash, em — dash, ellipsis… minus −5
+Money:    €20, £5, ¥100, ¢50
+Signs:    © ® ™ ° ± × ÷ ½ ¼ µ ≤ ≥ ≠ → ←
+Bullets:  • one  • two  · three
+Boxes:    ┌──┬──┐ │a │b │ └──┴──┘ ═ ║ █
+Greek:    αβγ ΑΒΓ Ωμέγα
+Russian:  Привет, мир
+Japanese: こんにちは, カタカナ, 日本語
+Emoji:    ✓ ✗ ★ 😀 👍🏽
+Tabs:	one	two	three
+End.
+utf8.datatype test file (UTF-8)
+
+Swedish:  Räksmörgås, Ångström, Öland, Åre
+German:   Grüße aus Köln, Straße, Äpfel
+French:   café, crème brûlée, garçon, Noël, œuvre
+Spanish:  ¿Dónde está el niño? ¡Olé!
+Polish:   Łódź, Gdańsk, Kraków, żółć (no Latin-1 letters: nearest)
+Czech:    Dvořák, Škoda, přítel
+Quotes:   “double” ‘single’ „low” «guillemets»
+Dashes:   en – dash, em — dash, ellipsis… minus −5
+Money:    €20, £5, ¥100, ¢50
+Signs:    © ® ™ ° ± × ÷ ½ ¼ µ ≤ ≥ ≠ → ←
+Bullets:  • one  • two  · three
+Boxes:    ┌──┬──┐ │a │b │ └──┴──┘ ═ ║ █
+Greek:    αβγ ΑΒΓ Ωμέγα
+Russian:  Привет, мир
+Japanese: こんにちは, カタカナ, 日本語
+Emoji:    ✓ ✗ ★ 😀 👍🏽
+Tabs:	one	two	three
+End.
+utf8.datatype test file (UTF-8)
+
+Swedish:  Räksmörgås, Ångström, Öland, Åre
+German:   Grüße aus Köln, Straße, Äpfel
+French:   café, crème brûlée, garçon, Noël, œuvre
+Spanish:  ¿Dónde está el niño? ¡Olé!
+Polish:   Łódź, Gdańsk, Kraków, żółć (no Latin-1 letters: nearest)
+Czech:    Dvořák, Škoda, přítel
+Quotes:   “double” ‘single’ „low” «guillemets»
+Dashes:   en – dash, em — dash, ellipsis… minus −5
+Money:    €20, £5, ¥100, ¢50
+Signs:    © ® ™ ° ± × ÷ ½ ¼ µ ≤ ≥ ≠ → ←
+Bullets:  • one  • two  · three
+Boxes:    ┌──┬──┐ │a │b │ └──┴──┘ ═ ║ █
+Greek:    αβγ ΑΒΓ Ωμέγα
+Russian:  Привет, мир
+Japanese: こんにちは, カタカナ, 日本語
+Emoji:    ✓ ✗ ★ 😀 👍🏽
+Tabs:	one	two	three
+End.
+utf8.datatype test file (UTF-8)
+
+Swedish:  Räksmörgås, Ångström, Öland, Åre
+German:   Grüße aus Köln, Straße, Äpfel
+French:   café, crème brûlée, garçon, Noël, œuvre
+Spanish:  ¿Dónde está el niño? ¡Olé!
+Polish:   Łódź, Gdańsk, Kraków, żółć (no Latin-1 letters: nearest)
+Czech:    Dvořák, Škoda, přítel
+Quotes:   “double” ‘single’ „low” «guillemets»
+Dashes:   en – dash, em — dash, ellipsis… minus −5
+Money:    €20, £5, ¥100, ¢50
+Signs:    © ® ™ ° ± × ÷ ½ ¼ µ ≤ ≥ ≠ → ←
+Bullets:  • one  • two  · three
+Boxes:    ┌──┬──┐ │a │b │ └──┴──┘ ═ ║ █
+Greek:    αβγ ΑΒΓ Ωμέγα
+Russian:  Привет, мир
+Japanese: こんにちは, カタカナ, 日本語
+Emoji:    ✓ ✗ ★ 😀 👍🏽
+Tabs:	one	two	three
+End.
+utf8.datatype test file (UTF-8)
+
+Swedish:  Räksmörgås, Ångström, Öland, Åre
+German:   Grüße aus Köln, Straße, Äpfel
+French:   café, crème brûlée, garçon, Noël, œuvre
+Spanish:  ¿Dónde está el niño? ¡Olé!
+Polish:   Łódź, Gdańsk, Kraków, żółć (no Latin-1 letters: nearest)
+Czech:    Dvořák, Škoda, přítel
+Quotes:   “double” ‘single’ „low” «guillemets»
+Dashes:   en – dash, em — dash, ellipsis… minus −5
+Money:    €20, £5, ¥100, ¢50
+Signs:    © ® ™ ° ± × ÷ ½ ¼ µ ≤ ≥ ≠ → ←
+Bullets:  • one  • two  · three
+Boxes:    ┌──┬──┐ │a │b │ └──┴──┘ ═ ║ █
+Greek:    αβγ ΑΒΓ Ωμέγα
+Russian:  Привет, мир
+Japanese: こんにちは, カタカナ, 日本語
+Emoji:    ✓ ✗ ★ 😀 👍🏽
+Tabs:	one	two	three
+End.
+utf8.datatype test file (UTF-8)
+
+Swedish:  Räksmörgås, Ångström, Öland, Åre
+German:   Grüße aus Köln, Straße, Äpfel
+French:   café, crème brûlée, garçon, Noël, œuvre
+Spanish:  ¿Dónde está el niño? ¡Olé!
+Polish:   Łódź, Gdańsk, Kraków, żółć (no Latin-1 letters: nearest)
+Czech:    Dvořák, Škoda, přítel
+Quotes:   “double” ‘single’ „low” «guillemets»
+Dashes:   en – dash, em — dash, ellipsis… minus −5
+Money:    €20, £5, ¥100, ¢50
+Signs:    © ® ™ ° ± × ÷ ½ ¼ µ ≤ ≥ ≠ → ←
+Bullets:  • one  • two  · three
+Boxes:    ┌──┬──┐ │a │b │ └──┴──┘ ═ ║ █
+Greek:    αβγ ΑΒΓ Ωμέγα
+Russian:  Привет, мир
+Japanese: こんにちは, カタカナ, 日本語
+Emoji:    ✓ ✗ ★ 😀 👍🏽
+Tabs:	one	two	three
+End.
+utf8.datatype test file (UTF-8)
+
+Swedish:  Räksmörgås, Ångström, Öland, Åre
+German:   Grüße aus Köln, Straße, Äpfel
+French:   café, crème brûlée, garçon, Noël, œuvre
+Spanish:  ¿Dónde está el niño? ¡Olé!
+Polish:   Łódź, Gdańsk, Kraków, żółć (no Latin-1 letters: nearest)
+Czech:    Dvořák, Škoda, přítel
+Quotes:   “double” ‘single’ „low” «guillemets»
+Dashes:   en – dash, em — dash, ellipsis… minus −5
+Money:    €20, £5, ¥100, ¢50
+Signs:    © ® ™ ° ± × ÷ ½ ¼ µ ≤ ≥ ≠ → ←
+Bullets:  • one  • two  · three
+Boxes:    ┌──┬──┐ │a │b │ └──┴──┘ ═ ║ █
+Greek:    αβγ ΑΒΓ Ωμέγα
+Russian:  Привет, мир
+Japanese: こんにちは, カタカナ, 日本語
+Emoji:    ✓ ✗ ★ 😀 👍🏽
+Tabs:	one	two	three
+End.
+utf8.datatype test file (UTF-8)
+
+Swedish:  Räksmörgås, Ångström, Öland, Åre
+German:   Grüße aus Köln, Straße, Äpfel
+French:   café, crème brûlée, garçon, Noël, œuvre
+Spanish:  ¿Dónde está el niño? ¡Olé!
+Polish:   Łódź, Gdańsk, Kraków, żółć (no Latin-1 letters: nearest)
+Czech:    Dvořák, Škoda, přítel
+Quotes:   “double” ‘single’ „low” «guillemets»
+Dashes:   en – dash, em — dash, ellipsis… minus −5
+Money:    €20, £5, ¥100, ¢50
+Signs:    © ® ™ ° ± × ÷ ½ ¼ µ ≤ ≥ ≠ → ←
+Bullets:  • one  • two  · three
+Boxes:    ┌──┬──┐ │a │b │ └──┴──┘ ═ ║ █
+Greek:    αβγ ΑΒΓ Ωμέγα
+Russian:  Привет, мир
+Japanese: こんにちは, カタカナ, 日本語
+Emoji:    ✓ ✗ ★ 😀 👍🏽
+Tabs:	one	two	three
+End.
+utf8.datatype test file (UTF-8)
+
+Swedish:  Räksmörgås, Ångström, Öland, Åre
+German:   Grüße aus Köln, Straße, Äpfel
+French:   café, crème brûlée, garçon, Noël, œuvre
+Spanish:  ¿Dónde está el niño? ¡Olé!
+Polish:   Łódź, Gdańsk, Kraków, żółć (no Latin-1 letters: nearest)
+Czech:    Dvořák, Škoda, přítel
+Quotes:   “double” ‘single’ „low” «guillemets»
+Dashes:   en – dash, em — dash, ellipsis… minus −5
+Money:    €20, £5, ¥100, ¢50
+Signs:    © ® ™ ° ± × ÷ ½ ¼ µ ≤ ≥ ≠ → ←
+Bullets:  • one  • two  · three
+Boxes:    ┌──┬──┐ │a │b │ └──┴──┘ ═ ║ █
+Greek:    αβγ ΑΒΓ Ωμέγα
+Russian:  Привет, мир
+Japanese: こんにちは, カタカナ, 日本語
+Emoji:    ✓ ✗ ★ 😀 👍🏽
+Tabs:	one	two	three
+End.
+utf8.datatype test file (UTF-8)
+
+Swedish:  Räksmörgås, Ångström, Öland, Åre
+German:   Grüße aus Köln, Straße, Äpfel
+French:   café, crème brûlée, garçon, Noël, œuvre
+Spanish:  ¿Dónde está el niño? ¡Olé!
+Polish:   Łódź, Gdańsk, Kraków, żółć (no Latin-1 letters: nearest)
+Czech:    Dvořák, Škoda, přítel
+Quotes:   “double” ‘single’ „low” «guillemets»
+Dashes:   en – dash, em — dash, ellipsis… minus −5
+Money:    €20, £5, ¥100, ¢50
+Signs:    © ® ™ ° ± × ÷ ½ ¼ µ ≤ ≥ ≠ → ←
+Bullets:  • one  • two  · three
+Boxes:    ┌──┬──┐ │a │b │ └──┴──┘ ═ ║ █
+Greek:    αβγ ΑΒΓ Ωμέγα
+Russian:  Привет, мир
+Japanese: こんにちは, カタカナ, 日本語
+Emoji:    ✓ ✗ ★ 😀 👍🏽
+Tabs:	one	two	three
+End.
+utf8.datatype test file (UTF-8)
+
+Swedish:  Räksmörgås, Ångström, Öland, Åre
+German:   Grüße aus Köln, Straße, Äpfel
+French:   café, crème brûlée, garçon, Noël, œuvre
+Spanish:  ¿Dónde está el niño? ¡Olé!
+Polish:   Łódź, Gdańsk, Kraków, żółć (no Latin-1 letters: nearest)
+Czech:    Dvořák, Škoda, přítel
+Quotes:   “double” ‘single’ „low” «guillemets»
+Dashes:   en – dash, em — dash, ellipsis… minus −5
+Money:    €20, £5, ¥100, ¢50
+Signs:    © ® ™ ° ± × ÷ ½ ¼ µ ≤ ≥ ≠ → ←
+Bullets:  • one  • two  · three
+Boxes:    ┌──┬──┐ │a │b │ └──┴──┘ ═ ║ █
+Greek:    αβγ ΑΒΓ Ωμέγα
+Russian:  Привет, мир
+Japanese: こんにちは, カタカナ, 日本語
+Emoji:    ✓ ✗ ★ 😀 👍🏽
+Tabs:	one	two	three
+End.
+utf8.datatype test file (UTF-8)
+
+Swedish:  Räksmörgås, Ångström, Öland, Åre
+German:   Grüße aus Köln, Straße, Äpfel
+French:   café, crème brûlée, garçon, Noël, œuvre
+Spanish:  ¿Dónde está el niño? ¡Olé!
+Polish:   Łódź, Gdańsk, Kraków, żółć (no Latin-1 letters: nearest)
+Czech:    Dvořák, Škoda, přítel
+Quotes:   “double” ‘single’ „low” «guillemets»
+Dashes:   en – dash, em — dash, ellipsis… minus −5
+Money:    €20, £5, ¥100, ¢50
+Signs:    © ® ™ ° ± × ÷ ½ ¼ µ ≤ ≥ ≠ → ←
+Bullets:  • one  • two  · three
+Boxes:    ┌──┬──┐ │a │b │ └──┴──┘ ═ ║ █
+Greek:    αβγ ΑΒΓ Ωμέγα
+Russian:  Привет, мир
+Japanese: こんにちは, カタカナ, 日本語
+Emoji:    ✓ ✗ ★ 😀 👍🏽
+Tabs:	one	two	three
+End.
+utf8.datatype test file (UTF-8)
+
+Swedish:  Räksmörgås, Ångström, Öland, Åre
+German:   Grüße aus Köln, Straße, Äpfel
+French:   café, crème brûlée, garçon, Noël, œuvre
+Spanish:  ¿Dónde está el niño? ¡Olé!
+Polish:   Łódź, Gdańsk, Kraków, żółć (no Latin-1 letters: nearest)
+Czech:    Dvořák, Škoda, přítel
+Quotes:   “double” ‘single’ „low” «guillemets»
+Dashes:   en – dash, em — dash, ellipsis… minus −5
+Money:    €20, £5, ¥100, ¢50
+Signs:    © ® ™ ° ± × ÷ ½ ¼ µ ≤ ≥ ≠ → ←
+Bullets:  • one  • two  · three
+Boxes:    ┌──┬──┐ │a │b │ └──┴──┘ ═ ║ █
+Greek:    αβγ ΑΒΓ Ωμέγα
+Russian:  Привет, мир
+Japanese: こんにちは, カタカナ, 日本語
+Emoji:    ✓ ✗ ★ 😀 👍🏽
+Tabs:	one	two	three
+End.
+utf8.datatype test file (UTF-8)
+
+Swedish:  Räksmörgås, Ångström, Öland, Åre
+German:   Grüße aus Köln, Straße, Äpfel
+French:   café, crème brûlée, garçon, Noël, œuvre
+Spanish:  ¿Dónde está el niño? ¡Olé!
+Polish:   Łódź, Gdańsk, Kraków, żółć (no Latin-1 letters: nearest)
+Czech:    Dvořák, Škoda, přítel
+Quotes:   “double” ‘single’ „low” «guillemets»
+Dashes:   en – dash, em — dash, ellipsis… minus −5
+Money:    €20, £5, ¥100, ¢50
+Signs:    © ® ™ ° ± × ÷ ½ ¼ µ ≤ ≥ ≠ → ←
+Bullets:  • one  • two  · three
+Boxes:    ┌──┬──┐ │a │b │ └──┴──┘ ═ ║ █
+Greek:    αβγ ΑΒΓ Ωμέγα
+Russian:  Привет, мир
+Japanese: こんにちは, カタカナ, 日本語
+Emoji:    ✓ ✗ ★ 😀 👍🏽
+Tabs:	one	two	three
+End.
+utf8.datatype test file (UTF-8)
+
+Swedish:  Räksmörgås, Ångström, Öland, Åre
+German:   Grüße aus Köln, Straße, Äpfel
+French:   café, crème brûlée, garçon, Noël, œuvre
+Spanish:  ¿Dónde está el niño? ¡Olé!
+Polish:   Łódź, Gdańsk, Kraków, żółć (no Latin-1 letters: nearest)
+Czech:    Dvořák, Škoda, přítel
+Quotes:   “double” ‘single’ „low” «guillemets»
+Dashes:   en – dash, em — dash, ellipsis… minus −5
+Money:    €20, £5, ¥100, ¢50
+Signs:    © ® ™ ° ± × ÷ ½ ¼ µ ≤ ≥ ≠ → ←
+Bullets:  • one  • two  · three
+Boxes:    ┌──┬──┐ │a │b │ └──┴──┘ ═ ║ █
+Greek:    αβγ ΑΒΓ Ωμέγα
+Russian:  Привет, мир
+Japanese: こんにちは, カタカナ, 日本語
+Emoji:    ✓ ✗ ★ 😀 👍🏽
+Tabs:	one	two	three
+End.
+utf8.datatype test file (UTF-8)
+
+Swedish:  Räksmörgås, Ångström, Öland, Åre
+German:   Grüße aus Köln, Straße, Äpfel
+French:   café, crème brûlée, garçon, Noël, œuvre
+Spanish:  ¿Dónde está el niño? ¡Olé!
+Polish:   Łódź, Gdańsk, Kraków, żółć (no Latin-1 letters: nearest)
+Czech:    Dvořák, Škoda, přítel
+Quotes:   “double” ‘single’ „low” «guillemets»
+Dashes:   en – dash, em — dash, ellipsis… minus −5
+Money:    €20, £5, ¥100, ¢50
+Signs:    © ® ™ ° ± × ÷ ½ ¼ µ ≤ ≥ ≠ → ←
+Bullets:  • one  • two  · three
+Boxes:    ┌──┬──┐ │a │b │ └──┴──┘ ═ ║ █
+Greek:    αβγ ΑΒΓ Ωμέγα
+Russian:  Привет, мир
+Japanese: こんにちは, カタカナ, 日本語
+Emoji:    ✓ ✗ ★ 😀 👍🏽
+Tabs:	one	two	three
+End.
+utf8.datatype test file (UTF-8)
+
+Swedish:  Räksmörgås, Ångström, Öland, Åre
+German:   Grüße aus Köln, Straße, Äpfel
+French:   café, crème brûlée, garçon, Noël, œuvre
+Spanish:  ¿Dónde está el niño? ¡Olé!
+Polish:   Łódź, Gdańsk, Kraków, żółć (no Latin-1 letters: nearest)
+Czech:    Dvořák, Škoda, přítel
+Quotes:   “double” ‘single’ „low” «guillemets»
+Dashes:   en – dash, em — dash, ellipsis… minus −5
+Money:    €20, £5, ¥100, ¢50
+Signs:    © ® ™ ° ± × ÷ ½ ¼ µ ≤ ≥ ≠ → ←
+Bullets:  • one  • two  · three
+Boxes:    ┌──┬──┐ │a │b │ └──┴──┘ ═ ║ █
+Greek:    αβγ ΑΒΓ Ωμέγα
+Russian:  Привет, мир
+Japanese: こんにちは, カタカナ, 日本語
+Emoji:    ✓ ✗ ★ 😀 👍🏽
+Tabs:	one	two	three
+End.
+utf8.datatype test file (UTF-8)
+
+Swedish:  Räksmörgås, Ångström, Öland, Åre
+German:   Grüße aus Köln, Straße, Äpfel
+French:   café, crème brûlée, garçon, Noël, œuvre
+Spanish:  ¿Dónde está el niño? ¡Olé!
+Polish:   Łódź, Gdańsk, Kraków, żółć (no Latin-1 letters: nearest)
+Czech:    Dvořák, Škoda, přítel
+Quotes:   “double” ‘single’ „low” «guillemets»
+Dashes:   en – dash, em — dash, ellipsis… minus −5
+Money:    €20, £5, ¥100, ¢50
+Signs:    © ® ™ ° ± × ÷ ½ ¼ µ ≤ ≥ ≠ → ←
+Bullets:  • one  • two  · three
+Boxes:    ┌──┬──┐ │a │b │ └──┴──┘ ═ ║ █
+Greek:    αβγ ΑΒΓ Ωμέγα
+Russian:  Привет, мир
+Japanese: こんにちは, カタカナ, 日本語
+Emoji:    ✓ ✗ ★ 😀 👍🏽
+Tabs:	one	two	three
+End.
+utf8.datatype test file (UTF-8)
+
+Swedish:  Räksmörgås, Ångström, Öland, Åre
+German:   Grüße aus Köln, Straße, Äpfel
+French:   café, crème brûlée, garçon, Noël, œuvre
+Spanish:  ¿Dónde está el niño? ¡Olé!
+Polish:   Łódź, Gdańsk, Kraków, żółć (no Latin-1 letters: nearest)
+Czech:    Dvořák, Škoda, přítel
+Quotes:   “double” ‘single’ „low” «guillemets»
+Dashes:   en – dash, em — dash, ellipsis… minus −5
+Money:    €20, £5, ¥100, ¢50
+Signs:    © ® ™ ° ± × ÷ ½ ¼ µ ≤ ≥ ≠ → ←
+Bullets:  • one  • two  · three
+Boxes:    ┌──┬──┐ │a │b │ └──┴──┘ ═ ║ █
+Greek:    αβγ ΑΒΓ Ωμέγα
+Russian:  Привет, мир
+Japanese: こんにちは, カタカナ, 日本語
+Emoji:    ✓ ✗ ★ 😀 👍🏽
+Tabs:	one	two	three
+End.
+utf8.datatype test file (UTF-8)
+
+Swedish:  Räksmörgås, Ångström, Öland, Åre
+German:   Grüße aus Köln, Straße, Äpfel
+French:   café, crème brûlée, garçon, Noël, œuvre
+Spanish:  ¿Dónde está el niño? ¡Olé!
+Polish:   Łódź, Gdańsk, Kraków, żółć (no Latin-1 letters: nearest)
+Czech:    Dvořák, Škoda, přítel
+Quotes:   “double” ‘single’ „low” «guillemets»
+Dashes:   en – dash, em — dash, ellipsis… minus −5
+Money:    €20, £5, ¥100, ¢50
+Signs:    © ® ™ ° ± × ÷ ½ ¼ µ ≤ ≥ ≠ → ←
+Bullets:  • one  • two  · three
+Boxes:    ┌──┬──┐ │a │b │ └──┴──┘ ═ ║ █
+Greek:    αβγ ΑΒΓ Ωμέγα
+Russian:  Привет, мир
+Japanese: こんにちは, カタカナ, 日本語
+Emoji:    ✓ ✗ ★ 😀 👍🏽
+Tabs:	one	two	three
+End.
+utf8.datatype test file (UTF-8)
+
+Swedish:  Räksmörgås, Ångström, Öland, Åre
+German:   Grüße aus Köln, Straße, Äpfel
+French:   café, crème brûlée, garçon, Noël, œuvre
+Spanish:  ¿Dónde está el niño? ¡Olé!
+Polish:   Łódź, Gdańsk, Kraków, żółć (no Latin-1 letters: nearest)
+Czech:    Dvořák, Škoda, přítel
+Quotes:   “double” ‘single’ „low” «guillemets»
+Dashes:   en – dash, em — dash, ellipsis… minus −5
+Money:    €20, £5, ¥100, ¢50
+Signs:    © ® ™ ° ± × ÷ ½ ¼ µ ≤ ≥ ≠ → ←
+Bullets:  • one  • two  · three
+Boxes:    ┌──┬──┐ │a │b │ └──┴──┘ ═ ║ █
+Greek:    αβγ ΑΒΓ Ωμέγα
+Russian:  Привет, мир
+Japanese: こんにちは, カタカナ, 日本語
+Emoji:    ✓ ✗ ★ 😀 👍🏽
+Tabs:	one	two	three
+End.
+utf8.datatype test file (UTF-8)
+
+Swedish:  Räksmörgås, Ångström, Öland, Åre
+German:   Grüße aus Köln, Straße, Äpfel
+French:   café, crème brûlée, garçon, Noël, œuvre
+Spanish:  ¿Dónde está el niño? ¡Olé!
+Polish:   Łódź, Gdańsk, Kraków, żółć (no Latin-1 letters: nearest)
+Czech:    Dvořák, Škoda, přítel
+Quotes:   “double” ‘single’ „low” «guillemets»
+Dashes:   en – dash, em — dash, ellipsis… minus −5
+Money:    €20, £5, ¥100, ¢50
+Signs:    © ® ™ ° ± × ÷ ½ ¼ µ ≤ ≥ ≠ → ←
+Bullets:  • one  • two  · three
+Boxes:    ┌──┬──┐ │a │b │ └──┴──┘ ═ ║ █
+Greek:    αβγ ΑΒΓ Ωμέγα
+Russian:  Привет, мир
+Japanese: こんにちは, カタカナ, 日本語
+Emoji:    ✓ ✗ ★ 😀 👍🏽
+Tabs:	one	two	three
+End.
+utf8.datatype test file (UTF-8)
+
+Swedish:  Räksmörgås, Ångström, Öland, Åre
+German:   Grüße aus Köln, Straße, Äpfel
+French:   café, crème brûlée, garçon, Noël, œuvre
+Spanish:  ¿Dónde está el niño? ¡Olé!
+Polish:   Łódź, Gdańsk, Kraków, żółć (no Latin-1 letters: nearest)
+Czech:    Dvořák, Škoda, přítel
+Quotes:   “double” ‘single’ „low” «guillemets»
+Dashes:   en – dash, em — dash, ellipsis… minus −5
+Money:    €20, £5, ¥100, ¢50
+Signs:    © ® ™ ° ± × ÷ ½ ¼ µ ≤ ≥ ≠ → ←
+Bullets:  • one  • two  · three
+Boxes:    ┌──┬──┐ │a │b │ └──┴──┘ ═ ║ █
+Greek:    αβγ ΑΒΓ Ωμέγα
+Russian:  Привет, мир
+Japanese: こんにちは, カタカナ, 日本語
+Emoji:    ✓ ✗ ★ 😀 👍🏽
+Tabs:	one	two	three
+End.
+utf8.datatype test file (UTF-8)
+
+Swedish:  Räksmörgås, Ångström, Öland, Åre
+German:   Grüße aus Köln, Straße, Äpfel
+French:   café, crème brûlée, garçon, Noël, œuvre
+Spanish:  ¿Dónde está el niño? ¡Olé!
+Polish:   Łódź, Gdańsk, Kraków, żółć (no Latin-1 letters: nearest)
+Czech:    Dvořák, Škoda, přítel
+Quotes:   “double” ‘single’ „low” «guillemets»
+Dashes:   en – dash, em — dash, ellipsis… minus −5
+Money:    €20, £5, ¥100, ¢50
+Signs:    © ® ™ ° ± × ÷ ½ ¼ µ ≤ ≥ ≠ → ←
+Bullets:  • one  • two  · three
+Boxes:    ┌──┬──┐ │a │b │ └──┴──┘ ═ ║ █
+Greek:    αβγ ΑΒΓ Ωμέγα
+Russian:  Привет, мир
+Japanese: こんにちは, カタカナ, 日本語
+Emoji:    ✓ ✗ ★ 😀 👍🏽
+Tabs:	one	two	three
+End.
+utf8.datatype test file (UTF-8)
+
+Swedish:  Räksmörgås, Ångström, Öland, Åre
+German:   Grüße aus Köln, Straße, Äpfel
+French:   café, crème brûlée, garçon, Noël, œuvre
+Spanish:  ¿Dónde está el niño? ¡Olé!
+Polish:   Łódź, Gdańsk, Kraków, żółć (no Latin-1 letters: nearest)
+Czech:    Dvořák, Škoda, přítel
+Quotes:   “double” ‘single’ „low” «guillemets»
+Dashes:   en – dash, em — dash, ellipsis… minus −5
+Money:    €20, £5, ¥100, ¢50
+Signs:    © ® ™ ° ± × ÷ ½ ¼ µ ≤ ≥ ≠ → ←
+Bullets:  • one  • two  · three
+Boxes:    ┌──┬──┐ │a │b │ └──┴──┘ ═ ║ █
+Greek:    αβγ ΑΒΓ Ωμέγα
+Russian:  Привет, мир
+Japanese: こんにちは, カタカナ, 日本語
+Emoji:    ✓ ✗ ★ 😀 👍🏽
+Tabs:	one	two	three
+End.
+utf8.datatype test file (UTF-8)
+
+Swedish:  Räksmörgås, Ångström, Öland, Åre
+German:   Grüße aus Köln, Straße, Äpfel
+French:   café, crème brûlée, garçon, Noël, œuvre
+Spanish:  ¿Dónde está el niño? ¡Olé!
+Polish:   Łódź, Gdańsk, Kraków, żółć (no Latin-1 letters: nearest)
+Czech:    Dvořák, Škoda, přítel
+Quotes:   “double” ‘single’ „low” «guillemets»
+Dashes:   en – dash, em — dash, ellipsis… minus −5
+Money:    €20, £5, ¥100, ¢50
+Signs:    © ® ™ ° ± × ÷ ½ ¼ µ ≤ ≥ ≠ → ←
+Bullets:  • one  • two  · three
+Boxes:    ┌──┬──┐ │a │b │ └──┴──┘ ═ ║ █
+Greek:    αβγ ΑΒΓ Ωμέγα
+Russian:  Привет, мир
+Japanese: こんにちは, カタカナ, 日本語
+Emoji:    ✓ ✗ ★ 😀 👍🏽
+Tabs:	one	two	three
+End.
+utf8.datatype test file (UTF-8)
+
+Swedish:  Räksmörgås, Ångström, Öland, Åre
+German:   Grüße aus Köln, Straße, Äpfel
+French:   café, crème brûlée, garçon, Noël, œuvre
+Spanish:  ¿Dónde está el niño? ¡Olé!
+Polish:   Łódź, Gdańsk, Kraków, żółć (no Latin-1 letters: nearest)
+Czech:    Dvořák, Škoda, přítel
+Quotes:   “double” ‘single’ „low” «guillemets»
+Dashes:   en – dash, em — dash, ellipsis… minus −5
+Money:    €20, £5, ¥100, ¢50
+Signs:    © ® ™ ° ± × ÷ ½ ¼ µ ≤ ≥ ≠ → ←
+Bullets:  • one  • two  · three
+Boxes:    ┌──┬──┐ │a │b │ └──┴──┘ ═ ║ █
+Greek:    αβγ ΑΒΓ Ωμέγα
+Russian:  Привет, мир
+Japanese: こんにちは, カタカナ, 日本語
+Emoji:    ✓ ✗ ★ 😀 👍🏽
+Tabs:	one	two	three
+End.
+utf8.datatype test file (UTF-8)
+
+Swedish:  Räksmörgås, Ångström, Öland, Åre
+German:   Grüße aus Köln, Straße, Äpfel
+French:   café, crème brûlée, garçon, Noël, œuvre
+Spanish:  ¿Dónde está el niño? ¡Olé!
+Polish:   Łódź, Gdańsk, Kraków, żółć (no Latin-1 letters: nearest)
+Czech:    Dvořák, Škoda, přítel
+Quotes:   “double” ‘single’ „low” «guillemets»
+Dashes:   en – dash, em — dash, ellipsis… minus −5
+Money:    €20, £5, ¥100, ¢50
+Signs:    © ® ™ ° ± × ÷ ½ ¼ µ ≤ ≥ ≠ → ←
+Bullets:  • one  • two  · three
+Boxes:    ┌──┬──┐ │a │b │ └──┴──┘ ═ ║ █
+Greek:    αβγ ΑΒΓ Ωμέγα
+Russian:  Привет, мир
+Japanese: こんにちは, カタカナ, 日本語
+Emoji:    ✓ ✗ ★ 😀 👍🏽
+Tabs:	one	two	three
+End.
+utf8.datatype test file (UTF-8)
+
+Swedish:  Räksmörgås, Ångström, Öland, Åre
+German:   Grüße aus Köln, Straße, Äpfel
+French:   café, crème brûlée, garçon, Noël, œuvre
+Spanish:  ¿Dónde está el niño? ¡Olé!
+Polish:   Łódź, Gdańsk, Kraków, żółć (no Latin-1 letters: nearest)
+Czech:    Dvořák, Škoda, přítel
+Quotes:   “double” ‘single’ „low” «guillemets»
+Dashes:   en – dash, em — dash, ellipsis… minus −5
+Money:    €20, £5, ¥100, ¢50
+Signs:    © ® ™ ° ± × ÷ ½ ¼ µ ≤ ≥ ≠ → ←
+Bullets:  • one  • two  · three
+Boxes:    ┌──┬──┐ │a │b │ └──┴──┘ ═ ║ █
+Greek:    αβγ ΑΒΓ Ωμέγα
+Russian:  Привет, мир
+Japanese: こんにちは, カタカナ, 日本語
+Emoji:    ✓ ✗ ★ 😀 👍🏽
+Tabs:	one	two	three
+End.
+utf8.datatype test file (UTF-8)
+
+Swedish:  Räksmörgås, Ångström, Öland, Åre
+German:   Grüße aus Köln, Straße, Äpfel
+French:   café, crème brûlée, garçon, Noël, œuvre
+Spanish:  ¿Dónde está el niño? ¡Olé!
+Polish:   Łódź, Gdańsk, Kraków, żółć (no Latin-1 letters: nearest)
+Czech:    Dvořák, Škoda, přítel
+Quotes:   “double” ‘single’ „low” «guillemets»
+Dashes:   en – dash, em — dash, ellipsis… minus −5
+Money:    €20, £5, ¥100, ¢50
+Signs:    © ® ™ ° ± × ÷ ½ ¼ µ ≤ ≥ ≠ → ←
+Bullets:  • one  • two  · three
+Boxes:    ┌──┬──┐ │a │b │ └──┴──┘ ═ ║ █
+Greek:    αβγ ΑΒΓ Ωμέγα
+Russian:  Привет, мир
+Japanese: こんにちは, カタカナ, 日本語
+Emoji:    ✓ ✗ ★ 😀 👍🏽
+Tabs:	one	two	three
+End.
+utf8.datatype test file (UTF-8)
+
+Swedish:  Räksmörgås, Ångström, Öland, Åre
+German:   Grüße aus Köln, Straße, Äpfel
+French:   café, crème brûlée, garçon, Noël, œuvre
+Spanish:  ¿Dónde está el niño? ¡Olé!
+Polish:   Łódź, Gdańsk, Kraków, żółć (no Latin-1 letters: nearest)
+Czech:    Dvořák, Škoda, přítel
+Quotes:   “double” ‘single’ „low” «guillemets»
+Dashes:   en – dash, em — dash, ellipsis… minus −5
+Money:    €20, £5, ¥100, ¢50
+Signs:    © ® ™ ° ± × ÷ ½ ¼ µ ≤ ≥ ≠ → ←
+Bullets:  • one  • two  · three
+Boxes:    ┌──┬──┐ │a │b │ └──┴──┘ ═ ║ █
+Greek:    αβγ ΑΒΓ Ωμέγα
+Russian:  Привет, мир
+Japanese: こんにちは, カタカナ, 日本語
+Emoji:    ✓ ✗ ★ 😀 👍🏽
+Tabs:	one	two	three
+End.
+utf8.datatype test file (UTF-8)
+
+Swedish:  Räksmörgås, Ångström, Öland, Åre
+German:   Grüße aus Köln, Straße, Äpfel
+French:   café, crème brûlée, garçon, Noël, œuvre
+Spanish:  ¿Dónde está el niño? ¡Olé!
+Polish:   Łódź, Gdańsk, Kraków, żółć (no Latin-1 letters: nearest)
+Czech:    Dvořák, Škoda, přítel
+Quotes:   “double” ‘single’ „low” «guillemets»
+Dashes:   en – dash, em — dash, ellipsis… minus −5
+Money:    €20, £5, ¥100, ¢50
+Signs:    © ® ™ ° ± × ÷ ½ ¼ µ ≤ ≥ ≠ → ←
+Bullets:  • one  • two  · three
+Boxes:    ┌──┬──┐ │a │b │ └──┴──┘ ═ ║ █
+Greek:    αβγ ΑΒΓ Ωμέγα
+Russian:  Привет, мир
+Japanese: こんにちは, カタカナ, 日本語
+Emoji:    ✓ ✗ ★ 😀 👍🏽
+Tabs:	one	two	three
+End.
+utf8.datatype test file (UTF-8)
+
+Swedish:  Räksmörgås, Ångström, Öland, Åre
+German:   Grüße aus Köln, Straße, Äpfel
+French:   café, crème brûlée, garçon, Noël, œuvre
+Spanish:  ¿Dónde está el niño? ¡Olé!
+Polish:   Łódź, Gdańsk, Kraków, żółć (no Latin-1 letters: nearest)
+Czech:    Dvořák, Škoda, přítel
+Quotes:   “double” ‘single’ „low” «guillemets»
+Dashes:   en – dash, em — dash, ellipsis… minus −5
+Money:    €20, £5, ¥100, ¢50
+Signs:    © ® ™ ° ± × ÷ ½ ¼ µ ≤ ≥ ≠ → ←
+Bullets:  • one  • two  · three
+Boxes:    ┌──┬──┐ │a │b │ └──┴──┘ ═ ║ █
+Greek:    αβγ ΑΒΓ Ωμέγα
+Russian:  Привет, мир
+Japanese: こんにちは, カタカナ, 日本語
+Emoji:    ✓ ✗ ★ 😀 👍🏽
+Tabs:	one	two	three
+End.
+utf8.datatype test file (UTF-8)
+
+Swedish:  Räksmörgås, Ångström, Öland, Åre
+German:   Grüße aus Köln, Straße, Äpfel
+French:   café, crème brûlée, garçon, Noël, œuvre
+Spanish:  ¿Dónde está el niño? ¡Olé!
+Polish:   Łódź, Gdańsk, Kraków, żółć (no Latin-1 letters: nearest)
+Czech:    Dvořák, Škoda, přítel
+Quotes:   “double” ‘single’ „low” «guillemets»
+Dashes:   en – dash, em — dash, ellipsis… minus −5
+Money:    €20, £5, ¥100, ¢50
+Signs:    © ® ™ ° ± × ÷ ½ ¼ µ ≤ ≥ ≠ → ←
+Bullets:  • one  • two  · three
+Boxes:    ┌──┬──┐ │a │b │ └──┴──┘ ═ ║ █
+Greek:    αβγ ΑΒΓ Ωμέγα
+Russian:  Привет, мир
+Japanese: こんにちは, カタカナ, 日本語
+Emoji:    ✓ ✗ ★ 😀 👍🏽
+Tabs:	one	two	three
+End.
+utf8.datatype test file (UTF-8)
+
+Swedish:  Räksmörgås, Ångström, Öland, Åre
+German:   Grüße aus Köln, Straße, Äpfel
+French:   café, crème brûlée, garçon, Noël, œuvre
+Spanish:  ¿Dónde está el niño? ¡Olé!
+Polish:   Łódź, Gdańsk, Kraków, żółć (no Latin-1 letters: nearest)
+Czech:    Dvořák, Škoda, přítel
+Quotes:   “double” ‘single’ „low” «guillemets»
+Dashes:   en – dash, em — dash, ellipsis… minus −5
+Money:    €20, £5, ¥100, ¢50
+Signs:    © ® ™ ° ± × ÷ ½ ¼ µ ≤ ≥ ≠ → ←
+Bullets:  • one  • two  · three
+Boxes:    ┌──┬──┐ │a │b │ └──┴──┘ ═ ║ █
+Greek:    αβγ ΑΒΓ Ωμέγα
+Russian:  Привет, мир
+Japanese: こんにちは, カタカナ, 日本語
+Emoji:    ✓ ✗ ★ 😀 👍🏽
+Tabs:	one	two	three
+End.
+utf8.datatype test file (UTF-8)
+
+Swedish:  Räksmörgås, Ångström, Öland, Åre
+German:   Grüße aus Köln, Straße, Äpfel
+French:   café, crème brûlée, garçon, Noël, œuvre
+Spanish:  ¿Dónde está el niño? ¡Olé!
+Polish:   Łódź, Gdańsk, Kraków, żółć (no Latin-1 letters: nearest)
+Czech:    Dvořák, Škoda, přítel
+Quotes:   “double” ‘single’ „low” «guillemets»
+Dashes:   en – dash, em — dash, ellipsis… minus −5
+Money:    €20, £5, ¥100, ¢50
+Signs:    © ® ™ ° ± × ÷ ½ ¼ µ ≤ ≥ ≠ → ←
+Bullets:  • one  • two  · three
+Boxes:    ┌──┬──┐ │a │b │ └──┴──┘ ═ ║ █
+Greek:    αβγ ΑΒΓ Ωμέγα
+Russian:  Привет, мир
+Japanese: こんにちは, カタカナ, 日本語
+Emoji:    ✓ ✗ ★ 😀 👍🏽
+Tabs:	one	two	three
+End.
+utf8.datatype test file (UTF-8)
+
+Swedish:  Räksmörgås, Ångström, Öland, Åre
+German:   Grüße aus Köln, Straße, Äpfel
+French:   café, crème brûlée, garçon, Noël, œuvre
+Spanish:  ¿Dónde está el niño? ¡Olé!
+Polish:   Łódź, Gdańsk, Kraków, żółć (no Latin-1 letters: nearest)
+Czech:    Dvořák, Škoda, přítel
+Quotes:   “double” ‘single’ „low” «guillemets»
+Dashes:   en – dash, em — dash, ellipsis… minus −5
+Money:    €20, £5, ¥100, ¢50
+Signs:    © ® ™ ° ± × ÷ ½ ¼ µ ≤ ≥ ≠ → ←
+Bullets:  • one  • two  · three
+Boxes:    ┌──┬──┐ │a │b │ └──┴──┘ ═ ║ █
+Greek:    αβγ ΑΒΓ Ωμέγα
+Russian:  Привет, мир
+Japanese: こんにちは, カタカナ, 日本語
+Emoji:    ✓ ✗ ★ 😀 👍🏽
+Tabs:	one	two	three
+End.
+utf8.datatype test file (UTF-8)
+
+Swedish:  Räksmörgås, Ångström, Öland, Åre
+German:   Grüße aus Köln, Straße, Äpfel
+French:   café, crème brûlée, garçon, Noël, œuvre
+Spanish:  ¿Dónde está el niño? ¡Olé!
+Polish:   Łódź, Gdańsk, Kraków, żółć (no Latin-1 letters: nearest)
+Czech:    Dvořák, Škoda, přítel
+Quotes:   “double” ‘single’ „low” «guillemets»
+Dashes:   en – dash, em — dash, ellipsis… minus −5
+Money:    €20, £5, ¥100, ¢50
+Signs:    © ® ™ ° ± × ÷ ½ ¼ µ ≤ ≥ ≠ → ←
+Bullets:  • one  • two  · three
+Boxes:    ┌──┬──┐ │a │b │ └──┴──┘ ═ ║ █
+Greek:    αβγ ΑΒΓ Ωμέγα
+Russian:  Привет, мир
+Japanese: こんにちは, カタカナ, 日本語
+Emoji:    ✓ ✗ ★ 😀 👍🏽
+Tabs:	one	two	three
+End.
+utf8.datatype test file (UTF-8)
+
+Swedish:  Räksmörgås, Ångström, Öland, Åre
+German:   Grüße aus Köln, Straße, Äpfel
+French:   café, crème brûlée, garçon, Noël, œuvre
+Spanish:  ¿Dónde está el niño? ¡Olé!
+Polish:   Łódź, Gdańsk, Kraków, żółć (no Latin-1 letters: nearest)
+Czech:    Dvořák, Škoda, přítel
+Quotes:   “double” ‘single’ „low” «guillemets»
+Dashes:   en – dash, em — dash, ellipsis… minus −5
+Money:    €20, £5, ¥100, ¢50
+Signs:    © ® ™ ° ± × ÷ ½ ¼ µ ≤ ≥ ≠ → ←
+Bullets:  • one  • two  · three
+Boxes:    ┌──┬──┐ │a │b │ └──┴──┘ ═ ║ █
+Greek:    αβγ ΑΒΓ Ωμέγα
+Russian:  Привет, мир
+Japanese: こんにちは, カタカナ, 日本語
+Emoji:    ✓ ✗ ★ 😀 👍🏽
+Tabs:	one	two	three
+End.
+utf8.datatype test file (UTF-8)
+
+Swedish:  Räksmörgås, Ångström, Öland, Åre
+German:   Grüße aus Köln, Straße, Äpfel
+French:   café, crème brûlée, garçon, Noël, œuvre
+Spanish:  ¿Dónde está el niño? ¡Olé!
+Polish:   Łódź, Gdańsk, Kraków, żółć (no Latin-1 letters: nearest)
+Czech:    Dvořák, Škoda, přítel
+Quotes:   “double” ‘single’ „low” «guillemets»
+Dashes:   en – dash, em — dash, ellipsis… minus −5
+Money:    €20, £5, ¥100, ¢50
+Signs:    © ® ™ ° ± × ÷ ½ ¼ µ ≤ ≥ ≠ → ←
+Bullets:  • one  • two  · three
+Boxes:    ┌──┬──┐ │a │b │ └──┴──┘ ═ ║ █
+Greek:    αβγ ΑΒΓ Ωμέγα
+Russian:  Привет, мир
+Japanese: こんにちは, カタカナ, 日本語
+Emoji:    ✓ ✗ ★ 😀 👍🏽
+Tabs:	one	two	three
+End.
+utf8.datatype test file (UTF-8)
+
+Swedish:  Räksmörgås, Ångström, Öland, Åre
+German:   Grüße aus Köln, Straße, Äpfel
+French:   café, crème brûlée, garçon, Noël, œuvre
+Spanish:  ¿Dónde está el niño? ¡Olé!
+Polish:   Łódź, Gdańsk, Kraków, żółć (no Latin-1 letters: nearest)
+Czech:    Dvořák, Škoda, přítel
+Quotes:   “double” ‘single’ „low” «guillemets»
+Dashes:   en – dash, em — dash, ellipsis… minus −5
+Money:    €20, £5, ¥100, ¢50
+Signs:    © ® ™ ° ± × ÷ ½ ¼ µ ≤ ≥ ≠ → ←
+Bullets:  • one  • two  · three
+Boxes:    ┌──┬──┐ │a │b │ └──┴──┘ ═ ║ █
+Greek:    αβγ ΑΒΓ Ωμέγα
+Russian:  Привет, мир
+Japanese: こんにちは, カタカナ, 日本語
+Emoji:    ✓ ✗ ★ 😀 👍🏽
+Tabs:	one	two	three
+End.
+utf8.datatype test file (UTF-8)
+
+Swedish:  Räksmörgås, Ångström, Öland, Åre
+German:   Grüße aus Köln, Straße, Äpfel
+French:   café, crème brûlée, garçon, Noël, œuvre
+Spanish:  ¿Dónde está el niño? ¡Olé!
+Polish:   Łódź, Gdańsk, Kraków, żółć (no Latin-1 letters: nearest)
+Czech:    Dvořák, Škoda, přítel
+Quotes:   “double” ‘single’ „low” «guillemets»
+Dashes:   en – dash, em — dash, ellipsis… minus −5
+Money:    €20, £5, ¥100, ¢50
+Signs:    © ® ™ ° ± × ÷ ½ ¼ µ ≤ ≥ ≠ → ←
+Bullets:  • one  • two  · three
+Boxes:    ┌──┬──┐ │a │b │ └──┴──┘ ═ ║ █
+Greek:    αβγ ΑΒΓ Ωμέγα
+Russian:  Привет, мир
+Japanese: こんにちは, カタカナ, 日本語
+Emoji:    ✓ ✗ ★ 😀 👍🏽
+Tabs:	one	two	three
+End.
+utf8.datatype test file (UTF-8)
+
+Swedish:  Räksmörgås, Ångström, Öland, Åre
+German:   Grüße aus Köln, Straße, Äpfel
+French:   café, crème brûlée, garçon, Noël, œuvre
+Spanish:  ¿Dónde está el niño? ¡Olé!
+Polish:   Łódź, Gdańsk, Kraków, żółć (no Latin-1 letters: nearest)
+Czech:    Dvořák, Škoda, přítel
+Quotes:   “double” ‘single’ „low” «guillemets»
+Dashes:   en – dash, em — dash, ellipsis… minus −5
+Money:    €20, £5, ¥100, ¢50
+Signs:    © ® ™ ° ± × ÷ ½ ¼ µ ≤ ≥ ≠ → ←
+Bullets:  • one  • two  · three
+Boxes:    ┌──┬──┐ │a │b │ └──┴──┘ ═ ║ █
+Greek:    αβγ ΑΒΓ Ωμέγα
+Russian:  Привет, мир
+Japanese: こんにちは, カタカナ, 日本語
+Emoji:    ✓ ✗ ★ 😀 👍🏽
+Tabs:	one	two	three
+End.
+utf8.datatype test file (UTF-8)
+
+Swedish:  Räksmörgås, Ångström, Öland, Åre
+German:   Grüße aus Köln, Straße, Äpfel
+French:   café, crème brûlée, garçon, Noël, œuvre
+Spanish:  ¿Dónde está el niño? ¡Olé!
+Polish:   Łódź, Gdańsk, Kraków, żółć (no Latin-1 letters: nearest)
+Czech:    Dvořák, Škoda, přítel
+Quotes:   “double” ‘single’ „low” «guillemets»
+Dashes:   en – dash, em — dash, ellipsis… minus −5
+Money:    €20, £5, ¥100, ¢50
+Signs:    © ® ™ ° ± × ÷ ½ ¼ µ ≤ ≥ ≠ → ←
+Bullets:  • one  • two  · three
+Boxes:    ┌──┬──┐ │a │b │ └──┴──┘ ═ ║ █
+Greek:    αβγ ΑΒΓ Ωμέγα
+Russian:  Привет, мир
+Japanese: こんにちは, カタカナ, 日本語
+Emoji:    ✓ ✗ ★ 😀 👍🏽
+Tabs:	one	two	three
+End.
+utf8.datatype test file (UTF-8)
+
+Swedish:  Räksmörgås, Ångström, Öland, Åre
+German:   Grüße aus Köln, Straße, Äpfel
+French:   café, crème brûlée, garçon, Noël, œuvre
+Spanish:  ¿Dónde está el niño? ¡Olé!
+Polish:   Łódź, Gdańsk, Kraków, żółć (no Latin-1 letters: nearest)
+Czech:    Dvořák, Škoda, přítel
+Quotes:   “double” ‘single’ „low” «guillemets»
+Dashes:   en – dash, em — dash, ellipsis… minus −5
+Money:    €20, £5, ¥100, ¢50
+Signs:    © ® ™ ° ± × ÷ ½ ¼ µ ≤ ≥ ≠ → ←
+Bullets:  • one  • two  · three
+Boxes:    ┌──┬──┐ │a │b │ └──┴──┘ ═ ║ █
+Greek:    αβγ ΑΒΓ Ωμέγα
+Russian:  Привет, мир
+Japanese: こんにちは, カタカナ, 日本語
+Emoji:    ✓ ✗ ★ 😀 👍🏽
+Tabs:	one	two	three
+End.
+utf8.datatype test file (UTF-8)
+
+Swedish:  Räksmörgås, Ångström, Öland, Åre
+German:   Grüße aus Köln, Straße, Äpfel
+French:   café, crème brûlée, garçon, Noël, œuvre
+Spanish:  ¿Dónde está el niño? ¡Olé!
+Polish:   Łódź, Gdańsk, Kraków, żółć (no Latin-1 letters: nearest)
+Czech:    Dvořák, Škoda, přítel
+Quotes:   “double” ‘single’ „low” «guillemets»
+Dashes:   en – dash, em — dash, ellipsis… minus −5
+Money:    €20, £5, ¥100, ¢50
+Signs:    © ® ™ ° ± × ÷ ½ ¼ µ ≤ ≥ ≠ → ←
+Bullets:  • one  • two  · three
+Boxes:    ┌──┬──┐ │a │b │ └──┴──┘ ═ ║ █
+Greek:    αβγ ΑΒΓ Ωμέγα
+Russian:  Привет, мир
+Japanese: こんにちは, カタカナ, 日本語
+Emoji:    ✓ ✗ ★ 😀 👍🏽
+Tabs:	one	two	three
+End.
+utf8.datatype test file (UTF-8)
+
+Swedish:  Räksmörgås, Ångström, Öland, Åre
+German:   Grüße aus Köln, Straße, Äpfel
+French:   café, crème brûlée, garçon, Noël, œuvre
+Spanish:  ¿Dónde está el niño? ¡Olé!
+Polish:   Łódź, Gdańsk, Kraków, żółć (no Latin-1 letters: nearest)
+Czech:    Dvořák, Škoda, přítel
+Quotes:   “double” ‘single’ „low” «guillemets»
+Dashes:   en – dash, em — dash, ellipsis… minus −5
+Money:    €20, £5, ¥100, ¢50
+Signs:    © ® ™ ° ± × ÷ ½ ¼ µ ≤ ≥ ≠ → ←
+Bullets:  • one  • two  · three
+Boxes:    ┌──┬──┐ │a │b │ └──┴──┘ ═ ║ █
+Greek:    αβγ ΑΒΓ Ωμέγα
+Russian:  Привет, мир
+Japanese: こんにちは, カタカナ, 日本語
+Emoji:    ✓ ✗ ★ 😀 👍🏽
+Tabs:	one	two	three
+End.

@@ -1,0 +1,2 @@
+﻿Byte order mark at the start, then plain ASCII.
+Second line.
