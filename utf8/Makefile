@@ -24,9 +24,9 @@ CFLAGS += -DDEBUG
 endif
 VERSTR  = $(shell sed -n 's/.*U8_VERSTR *"\(.*\)"/\1/p' src/version.h)
 VERDATE = $(shell sed -n 's/.*U8_DATE *"\(.*\)"/\1/p' src/version.h)
-# other datatypes do these better (Markdown, HTML, AmigaGuide); datatypes.library
+# other datatypes do these better (Markdown, HTML, AmigaGuide, PC ANSI); datatypes.library
 # asks the descriptors in the order of DEVS:DataTypes, not by priority
-PATTERN = ~(\#?.(md|markdown|mkd|mdown|htm|html|guide))
+PATTERN = ~(\#?.(md|markdown|mkd|mdown|htm|html|guide|ans|ice))
 NOLIBC  = ! grep -E 'libnix|libstubs|libamiga' $(1) | grep -v '^LOAD ' || (echo "C library code got into $(2)"; false)
 
 all: build/utf8.datatype build/UTF-8 build/UTF-8bin

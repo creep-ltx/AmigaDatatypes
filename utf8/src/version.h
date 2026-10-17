@@ -1,6 +1,6 @@
 /* utf8.datatype's version. A beta is 0.xbN until proven on the A1200
  * (and on a 68000). */
 #define U8_VERSION  0
-#define U8_REVISION 3
-#define U8_VERSTR   "0.1b3"
+#define U8_REVISION 4
+#define U8_VERSTR   "0.1b4"
 #define U8_DATE     "17.10.2026"

@@ -20,7 +20,7 @@ one may not open at all, taken for a binary file.
 - **Everything else as for any text:** scrolling, tabs, search, marking, copying (you copy the letters
   as shown), printing, saving. It is the system's ascii.datatype doing the work, given the converted text.
 - **Leaves the files other datatypes do better:** `.md`/`.markdown` (markdown.datatype), `.html`/`.htm`,
-  `.guide` and any file starting `@database` (AmigaGuide).
+  `.guide` and any file starting `@database` (AmigaGuide), `.ans` and `.ice` (pcansi.datatype).
 
 **Needs** Kickstart/Workbench 3.0 or later, any processor from the 68000 up, and
 [utf8.library](https://github.com/creep-ltx/AmigaLibs/tree/main/utf8) in `LIBS:`, which does the converting:

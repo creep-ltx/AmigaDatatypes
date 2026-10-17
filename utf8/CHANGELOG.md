@@ -1,5 +1,12 @@
 # utf8.datatype changes
 
+## 0.1b4 (17.10.2026)
+
+- **Leaves PC ANSI art alone:** `.ans` and `.ice` files are left to pcansi.datatype. Before, a long PC ANSI
+  file of plain ASCII could be taken here first and shown as escape codes, depending on the order of
+  `DEVS:DataTypes`.
+- The new descriptors take effect after a restart (AddDataTypes REFRESH keeps the old ones).
+
 ## 0.1b3 (17.10.2026)
 
 - **UTF-8 late in a long file:** a file of plain ASCII for its first 16 KB is now taken and looked through to
