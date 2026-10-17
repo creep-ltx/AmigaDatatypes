@@ -7,8 +7,9 @@ on black, with every cursor move in its place. Without it, the system's text dat
 the Workbench's font and pens on grey, and anything drawn with cursor moves lands in the wrong place.
 
 - **The scene's fonts:** Topaz 1, Topaz 1+, Topaz 2, Topaz 2+, MicroKnight, MicroKnight+, P0T-NOoDLE and
-  mO'sOul (TrueSchool's pixel-exact versions). The art's SAUCE record says which; without one it is Topaz 1+.
-  Only the font a file needs is loaded.
+  mO'sOul (TrueSchool's pixel-exact versions). The art's SAUCE record says which; without one it is Topaz 1+
+  (the A500's), or the one `ENV:ANSIFont` names (Topaz 2 for the A1200's look). Only the font a file needs
+  is loaded.
 - **The right proportions:** on a 640x256 or 640x200 screen the fonts have their own 8 rows; on an
   interlaced or graphics card screen every row is doubled (16), so the art keeps its shape.
 - **Read as an Amiga terminal shows it:** Latin-1 letters (å ä ö, ¯ · ´ ¸ for the art), the Amiga's own
@@ -36,7 +37,13 @@ the Workbench's font and pens on grey, and anything drawn with cursor moves land
 
 ## Settings
 
-`ENV:ANSIBaud`: the speed animations play at, as for pcansi.datatype (14400 if not set, 0: never play).
+Environment variables (a datatype has no icon, so no tooltypes): `SetEnv NAME value`, and copy
+`ENV:NAME` to `ENVARC:` to keep it after a restart.
+
+| Variable | What |
+|---|---|
+| `ANSIFont` | The font for art whose SAUCE record names none: `Topaz1`, `Topaz1+` (the default, the A500's), `Topaz2`, `Topaz2+` (the A1200's), `MicroKnight`, `MicroKnight+`, `P0T-NOoDLE` or `mOsOul` (case and spaces do not matter). A record that names a font still decides: that is the font the artist drew in. |
+| `ANSIBaud` | The speed animations play at, in baud: 14400 if not set, 0: never play. Shared with pcansi.datatype. |
 
 ## Install
 

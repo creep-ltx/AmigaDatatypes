@@ -92,7 +92,8 @@ const char verstag[] = "$VER: " AN_NAME " " AN_VERSTR " (" AN_DATE ")";
 #ifdef AMIANSI
 #define MODE ANSI_AMIGA
 #define PALETTE ansi_amiga_rgb
-/* the fonts by the names SAUCE gives them; the first is the default */
+/* the fonts by the names SAUCE gives them; the first is the default
+ * unless ENV:ANSIFont names another */
 static const char *const fontnames[][2] = {
     { "Amiga Topaz 1+", "ansi_topaz1p.font" },
     { "Amiga Topaz 1", "ansi_topaz1.font" },
@@ -102,10 +103,55 @@ static const char *const fontnames[][2] = {
     { "Amiga MicroKnight", "ansi_mk.font" },
     { "Amiga P0T-NOoDLE", "ansi_noodle.font" },
     { "Amiga mOsOul", "ansi_mosoul.font" },
-    { "Amiga mO'sOul", "ansi_mosoul.font" },
     { NULL, NULL }
 };
-#define fontname (fontnames[0][1])
+#define fontname deffont()
+
+/* a font's name as people write it: "Topaz 2", "topaz2", "Amiga Topaz 2",
+ * "MicroKnight+", "mO'sOul" all match (case, spaces, "Amiga" and the
+ * apostrophe do not count) */
+static int lc(char c)
+{
+    return c >= 'A' && c <= 'Z' ? c + 32 : c;
+}
+
+static const char *noamiga(const char *s)
+{
+    while (*s == ' ') s++;
+    if (lc(s[0]) == 'a' && lc(s[1]) == 'm' && lc(s[2]) == 'i' && lc(s[3]) == 'g' && lc(s[4]) == 'a') s += 5;
+    return s;
+}
+
+static int skip(char c)
+{
+    return c == ' ' || c == '\'' || c == '-' || c == '_';
+}
+
+static int samefont(const char *a, const char *b)
+{
+    a = noamiga(a);
+    b = noamiga(b);
+    for (;;) {
+        while (skip(*a)) a++;
+        while (skip(*b)) b++;
+        if (lc(*a) != lc(*b)) return 0;
+        if (!*a) return 1;
+        a++;
+        b++;
+    }
+}
+
+/* the default font: ENV:ANSIFont (Topaz1, Topaz1+, Topaz2, Topaz2+,
+ * MicroKnight, MicroKnight+, P0T-NOoDLE, mOsOul), else Topaz 1+ */
+static const char *deffont(void)
+{
+    char v[32];
+    int i;
+    if (GetVar("ANSIFont", v, sizeof(v), GVF_GLOBAL_ONLY) > 0)
+        for (i = 0; fontnames[i][0]; i++)
+            if (samefont(v, fontnames[i][0])) return fontnames[i][1];
+    return fontnames[0][1];
+}
 #else
 #define MODE ANSI_PC
 #define PALETTE ansi_rgb
@@ -600,12 +646,12 @@ static int otherfont(struct AnData *an)
 #ifdef AMIANSI
     int i, k;
     struct TextFont *f;
-    for (i = 1; fontnames[i][0]; i++) {
-        const char *a = fontnames[i][0], *b = an->sauce.font;
-        for (k = 0; a[k] && a[k] == b[k]; k++) ;
-        if (!a[k] && !b[k]) break;
-    }
+    const char *def = deffont();
+    for (i = 0; fontnames[i][0]; i++)
+        if (samefont(an->sauce.font, fontnames[i][0])) break;
     if (!an->sauce.present || !fontnames[i][0] || !an->font) return 0;
+    for (k = 0; def[k] && def[k] == fontnames[i][1][k]; k++) ;
+    if (!def[k] && !fontnames[i][1][k]) return 0;   /* the one already open */
     if (!(f = openfont(fontnames[i][1], an->font->tf_YSize))) return 0;
     CloseFont(an->font);
     an->font = f;
