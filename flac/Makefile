@@ -4,6 +4,7 @@
 #
 #   make        build/flac.datatype -> SYS:Classes/DataTypes/
 #               build/FLAC          -> DEVS:DataTypes/
+#               build/FLAC-ID3      -> DEVS:DataTypes/ (FLAC behind ID3 tags)
 #   make check  the decoder against ffmpeg's, on the PC
 #
 # One build for every Amiga: plain 68000 code, Kickstart 3.0 or later.
@@ -22,10 +23,10 @@ CFLAGS  = -Os $(COMMON)
 FAST    = -O2 $(COMMON)
 VERSTR  = $(shell sed -n 's/.*FL_VERSTR *"\(.*\)"/\1/p' src/version.h)
 VERDATE = $(shell sed -n 's/.*FL_DATE *"\(.*\)"/\1/p' src/version.h)
-HDRS    = src/flacdec.h src/conv.h src/stream.h src/version.h
+HDRS    = src/flacdec.h src/conv.h src/stream.h src/id3.h src/version.h
 OBJS    = build/start.o build/class.o build/stream.o build/flacdec.o build/rice.o build/conv.o
 
-all: build/flac.datatype build/FLAC
+all: build/flac.datatype build/FLAC build/FLAC-ID3
 
 build/start.o: src/start.s
 	@mkdir -p build
@@ -53,6 +54,23 @@ build/flac.datatype: $(OBJS)
 build/FLAC: tools/mkdesc.py src/version.h
 	@mkdir -p build
 	python3 tools/mkdesc.py $@ FLAC flac '#?' soun flac 0x0010 0 'FLAC $(VERSTR) ($(VERDATE))' fLaC
+
+# FLAC behind ID3v2 tags: mask "ID3", then the recognition code (build/hook)
+# looks past the tags for "fLaC"; MP3s and the rest are left alone
+build/FLAC-ID3: tools/mkdesc.py src/version.h build/hook
+	python3 tools/mkdesc.py $@ FLAC-ID3 flac '#?' soun flac 0x0010 0 'FLAC-ID3 $(VERSTR) ($(VERDATE))' ID3 build/hook
+
+# the recognition code: its first hunk must start with hookstart.s
+build/hookstart.o: src/hookstart.s
+	@mkdir -p build
+	$(CC) -c $< -o $@
+build/hook.o: src/hook.c src/id3.h src/flacdec.h
+	@mkdir -p build
+	$(CC) $(CFLAGS) -c $< -o $@
+build/hook: build/hookstart.o build/hook.o
+	$(CC) -m68000 -noixemul -nostartfiles -nostdlib -s -Wl,-Map,build/hook.map -o $@ $^ -lgcc
+	@! grep -E 'libnix|libstubs|libamiga' build/hook.map | grep -v '^LOAD ' \
+	    || (echo "C library code got into $@"; false)
 
 # on the PC: every sample against ffmpeg's decoder, on about 2,100 files
 # made by tests/mkcorpus.sh (ffmpeg's sounds through the flac command and

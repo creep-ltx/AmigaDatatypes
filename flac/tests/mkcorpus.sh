@@ -87,4 +87,5 @@ for f in "$out"/*.flac; do                  # variable blocks
     [ $((10#$(basename "$b") % 4)) = 0 ] || continue
     "$check" -f "$f" | python3 -I "$here/varblock.py" "$f" "$b-var.flac" && cp "$b.s32" "$b-var.s32"
 done
+python3 -I "$here/id3.py" "$out"
 python3 -I "$here/damage.py" "$out"

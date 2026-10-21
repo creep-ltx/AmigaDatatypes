@@ -17,8 +17,9 @@ typedef struct {
     char title[80], artist[80];
 } FlStream;
 
-/* "fLaC" and the metadata blocks, up to the first frame: 1 if it is a
- * FLAC stream fl_streaminfo takes and that says its length */
+/* "fLaC" (after any ID3v2 tags, skipped) and the metadata blocks, up to
+ * the first frame: 1 if it is a FLAC stream fl_streaminfo takes and that
+ * says its length */
 int fs_meta(FlStream *s, FlacDec *d);
 
 /* the window's size: a whole frame at the most, and 4 KB to read ahead */

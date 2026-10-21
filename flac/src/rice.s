@@ -4,8 +4,10 @@
 |
 | CNT values with parameter K into r[], the bit reader taken from and put
 | back into d (p, end, c, n at 72-84, as in flacdec.h). The same values as
-| the C loop. It reads up to 4 bytes past d->end without looking (the
-| caller's buffer has room there; such a frame fails its checks anyway).
+| the C loop. It reads up to 12 bytes past d->end without looking: it stops
+| once past d->end + 4, but a value may still fill twice after that check
+| (4 bytes, then up to 4 more for its k bits). The caller's buffer has 16
+| bytes of room there; such a frame fails its checks anyway.
 | Returns 1, or 0 when it ran past d->end + 4.
 |
 | registers: a0 p, a1 r, a2 the zero-count table, a3 end + 4,

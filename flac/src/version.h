@@ -2,5 +2,5 @@
  * (and on a 68000). */
 #define FL_VERSION  0
 #define FL_REVISION 1
-#define FL_VERSTR   "0.1b1"
-#define FL_DATE     "17.10.2026"
+#define FL_VERSTR   "0.1b2"
+#define FL_DATE     "21.10.2026"

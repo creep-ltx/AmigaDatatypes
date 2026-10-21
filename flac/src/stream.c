@@ -1,13 +1,20 @@
 /* stream: the file through a window. See stream.h. */
 #include "stream.h"
+#include "id3.h"
 
 int fs_meta(FlStream *s, FlacDec *d)
 {
     UBYTE b[FL_INFO];
     ULONG type, len;
-    int last = 0, info = 0;
+    int last = 0, info = 0, tags = 0;
     s->title[0] = s->artist[0] = 0;
-    if (s->read(s->h, b, 4) != 4 || b[0] != 'f' || b[1] != 'L' || b[2] != 'a' || b[3] != 'C') return 0;
+    if (s->read(s->h, b, 4) != 4) return 0;
+    /* ID3v2 tags in front (some taggers write them into FLAC files): skipped */
+    while (b[0] == 'I' && b[1] == 'D' && b[2] == '3') {
+        if (++tags > FS_MAXTAGS || s->read(s->h, b + 4, 6) != 6 || !(len = fs_id3size(b))) return 0;
+        if (!s->skip(s->h, len - 10) || s->read(s->h, b, 4) != 4) return 0;
+    }
+    if (b[0] != 'f' || b[1] != 'L' || b[2] != 'a' || b[3] != 'C') return 0;
     while (!last) {
         if (s->read(s->h, b, 4) != 4) return 0;
         type = fl_blockheader(b, &len, &last);

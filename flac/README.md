@@ -21,14 +21,14 @@ sounds through datatypes: MultiView, a double-click on Workbench, file managers,
 - **Safe with broken files:** every frame is checked (header CRC-8 and frame CRC-16) before its samples count;
   a damaged frame is left out (silence there) and the next one is found. A file that only *says* it is long
   cannot make it ask for more memory than the file could hold
-- **The same samples as ffmpeg's decoder** on 533 test files from two encoders, and 1,600 damaged files
+- **The same samples as ffmpeg's decoder** on 612 test files from two encoders, and 1,600 damaged files
   came through it; on the Amiga, every sample the same as on the PC
 - **Small:** about 14 KB
-- Recognised by its first bytes (`fLaC`), whatever the file is called
+- Recognised by its first bytes (`fLaC`), whatever the file is called, also **behind ID3 tags**, which some
+  taggers write into FLAC files (0.1b2); an MP3 with an ID3 tag is left to its own datatype
 
-Not played: files that do not say their length (some streamed recordings), files over 24 bits a sample, Ogg
-FLAC (`.oga`), and FLAC files with an ID3 tag in front of the `fLaC` (`ffmpeg -i in.flac -c copy out.flac`
-writes one without).
+Not played: files that do not say their length (some streamed recordings), files over 24 bits a sample and Ogg
+FLAC (`.oga`).
 
 ## Install
 
@@ -36,8 +36,12 @@ writes one without).
 |---|---|
 | `flac.datatype` | `SYS:Classes/DataTypes/` |
 | `FLAC` | `DEVS:DataTypes/` |
+| `FLAC-ID3` | `DEVS:DataTypes/` (FLAC files with ID3 tags in front) |
 
-Then `AddDataTypes REFRESH`, or restart the Amiga.
+Then `AddDataTypes REFRESH`, or restart the Amiga (restart when updating from 0.1b1).
+
+On a plain 68000 or 68020 the whole sound is decoded before it plays, which takes several times longer than it
+plays: keep long songs for faster Amigas, or make 22 kHz copies (`ffmpeg -i in.flac -ar 22050 out.flac`).
 
 ## Speed
 

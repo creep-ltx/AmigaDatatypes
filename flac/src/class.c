@@ -118,8 +118,11 @@ static LONG load(Object *o)
 
     /* no more samples than the file could hold: a frame takes 8 bytes and
      * a byte a channel at the very least (a damaged length would otherwise
-     * ask for all the memory there is) */
-    limit = ((ULONG)size / (8 + d->channels) + 1) * d->maxblock;
+     * ask for all the memory there is). Kept from overflowing: past 32 bits
+     * it wrapped round and cut some files over 10 MB to a fraction of a
+     * second (0.1b1) */
+    limit = (ULONG)size / (8 + d->channels) + 1;
+    limit = limit > 0xffffffffUL / d->maxblock ? 0xffffffffUL : limit * d->maxblock;
     samples = d->samples < limit ? d->samples : limit;
     rate = cv_init(&c, d, samples, v44);
     len = (c.len + 1) & ~1;             /* sound.datatype 40 wants an even length */
