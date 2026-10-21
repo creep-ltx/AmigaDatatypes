@@ -1,0 +1,180 @@
+QOA 0.1b1 - QOA sounds for every Amiga
+======================================
+
+  1. What it is
+  2. Installation
+  3. Playing and saving
+  4. Making QOA files
+  5. Speed and memory
+  6. Tested
+  7. Building
+  8. History
+  9. License and author
+
+
+  1. WHAT IT IS
+  -------------
+
+  QOA ("Quite OK Audio", qoaformat.org) is a compressed sound
+  format by Dominic Szablewski: about 3.2 bits a sample, a fifth of
+  the size of plain 16-bit sound, sounding nearly the same. It is
+  much simpler than MP3 or FLAC, so even a 68000 can decode it.
+
+  qoa.datatype teaches the Amiga to play it, in every program that
+  plays sounds through datatypes: MultiView, a double-click on
+  Workbench, file managers, AmigaGuide, browsers. It is a subclass
+  of sound.datatype, one build for every Amiga from a 68000 up,
+  with OS 3.0 or later, about 6 KB.
+
+  A QOA file is recognised by its first bytes ("qoaf"), whatever
+  it is called.
+
+
+  2. INSTALLATION
+  ---------------
+
+  Copy two files:
+
+      Classes/DataTypes/qoa.datatype  to SYS:Classes/DataTypes/
+      Devs/DataTypes/QOA              to DEVS:DataTypes/
+
+  Then type AddDataTypes REFRESH in a Shell, or restart the Amiga.
+  Nothing else is needed.
+
+  To remove it, delete the two files and restart.
+
+
+  3. PLAYING AND SAVING
+  ---------------------
+
+  Double-click a QOA file's icon, or open it in MultiView (or any
+  other program that plays sounds through datatypes).
+
+  What you hear depends on the system's sound.datatype:
+
+  - OS 3.5, 3.9 and 3.2 (sound.datatype 44 and later): stereo
+    stays stereo. A file with more than two channels plays its
+    first two, front left and right.
+  - OS 3.0 and 3.1 (sound.datatype 40): no stereo there, so all
+    the channels are mixed into one.
+
+  Paula, the Amiga's sound chip, plays at most about 28 kHz. A
+  faster file (44.1 or 48 kHz) is averaged down to half the rate,
+  or a third or a quarter for even faster ones, while it is
+  decoded, so it plays at the right speed and pitch instead of
+  slow. Paula plays 8-bit sound: the 16-bit samples are rounded to
+  8 bits.
+
+  The datatype gives the sound its file's name, as the system's
+  8svx.datatype does.
+
+  Saving: MultiView's Project > Save As writes the sound as an
+  8SVX file, with the right rate and length in its header (OS 3.5
+  and later).
+
+  Not played:
+  - "streaming" QOA files, whose header gives no length (their
+    rate and channels may change on the way)
+  - files with more than 8 channels
+
+  A damaged file plays up to the damage. A file that only says it
+  is long cannot make the datatype ask for more memory than the
+  file could hold.
+
+
+  4. MAKING QOA FILES
+  -------------------
+
+  With the reference converter qoaconv from
+  github.com/phoboslab/qoa on a PC. It reads WAV (and MP3 and FLAC
+  when built with dr_libs). ffmpeg plays QOA but does not write it.
+
+  For the Amiga, encode at 22,050 Hz or lower: Paula cannot play
+  more anyway, the file is half the size, and the Amiga opens it
+  twice as fast. Mono halves it again. qoaconv keeps the rate it
+  is given, so make the WAV first:
+
+      ffmpeg -i song.flac -ar 22050 song.wav
+      qoaconv song.wav song.qoa
+
+  (Add -ac 1 to the ffmpeg line for mono.)
+
+
+  5. SPEED AND MEMORY
+  -------------------
+
+  Like every sound datatype, qoa.datatype decodes the whole sound
+  before it starts to play. Every sample has to be decoded, at any
+  playback rate: QOA predicts each sample from the four before it.
+  The per-sample loop is hand-written 68000 assembly, used on
+  every 68k; the C loop takes over in the rare places where its
+  16-bit shortcut would not be exact.
+
+  Opening a sound, the datatype's own part, on the real A1200
+  (PiStorm with Emu68, OS 3.2):
+
+    Sound                       Time
+    10 s, 44.1 kHz stereo       0.14 s
+    60 s, 44.1 kHz stereo       0.78 s
+    5 s, 22 kHz mono            0.02 s
+
+  On that machine the decoder alone does 11 million samples a
+  second. A plain 68000 or 68020 is much slower: there a sound
+  takes longer to open than to play, the more so at 44.1 kHz in
+  stereo. Not yet measured on a real 68000 or 68020; in FS-UAE
+  (an emulator, not real hardware) a 7 MHz A600 decoded about
+  7,600 samples a second, and 24 seconds of 22 kHz stereo took
+  about two and a half minutes to open. On such Amigas use short
+  sounds at 22 kHz or lower, in mono if you can.
+
+  Memory. The file is read a frame (at most 16 KB) at a time and
+  decoded straight into the 8-bit sound. Only that is held: about
+  2.5 times the file's size in stereo, half that in mono.
+
+
+  6. TESTED
+  ---------
+
+  - The decoder, on the PC: every sample compared with the
+    reference decoder (qoa.h) on about 1,100 files: sine, noise,
+    sweeps, a clipped square and mixes at 8-48 kHz and 96 kHz, 1-8
+    channels, lengths around the slice and frame sizes; and
+    damaged copies (bytes changed, cut short, wrong length,
+    channels, rate, frame size). With the address and
+    undefined-behaviour checkers on.
+  - On the Amiga: six test sounds opened through datatypes and
+    their 8-bit samples compared with the PC's, byte for byte: OS
+    3.2.1 on a 68020 and a 68000 A600 with OS 3.1 (both in FS-UAE),
+    and the real A1200 (Emu68, OS 3.2.3). The assembly loop gives
+    the same samples as the C loop on all three. Opening and
+    closing three times loses no memory. MultiView plays and saves
+    them; a file that is not QOA is refused.
+  - Music played and recorded in FS-UAE on a 68000 with OS 3.1, a
+    68020 with OS 3.1 and with 3.2.1, and a 68030 with 3.2.1.
+
+
+  7. BUILDING
+  -----------
+
+  With bebbo's m68k-amigaos-gcc: make in the qoa folder gives
+  build/qoa.datatype and build/QOA. make check compares the
+  decoder with the reference one on the PC (needs ffmpeg;
+  tests/ref/qoa.h, MIT, Dominic Szablewski).
+
+
+  8. HISTORY
+  ----------
+
+  0.1b1 (17.10.2026)
+    The first version: a sound.datatype subclass, stereo on
+    sound.datatype 44 and later, mono on 3.0/3.1, sound above
+    28 kHz averaged down, the per-sample loop in 68000 assembly,
+    every frame checked.
+
+
+  9. LICENSE AND AUTHOR
+  ---------------------
+
+  MIT licence, see LICENSE in the source:
+  https://github.com/creep-ltx/AmigaDatatypes (folder qoa).
+  Written by Tobias Karlsson.

@@ -1,0 +1,79 @@
+================================================================
+  QOA - QOA sounds for every Amiga: a datatype
+================================================================
+
+
+WHAT IT IS
+
+  QOA ("Quite OK Audio", qoaformat.org) is a compressed sound
+  format: a fifth of the size of plain 16-bit sound, sounding
+  nearly the same, and simple enough to decode on a 68000. This
+  package teaches the Amiga to play it:
+
+  qoa.datatype  plays QOA sounds in every program that plays
+                sounds through datatypes: MultiView, a double-
+                click on Workbench, file managers, AmigaGuide,
+                browsers
+
+  One build for every Amiga, from a 68000 up, with OS 3.0 or
+  later. About 6 KB.
+
+
+FEATURES
+
+  - Stereo on OS 3.5, 3.9 and 3.2 (sound.datatype 44 and later);
+    files with more channels play their first two, front left and
+    right
+  - Mono on OS 3.0 and 3.1, whose sound.datatype has no stereo:
+    all the channels are mixed into one
+
+  - 44.1 and 48 kHz files play at the right speed: Paula plays at
+    most about 28 kHz, so faster sound is averaged down to half (a
+    third, a quarter...) while it is decoded, instead of playing
+    slow
+
+  - Fast: the per-sample loop is hand-written 68000 assembly. On
+    the real A1200 (Emu68, OS 3.2) a minute of 44.1 kHz stereo
+    opens in 0.8 seconds
+
+  - Little memory: the file is read a frame (at most 16 KB) at a
+    time and decoded straight into the 8-bit sound; only that is
+    held, about 2.5 times the file's size in stereo, half that in
+    mono
+
+  - Save as 8SVX: MultiView's Save As writes an 8SVX with the
+    right rate and length in its header
+
+  - Safe with broken files: every frame is checked before it is
+    decoded; a damaged file plays up to the damage. The same
+    samples as the reference decoder (qoa.h) on 1,100 test files,
+    whole and damaged
+
+  - Recognised by its first bytes ("qoaf"), whatever the file is
+    called
+
+  Not played: "streaming" QOA files (no length in the header) and
+  files with more than 8 channels.
+
+  On a plain 68000 or 68020 the whole sound is decoded before it
+  plays, which takes longer than it plays: encode at 22 kHz (see
+  qoa.doc), and keep long songs for faster Amigas.
+
+
+INSTALLATION
+
+  Classes/DataTypes/qoa.datatype  to SYS:Classes/DataTypes/
+  Devs/DataTypes/QOA              to DEVS:DataTypes/
+
+  Then AddDataTypes REFRESH, or restart the Amiga. The full manual
+  is qoa.doc.
+
+
+SOURCE
+
+  https://github.com/creep-ltx/AmigaDatatypes  (folder qoa, MIT)
+
+
+HISTORY
+
+  0.1b1 (17.10.2026) - the first version
