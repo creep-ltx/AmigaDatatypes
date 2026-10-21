@@ -85,11 +85,12 @@ as it comes: averaged over 2, 3 or more samples above 28 kHz, channels mixed or 
 
 ## Tested
 
-- **The decoder, on the PC:** every sample against ffmpeg's decoder on 533 files: ffmpeg's sine, noise, pink
+- **The decoder, on the PC:** every sample against ffmpeg's decoder on 612 files: ffmpeg's sine, noise, pink
   noise, sweeps, a clipped square, mixes and silence through the `flac` command (levels 0-8, exhaustive search,
   block sizes 16, 192, 4608 and 65,535, prediction up to order 32, 15-bit coefficients, 4/8/12/16/20/24 bits,
   wasted bits, 1-8 channels, 8 kHz to 655 kHz, lengths of 1 to 9,000 samples) and through ffmpeg's own encoder
-  (its stereo modes, order 32, 16 and 24 bits); variable-block copies of a quarter of them; and 1,600 damaged
+  (its stereo modes, order 32, 16 and 24 bits); variable-block copies of a quarter of them, copies of 53 with
+  one or two ID3v2 tags in front; and 1,600 damaged
   copies (bytes changed, cut short, wrong length, rate, block and frame sizes) that must only come through.
   With the address and undefined-behaviour checkers on.
 - **The Amiga build's full samples against the PC's:** 126 of those files decoded on OS 3.2.1 (FS-UAE),

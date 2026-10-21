@@ -1,0 +1,91 @@
+================================================================
+  FLAC - FLAC sounds for every Amiga: a datatype
+================================================================
+
+
+WHAT IT IS
+
+  FLAC (the Free Lossless Audio Codec, xiph.org/flac) is the most
+  used format for music without any loss: about half the size of
+  plain 16-bit sound, every sample exactly as recorded. This
+  package teaches the Amiga to play it:
+
+  flac.datatype  plays FLAC sounds in every program that plays
+                 sounds through datatypes: MultiView, a double-
+                 click on Workbench, file managers, AmigaGuide,
+                 browsers
+
+  One build for every Amiga, from a 68000 up, with OS 3.0 or
+  later. About 14 KB.
+
+
+FEATURES
+
+  - Every kind of FLAC file: 4 to 24 bits a sample, 1 to 8
+    channels, any rate, every encoder setting (block sizes 16 to
+    65,535, prediction up to order 32, fixed and variable block
+    sizes)
+
+  - Stereo on OS 3.5, 3.9 and 3.2 (sound.datatype 44 and later);
+    files with more channels play their first two, front left and
+    right
+  - Mono on OS 3.0 and 3.1, whose sound.datatype has no stereo:
+    all the channels are mixed into one
+
+  - 44.1 and 48 kHz files play at the right speed: Paula plays at
+    most about 28 kHz, so faster sound is averaged down to half (a
+    third, a quarter...) while it is decoded, instead of playing
+    slow
+
+  - Title and artist: the file's TITLE and ARTIST tags become the
+    sound's name and author
+
+  - Made for the 68000: the bit reader's inner loop is hand-
+    written 68000 assembly, and the predictor only ever multiplies
+    16 by 16 bits, 24-bit sound too. On the real A1200 (Emu68, OS
+    3.2) a minute of CD sound opens in 1.2 seconds
+
+  - Little memory: the file is read through a small window and
+    decoded straight into the 8-bit sound; only that is held.
+    Cover pictures and other metadata are skipped
+
+  - Save as 8SVX: MultiView's Save As writes an 8SVX with the
+    right rate and length in its header
+
+  - Safe with broken files: every frame is checked (CRC-8 and
+    CRC-16) before its samples count; a damaged frame is left out
+    and the next one found. The same samples as ffmpeg's decoder
+    on 612 test files, and 1,600 damaged ones came through
+
+  - Recognised by its first bytes ("fLaC"), whatever the file is
+    called, also behind ID3 tags, which some taggers write into
+    FLAC files
+
+  Not played: files that do not say their length (some streamed
+  recordings), files over 24 bits a sample, and Ogg FLAC (.oga).
+
+  On a plain 68000 or 68020 the whole sound is decoded before it
+  plays, which takes several times longer than it plays: make
+  22 kHz copies for such Amigas (see flac.doc), and keep long
+  songs for faster ones.
+
+
+INSTALLATION
+
+  Classes/DataTypes/flac.datatype  to SYS:Classes/DataTypes/
+  Devs/DataTypes/FLAC              to DEVS:DataTypes/
+  Devs/DataTypes/FLAC-ID3          to DEVS:DataTypes/
+
+  Then restart the Amiga. The full manual is flac.doc.
+
+
+SOURCE
+
+  https://github.com/creep-ltx/AmigaDatatypes  (folder flac, MIT)
+
+
+HISTORY
+
+  0.1b2 (21.10.2026) - big files no longer cut short; FLAC behind
+                       ID3 tags
+  0.1b1 (17.10.2026) - the first version
